@@ -1384,6 +1384,10 @@ Now lets numerate
 and two
 \end_layout
 
+\begin_layout Enumerate
+and three
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator parbreak
@@ -1860,7 +1864,7 @@ t
 
 \end_inset
 
-6 cm
+5 cm
 \end_layout
 
 \begin_layout Standard

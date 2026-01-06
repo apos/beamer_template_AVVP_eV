@@ -211,3 +211,33 @@ Umsetzung (LyX‑sicher):
 ✔ Header / Footer kontrolliert  
 
 **AVVP Beamer Theme – Stand 01-2026**
+
+---
+
+## 12. Lizenz
+
+Dieses Beamer‑Template sowie alle zugehörigen Inhalte (LaTeX‑Präambel, Makros, Dokumentstruktur, Beispielgrafiken, sofern nicht anders gekennzeichnet) stehen unter der Lizenz:
+
+**Creative Commons Attribution–NonCommercial–ShareAlike 4.0 International**  
+(**CC BY‑NC‑SA 4.0**)
+
+### Erlaubt
+- Teilen (Kopieren und Weiterverbreiten in jedem Medium oder Format)
+- Bearbeiten (Remixen, Verändern und Weiterentwickeln)
+
+### Bedingungen
+- **Namensnennung (BY)**  
+  Angabe des Urhebers: *Astronomische Vereinigung Vorderpfalz e.V. (AVVP e.V.)*
+- **Nicht kommerziell (NC)**  
+  Keine Nutzung für kommerzielle Zwecke
+- **Weitergabe unter gleichen Bedingungen (SA)**  
+  Abgeleitete Werke müssen unter derselben Lizenz stehen
+
+### Rechtstext
+- Offizielle Lizenzseite:  
+  https://creativecommons.org/licenses/by-nc-sa/4.0/
+- Deutscher Lizenztext (unverbindliche Übersetzung):  
+  https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.de
+
+**Hinweis:**  
+Rechtlich verbindlich ist ausschließlich der englische Originaltext der Lizenz.
