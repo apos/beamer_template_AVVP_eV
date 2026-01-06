@@ -24,6 +24,15 @@ Grundprinzip:
 > Beamer‑Automatik wird nur dort verwendet, wo sie **vorhersagbar** ist.
 > Kritische Bereiche (Logo, Agenda, Overlays) werden **explizit gesteuert**.
 
+
+<img width="863" height="483" alt="image" src="https://github.com/user-attachments/assets/ba04a2c5-3a27-4f35-8151-b3bdad2b0567" />
+<img width="865" height="484" alt="image" src="https://github.com/user-attachments/assets/b6004a3a-494f-4bbb-a4cc-5857e5697590" />
+<img width="868" height="487" alt="image" src="https://github.com/user-attachments/assets/54387881-7c0f-4921-9e30-de262337fc75" />
+<img width="863" height="490" alt="image" src="https://github.com/user-attachments/assets/7fe16059-d59c-459f-8402-210f3ef67531" />
+<img width="862" height="484" alt="image" src="https://github.com/user-attachments/assets/a953be88-9941-44b1-b0d7-75b5e922aaaa" />
+<img width="862" height="487" alt="image" src="https://github.com/user-attachments/assets/967602fc-7acf-4d02-b99e-56f5cfadd2e5" />
+
+
 ---
 
 ## 2. Farbsystem
