@@ -1,8 +1,13 @@
-# AVVP Beamer Theme – README
+# AVVP Beamer Theme für Lyx – README
 
 Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Beamer‑Präambel.
 Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
 Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
+
+https://www.lyx.org/Home
+<img width="822" height="242" alt="image" src="https://github.com/user-attachments/assets/b969f1b3-8aeb-4bda-b655-b01c69cc5b3c" />
+
+
 
 ---
 
