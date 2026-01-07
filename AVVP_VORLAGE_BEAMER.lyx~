@@ -25,12 +25,188 @@
 % Quotes (ok, uses hyperref indirectly)
 \usepackage[autostyle]{csquotes}
 
-
+% ------------------------------------------------------------
 % ---------- THEME (do not change) ----------
+% ------------------------------------------------------------
 \usetheme{Malmoe}
+
+% ------------------------------------------------------------
+% Ensure shaded nav entries are actually dimmed (mix fg into bg)
+% ------------------------------------------------------------
+% \setbeamercolor{section in head/foot shaded}{fg=section in head/foot.fg!35!section in head/foot.bg}
+% \setbeamercolor{subsection in head/foot shaded}{fg=subsection in head/foot.fg!35!subsection in head/foot.bg}
+
+% ------------------------------------------------------------
+% Make section/subsection navigation truly left-aligned:
+% remove "hbox to <width>" stretching from Beamer's nav macros
+% ------------------------------------------------------------
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\insertsectionnavigationhorizontal}{\hbox to #1}{\hbox}{}{\errmessage{Patch failed: insertsectionnavigationhorizontal}}
+\patchcmd{\insertsubsectionnavigationhorizontal}{\hbox to #1}{\hbox}{}{\errmessage{Patch failed: insertsubsectionnavigationhorizontal}}
+\makeatother
+
 \makeatletter
 \let\AVVP@orig@beamer@alert\beamer@alert
 \makeatother
+
+
+% ------------------------------------------------------------
+% Nav entries: active gets triangle + normal color
+%             inactive gets same hue but dimmed
+% ------------------------------------------------------------
+
+% SECTIONS
+\setbeamertemplate{section in head/foot}{%
+  \usebeamercolor[fg]{section in head/foot}\color{fg}%
+  \raggedright
+  \raisebox{0.15ex}{\scriptsize$\blacktriangleright$}\hspace{0.4em}%
+  \insertsectionhead\hspace*{1.2em}%
+}
+\setbeamertemplate{section in head/foot shaded}{%
+  \usebeamercolor[fg]{section in head/foot}\color{fg!45}%
+  \raggedright
+  \hspace*{0.5em}\insertsectionhead\hspace*{1.2em}%
+}
+
+% SUBSECTIONS
+\setbeamertemplate{subsection in head/foot}{%
+  \usebeamercolor[fg]{subsection in head/foot}\color{fg}%
+  \raggedright
+  \raisebox{0.15ex}{\scriptsize$\blacktriangleright$}\hspace{0.4em}%
+  \insertsubsectionhead\hspace*{1.0em}%
+}
+\setbeamertemplate{subsection in head/foot shaded}{%
+  \usebeamercolor[fg]{subsection in head/foot}\color{fg!45}%
+  \raggedright
+  \hspace*{0.5em}\insertsubsectionhead\hspace*{1.0em}%
+}
+
+% Dynamic split widths for header: measure left, clamp, use rest
+% ------------------------------------------------------------
+\newdimen\AVVPHeaderLeft
+\newdimen\AVVPHeaderRight
+\newsavebox{\AVVPHeaderLeftBox}
+
+\newcommand{\AVVPComputeHeaderWidths}{%
+  % Measure natural width of section navigation
+  \sbox{\AVVPHeaderLeftBox}{\insertsectionnavigationhorizontal{\paperwidth}{}{}}%
+  \AVVPHeaderLeft=\wd\AVVPHeaderLeftBox
+  % Clamp left width to max 0.70\paperwidth
+  \ifdim\AVVPHeaderLeft>0.70\paperwidth
+    \AVVPHeaderLeft=0.70\paperwidth
+  \fi
+  % Compute right as the remaining width
+  \AVVPHeaderRight=\paperwidth
+  \advance\AVVPHeaderRight by -\AVVPHeaderLeft
+}
+
+
+% ------------------------------------------------------------
+% Header: left-aligned, stable (current section + current subsection)
+% ------------------------------------------------------------
+
+\setbeamertemplate{headline}{}
+
+
+% ------------------------------------------------------------
+% Global switch: show agenda bar by default
+% ------------------------------------------------------------
+\newif\ifAVVPShowAgendaBar
+\AVVPShowAgendaBartrue
+
+% ------------------------------------------------------------
+% Detect ToC usage (any kind) + whether we are inside the Sub-Agenda frame
+% ------------------------------------------------------------
+\newif\ifAVVPToCThisFrame
+\AVVPToCThisFramefalse
+
+\newif\ifAVVPSubAgendaFrame
+\AVVPSubAgendaFramefalse
+
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\beamer@tableofcontents}{\global\AVVPToCThisFrametrue}{}%
+  {\errmessage{Patch failed: beamer@tableofcontents (pre)}}
+\makeatother
+
+% ------------------------------------------------------------
+% Helper: render the agenda bar (single place, no duplication)
+% ------------------------------------------------------------
+\newcommand{\AVVPAgendaBarRender}{%
+  \AVVPComputeHeaderWidths
+  \hbox{%
+    \begin{beamercolorbox}[
+        wd=\AVVPHeaderLeft,
+        ht=2.5ex,dp=1.125ex,
+        leftskip=1ex,rightskip=0pt
+      ]{section in head/foot}
+      \insertsectionnavigationhorizontal{\AVVPHeaderLeft}{}{}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+        wd=\AVVPHeaderRight,
+        ht=2.5ex,dp=1.125ex,
+        leftskip=0pt,rightskip=1ex
+      ]{subsection in head/foot}
+      \hfill\insertsubsectionnavigationhorizontal{\AVVPHeaderRight}{}{}
+    \end{beamercolorbox}%
+  }%
+}
+
+% ------------------------------------------------------------
+% Agenda bar (used as top footline) - conditional
+% Rule:
+% - any ToC frame: hide agenda bar, EXCEPT our Sub-Agenda frame
+% - normal frames: show agenda bar
+% ------------------------------------------------------------
+\newcommand{\AVVPAgendaBar}{%
+  \ifAVVPShowAgendaBar
+    \ifAVVPToCThisFrame
+      \ifAVVPSubAgendaFrame
+        \AVVPAgendaBarRender
+        \global\AVVPSubAgendaFramefalse
+      \else
+        % Main agenda / any other ToC frame -> hide agenda bar
+      \fi
+    \else
+      % Normal frame -> show agenda bar
+      \AVVPAgendaBarRender
+    \fi
+  \fi
+  \global\AVVPToCThisFramefalse
+}
+
+
+
+% ------------------------------------------------------------
+% Install two-row footline late (after theme overrides)
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\AVVPInstallTwoRowFootline}{%
+  % capture the theme's final footline
+  \let\AVVPOrigFootline\beamer@@tmpl@footline
+  % replace with two-row footline
+  \setbeamertemplate{footline}{%
+    \vbox{%
+      \offinterlineskip
+      \AVVPAgendaBar
+      \AVVPOrigFootline
+    }%
+  }%
+}
+\makeatother
+
+\AtBeginDocument{\AVVPInstallTwoRowFootline}
+
+
+
+% Fonts: make both rows identical
+%\setbeamerfont{section in head/foot}{size=\tiny}
+%\setbeamerfont{subsection in head/foot}{size=\tiny}
+% Agenda uses the same font as the standard Malmoe footer
+\setbeamerfont{section in head/foot}{parent=author in head/foot}
+\setbeamerfont{subsection in head/foot}{parent=author in head/foot}
 
 
 % ---------- Colors ----------
@@ -384,12 +560,12 @@
         anchor=south east,
         inner sep=2pt
       ]
-        at ([xshift=-6pt,yshift=36pt]current page.south east)
+        at ([xshift=-4pt,yshift=24pt]current page.south east)
         {%
           \rotatebox{90}{%
             \fontsize{5pt}{6pt}\selectfont
             \color{AVVPBlue!70}%
-            Hintergrund: [#4]%
+            Hintergrundbild: [#4]%
           }%
         };
 
@@ -410,11 +586,11 @@
     \node[
       anchor=south east,
       inner sep=2pt
-    ] at ([xshift=-6pt,yshift=28pt]current page.south east) {%
+    ] at ([xshift=-4pt,yshift=14pt]current page.south east) {%
       \fontsize{5pt}{6pt}\selectfont
       \color{AVVPBlue!70}%
       \begingroup
-      \def\do##1{[##1]\space}%
+      \def\do##1{Bildnachweis: [##1]\space}%
       \docsvlist{#1}%
       \endgroup
     };
@@ -608,6 +784,7 @@
     % Agenda text colors
     \setbeamercolor{normal text}{fg=white}%
     \setbeamercolor{frametitle}{fg=AVVPBlue}%
+	\global\AVVPSubAgendaFrametrue
     \begin{frame}<beamer>
       \frametitle{Weiter geht's im Text ...}
       \AVVPtocCurrentSubsection
@@ -1271,7 +1448,7 @@ Motivation
 \end_layout
 
 \begin_layout Subsection
-Das behandelte Problem
+Herausforderungen
 \end_layout
 
 \begin_layout Standard
@@ -1401,7 +1578,7 @@ and three
 status open
 
 \begin_layout Plain Layout
-Konzentration auf einzelne Punkte (funktioniert nicht im Light
+Konzentration auf einzelne Punkte
 \end_layout
 
 \end_inset
@@ -1460,7 +1637,7 @@ Hiermit können,
 
 \end_deeper
 \begin_layout Subsection
-Anforderungen
+Ergebnisse
 \end_layout
 
 \begin_layout Frame
@@ -1571,11 +1748,68 @@ Ein Beispielblocktitel
 \end_deeper
 \end_deeper
 \begin_layout Section
-Resultate/Beitrag
+Thema 1
 \end_layout
 
 \begin_layout Subsection
-Hauptresultate
+Unterabschnitt 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod empor invidunt ut labore et dolore magna
+\end_layout
+
+\begin_layout Standard
+aliquyam erat,
+ sed diam voluptua.
+ 
+\end_layout
+
+\begin_layout Section
+Thema 2
+\end_layout
+
+\begin_layout Subsection
+Unterabschnitt
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod empor invidunt ut labore et dolore magna
+\end_layout
+
+\begin_layout Frame
+aliquyam erat,
+ sed diam voluptua.
+\end_layout
+
+\begin_layout Section
+Thema 3
+\end_layout
+
+\begin_layout Subsection
+Resultate
 \end_layout
 
 \begin_layout Frame
@@ -1606,7 +1840,7 @@ Auf dem zweiten Overlay.
 
 \end_deeper
 \begin_layout Subsection
-Verschiedende Bild- und Tabellenseiten
+Bilder und Tabellen
 \end_layout
 
 \begin_layout Standard
@@ -1893,13 +2127,13 @@ t
 
 \end_inset
 
-10 cm
+9 cm
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
 	filename media/EVZL1977.JPG
-	lyxscale 25
+	lyxscale 10
 	width 90col%
 
 \end_inset
@@ -2013,7 +2247,7 @@ t
 \begin_layout Standard
 \begin_inset Graphics
 	filename media/EVZL1977.JPG
-	lyxscale 25
+	lyxscale 10
 	width 90col%
 
 \end_inset
