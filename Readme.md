@@ -6,7 +6,7 @@ Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabs
 Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
 
 Urheber:
-Astronomische Vereinigung Vorderpfalz e.V.  (kurz: AVVP e.V.)
+Astronomische Vereinigung Vorderpfalz e.V., kurz: AVVP e.V.,
 https://avvp.de
 
 Autor (2026):
