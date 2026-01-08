@@ -1222,7 +1222,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+% 
 \backslash
 AVVPLightMode % Use sparely!
  Reset dark mode afterwards!
@@ -1248,7 +1248,7 @@ AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
 
 \begin_layout Plain Layout
 
-
+% 
 \backslash
 AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
@@ -1351,7 +1351,7 @@ AVVPDarkMode
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
 \end_layout
@@ -1365,7 +1365,7 @@ AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \end_layout
