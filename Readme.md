@@ -9,7 +9,7 @@ Urheber:
 Astronomische Vereinigung Vorderpfalz e.V.  (kurz: AVVP e.V.)
 https://avvp.de
 
-Autor:
+Autor (2026):
 Axel Pospischil, apos@blue-it.org, https://github.com/apos
 
 ---
