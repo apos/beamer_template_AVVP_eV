@@ -4,6 +4,9 @@ Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Bea
 
 Astonomische Vereinigung Vorderpfalz e.V. - https://avvp.de
 
+<img width="676" height="268" alt="image" src="https://github.com/user-attachments/assets/e32a8836-446d-4c9c-a085-f6778cfb8a63" />
+
+
 Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
 Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**. 
 
