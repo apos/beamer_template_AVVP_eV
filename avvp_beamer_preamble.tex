@@ -1,0 +1,797 @@
+% Dieses Dokument beschreibt Aufbau, Struktur und Wirkungsweise der AVVP‑Beamer‑Präambel für unseren Verein.
+% Astonomische Vereinigung Vorderpfalz e.V. - https://avvp.de
+
+% LyX preview fix: ensure \Urlmuskip exists even if xurl is loaded early
+\providecommand\Urlmuskip{\muskip0}
+
+% Packages (safe in Beamer + LyX)
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{amssymb}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+\usepackage{url}
+
+% Quotes (ok, uses hyperref indirectly)
+\usepackage[autostyle]{csquotes}
+
+% ------------------------------------------------------------
+% ---------- THEME (do not change) ----------
+% ------------------------------------------------------------
+\usetheme{Malmoe}
+
+% ------------------------------------------------------------
+% Ensure shaded nav entries are actually dimmed (mix fg into bg)
+% ------------------------------------------------------------
+% \setbeamercolor{section in head/foot shaded}{fg=section in head/foot.fg!35!section in head/foot.bg}
+% \setbeamercolor{subsection in head/foot shaded}{fg=subsection in head/foot.fg!35!subsection in head/foot.bg}
+
+% ------------------------------------------------------------
+% Make section/subsection navigation truly left-aligned:
+% remove "hbox to <width>" stretching from Beamer's nav macros
+% ------------------------------------------------------------
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\insertsectionnavigationhorizontal}{\hbox to #1}{\hbox}{}{\errmessage{Patch failed: insertsectionnavigationhorizontal}}
+\patchcmd{\insertsubsectionnavigationhorizontal}{\hbox to #1}{\hbox}{}{\errmessage{Patch failed: insertsubsectionnavigationhorizontal}}
+\makeatother
+
+\makeatletter
+\let\AVVP@orig@beamer@alert\beamer@alert
+\makeatother
+
+
+% ------------------------------------------------------------
+% Nav entries: active gets triangle + normal color
+%             inactive gets same hue but dimmed
+% ------------------------------------------------------------
+
+% SECTIONS
+\setbeamertemplate{section in head/foot}{%
+  \usebeamercolor[fg]{section in head/foot}\color{fg}%
+  \raggedright
+  \raisebox{0.15ex}{\scriptsize$\blacktriangleright$}\hspace{0.4em}%
+  \insertsectionhead\hspace*{1.2em}%
+}
+\setbeamertemplate{section in head/foot shaded}{%
+  \usebeamercolor[fg]{section in head/foot}\color{fg!45}%
+  \raggedright
+  \hspace*{0.5em}\insertsectionhead\hspace*{1.2em}%
+}
+
+% SUBSECTIONS
+\setbeamertemplate{subsection in head/foot}{%
+  \usebeamercolor[fg]{subsection in head/foot}\color{fg}%
+  \raggedright
+  \raisebox{0.15ex}{\scriptsize$\blacktriangleright$}\hspace{0.4em}%
+  \insertsubsectionhead\hspace*{1.0em}%
+}
+\setbeamertemplate{subsection in head/foot shaded}{%
+  \usebeamercolor[fg]{subsection in head/foot}\color{fg!45}%
+  \raggedright
+  \hspace*{0.5em}\insertsubsectionhead\hspace*{1.0em}%
+}
+
+% Dynamic split widths for header: measure left, clamp, use rest
+% ------------------------------------------------------------
+\newdimen\AVVPHeaderLeft
+\newdimen\AVVPHeaderRight
+\newsavebox{\AVVPHeaderLeftBox}
+
+\newcommand{\AVVPComputeHeaderWidths}{%
+  % Measure natural width of section navigation
+  \sbox{\AVVPHeaderLeftBox}{\insertsectionnavigationhorizontal{\paperwidth}{}{}}%
+  \AVVPHeaderLeft=\wd\AVVPHeaderLeftBox
+  % Clamp left width to max 0.70\paperwidth
+  \ifdim\AVVPHeaderLeft>0.70\paperwidth
+    \AVVPHeaderLeft=0.70\paperwidth
+  \fi
+  % Compute right as the remaining width
+  \AVVPHeaderRight=\paperwidth
+  \advance\AVVPHeaderRight by -\AVVPHeaderLeft
+}
+
+
+% ------------------------------------------------------------
+% Header: left-aligned, stable (current section + current subsection)
+% ------------------------------------------------------------
+
+\setbeamertemplate{headline}{}
+
+
+% ------------------------------------------------------------
+% Global switch: show agenda bar by default
+% ------------------------------------------------------------
+\newif\ifAVVPShowAgendaBar
+\AVVPShowAgendaBartrue
+
+% ------------------------------------------------------------
+% Detect ToC usage (any kind) + whether we are inside the Sub-Agenda frame
+% ------------------------------------------------------------
+\newif\ifAVVPToCThisFrame
+\AVVPToCThisFramefalse
+
+\newif\ifAVVPSubAgendaFrame
+\AVVPSubAgendaFramefalse
+
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\beamer@tableofcontents}{\global\AVVPToCThisFrametrue}{}%
+  {\errmessage{Patch failed: beamer@tableofcontents (pre)}}
+\makeatother
+
+% ------------------------------------------------------------
+% Helper: render the agenda bar (single place, no duplication)
+% ------------------------------------------------------------
+\newcommand{\AVVPAgendaBarRender}{%
+  \AVVPComputeHeaderWidths
+  \hbox{%
+    \begin{beamercolorbox}[
+        wd=\AVVPHeaderLeft,
+        ht=2.5ex,dp=1.125ex,
+        leftskip=1ex,rightskip=0pt
+      ]{section in head/foot}
+      \insertsectionnavigationhorizontal{\AVVPHeaderLeft}{}{}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+        wd=\AVVPHeaderRight,
+        ht=2.5ex,dp=1.125ex,
+        leftskip=0pt,rightskip=1ex
+      ]{subsection in head/foot}
+      \hfill\insertsubsectionnavigationhorizontal{\AVVPHeaderRight}{}{}
+    \end{beamercolorbox}%
+  }%
+}
+
+% ------------------------------------------------------------
+% Agenda bar (used as top footline) - conditional
+% Rule:
+% - any ToC frame: hide agenda bar, EXCEPT our Sub-Agenda frame
+% - normal frames: show agenda bar
+% ------------------------------------------------------------
+\newcommand{\AVVPAgendaBar}{%
+  \ifAVVPShowAgendaBar
+    \ifAVVPToCThisFrame
+      \ifAVVPSubAgendaFrame
+        \AVVPAgendaBarRender
+        \global\AVVPSubAgendaFramefalse
+      \else
+        % Main agenda / any other ToC frame -> hide agenda bar
+      \fi
+    \else
+      % Normal frame -> show agenda bar
+      \AVVPAgendaBarRender
+    \fi
+  \fi
+  \global\AVVPToCThisFramefalse
+}
+
+
+
+% ------------------------------------------------------------
+% Install two-row footline late (after theme overrides)
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\AVVPInstallTwoRowFootline}{%
+  % capture the theme's final footline
+  \let\AVVPOrigFootline\beamer@@tmpl@footline
+  % replace with two-row footline
+  \setbeamertemplate{footline}{%
+    \vbox{%
+      \offinterlineskip
+      \AVVPAgendaBar
+      \AVVPOrigFootline
+    }%
+  }%
+}
+\makeatother
+
+\AtBeginDocument{\AVVPInstallTwoRowFootline}
+
+
+
+% Fonts: make both rows identical
+%\setbeamerfont{section in head/foot}{size=\tiny}
+%\setbeamerfont{subsection in head/foot}{size=\tiny}
+% Agenda uses the same font as the standard Malmoe footer
+\setbeamerfont{section in head/foot}{parent=author in head/foot}
+\setbeamerfont{subsection in head/foot}{parent=author in head/foot}
+
+
+% ---------- Colors ----------
+\definecolor{AVVPBg}{RGB}{5,23,41}          % #051729
+\definecolor{AVVPBlue}{RGB}{46,108,198}     % #2E6CC6
+\definecolor{AVVPSpark}{RGB}{235,156,70}    % #EB9C46
+\definecolor{AVVPGrey}{RGB}{90,98,110}
+
+% ------------------------------------------------------------
+%  Literaturverzeichniseintrag
+% ------------------------------------------------------------
+% Bibliography: bullet in AVVP orange (instead of the default "document" icon)
+\setbeamercolor{bibliography item}{fg=AVVPSpark}
+\setbeamertemplate{bibliography item}{\textcolor{AVVPSpark}{\raisebox{0.25ex}{\scriptsize$\blacktriangleright$}}}
+
+% mit cite-key am Anfang + AVVP Bullet (biblatex)
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{biblatex}{%
+
+	\newcommand{\AVVPBibBullet}{%
+	  {\setbeamercolor{itemize item}{fg=AVVPSpark}\avvpsparkbullet}%
+	}%
+
+    \DeclareFieldFormat{entrykey}{[#1]}%
+    \renewbibmacro*{begentry}{%
+      \AVVPBibBullet\addspace
+      \printfield{entrykey}\addspace
+    }%
+
+  }{}%
+}
+\makeatother
+
+% ohne Zeichen zu Beginn
+\setbeamertemplate{bibliography item}{}
+
+% Bibliography: URLs in white (AVVP style)
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{biblatex}{%
+    \DeclareFieldFormat{url}{\textcolor{white}{\url{#1}}}%
+  }{}%
+}
+\makeatother
+
+
+% ------------------------------------------------------------
+%  LyX Beamer title slide: no headline/footline
+% ------------------------------------------------------------
+\makeatletter
+\@ifundefined{makebeamertitle}{}{%
+  \renewcommand{\makebeamertitle}{%
+    \begin{frame}[plain,noframenumbering]
+      \titlepage
+    \end{frame}
+  }%
+}
+\makeatother
+
+% AVVP Titelseite mit Slogan auf der Titelseite
+\makeatletter
+\setbeamertemplate{title page}{%
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+
+    % --- Title ---
+    \setbeamerfont{title}{size=\LARGE}
+    {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+
+    % --- Subtitle ---
+    \ifx\insertsubtitle\@empty\else
+      \vskip0.5em
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+    \fi
+
+    % --- Date (blue, under authors) ---
+    \vskip1em
+    {\usebeamerfont{date}\color{AVVPBlue}\insertdate\par}
+
+    % --- Authors (blue, directly under subtitle) ---
+    \vskip0.5em
+    {\usebeamerfont{author}\color{AVVPBlue}\insertauthor\par}
+
+    % --- Title graphic (logo) ---
+    \ifx\inserttitlegraphic\@empty\else
+      \vskip2.2em
+      \begingroup
+      \setlength{\fboxsep}{0pt}%
+      \setlength{\fboxrule}{0pt}%
+      \resizebox{0.30\paperwidth}{!}{\inserttitlegraphic}\par
+      \endgroup
+    \fi
+
+	% --- Slogan (white, under logo, scaled to same width) ---
+	\vskip0.8em
+	\resizebox{0.3\paperwidth}{!}{%
+	  {\AVVPTitleFont\color{white}Faszination. Astronomie. Erleben.}%
+	}\par
+
+    % --- Institute / Date (unchanged) ---
+    \vskip2em
+    {\usebeamerfont{institute}\insertinstitute\par}
+
+  \endgroup
+  \vfill
+}
+\makeatother
+
+
+% ------------------------------------------------------------
+% AVVP Footer: Logo rechts
+% ------------------------------------------------------------
+\setbeamercolor{avvp foot right}{bg=AVVPBg,fg=white}
+
+% --- AVVP Logo (single source of truth) ---
+\pgfdeclareimage[height=3ex]{avvp-logo}{pics/avvp_2019_logo_wortmarke_neg.png}
+\newcommand{\AVVPLogo}{\pgfuseimage{avvp-logo}}
+
+% --- CC BY-NC-SA Icon ---
+\pgfdeclareimage[height=1.3ex]{cc-by-nc-sa}{pics/by-nc-sa.png}
+\newcommand{\AVVPCC}{\pgfuseimage{cc-by-nc-sa}}
+
+% set this, if you do not want to position the logo in the frame, but only in the footer!
+\setbeamertemplate{logo}{}
+
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    % --- left: author ---
+	\begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}%
+	  \usebeamerfont{author in head/foot}%
+	  \hspace*{1em}%
+	  \insertshortauthor%
+	  \hspace{0.6em}{\color{AVVPGrey}\textbullet}\hspace{0.6em}%
+	  \insertshortdate
+	\end{beamercolorbox}%
+
+    % --- center: title ---
+    \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+
+    % --- right: AVVP Logo + CC License ---
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,right]{avvp foot right}%
+      \raisebox{-0.5ex}{\AVVPCC}%
+	  \hspace{1em}%
+      \raisebox{-0.6ex}{\AVVPLogo}%
+      \hspace*{1em}%
+    \end{beamercolorbox}%
+  }%
+}
+\makeatother
+
+
+% -------------------------------------------------------------------
+% AVVP SCHRIFTARTEN UND FARBEN
+% -------------------------------------------------------------------
+
+% ---------- Fonts (LuaLaTeX) ----------
+\usepackage{fontspec}
+\usefonttheme{professionalfonts}
+
+% Base: Exo2 variable font from file (upright)
+\setsansfont{Exo 2}[
+  Ligatures=TeX
+]
+\setmainfont{Exo 2}[
+  Ligatures=TeX
+]
+
+% Bold variant as separate family (same font, heavier weight)
+\newfontfamily\ExoTwoBold{Exo 2}[
+  Ligatures=TeX,
+  RawFeature={axis={wght=700}}
+]
+
+% Title/section font: Share Tech (exact family name from fc-list)
+\newfontfamily\AVVPTitleFont{Share Tech}[Ligatures=TeX]
+
+% Apply Beamer font roles
+\setbeamerfont{title}{family=\AVVPTitleFont}
+\setbeamerfont{frametitle}{family=\AVVPTitleFont}
+\setbeamerfont{section title}{family=\AVVPTitleFont}
+\setbeamerfont{subsection title}{family=\AVVPTitleFont}
+\setbeamerfont{subtitle}{family=\AVVPTitleFont}
+
+% Ensure Beamer uses sans fonts everywhere (avoids legacy serif pulls)
+\renewcommand{\familydefault}{\sfdefault}
+
+% Global canvas/text colors (Dark default)
+\setbeamercolor{background canvas}{bg=AVVPBg}
+\setbeamercolor{normal text}{fg=white,bg=AVVPBg}
+
+% Titles / structure
+\setbeamercolor{title}{fg=AVVPBlue}
+\setbeamercolor{frametitle}{fg=AVVPBlue}
+\setbeamercolor{section title}{fg=AVVPBlue}
+\setbeamercolor{subsection title}{fg=AVVPBlue}
+\setbeamercolor{subtitle}{fg=AVVPSpark}
+\setbeamercolor{structure}{fg=AVVPBlue}
+
+% Author color (default)
+\setbeamercolor{author}{fg=AVVPBlue}
+
+% --- Title page: author/institute/date in AVVPBlue ---
+\setbeamercolor{author}{fg=AVVPBlue}
+\setbeamercolor{institute}{fg=AVVPBlue}
+\setbeamercolor{date}{fg=AVVPBlue}
+
+% optional: wenn du "title page" Elemente getrennt steuern willst
+\setbeamercolor{title}{fg=AVVPBlue}
+\setbeamercolor{subtitle}{fg=AVVPSpark}
+
+% -------------------------------------------------------------------
+% AVVP BULLETPOINTS
+%   Mode-aware: color is controlled via beamercolor "AVVPbullet"
+%   IMPORTANT: the bullet macros MUST be robust, otherwise Beamer/LyX
+%             overlays may drop them and you get fallback diamonds.
+% -------------------------------------------------------------------
+
+% No "pause" used! Bullets are highlightet automatically
+\beamerdefaultoverlayspecification{<+-|alert@+>}
+
+% Bullet color "variable" (default = Dark look)
+\setbeamercolor{AVVPbullet}{fg=AVVPSpark}
+
+% Robust sparkle bullets (TikZ is fragile unless wrapped robustly)
+\DeclareRobustCommand{\avvpsparkbullet}{%
+  \tikz[baseline=-0.6ex,scale=0.13]{%
+    \usebeamercolor[fg]{itemize item}%
+    \path[fill=fg,draw=none]
+      (0,1)
+      .. controls (0.38,0.38) and (0.38,0.38) .. (1,0)
+      .. controls (0.38,-0.38) and (0.38,-0.38) .. (0,-1)
+      .. controls (-0.38,-0.38) and (-0.38,-0.38) .. (-1,0)
+      .. controls (-0.38,0.38) and (-0.38,0.38) .. (0,1)
+      -- cycle;%
+  }%
+}
+
+\DeclareRobustCommand{\avvpsparkbulletsub}{%
+  \tikz[baseline=-0.6ex,scale=0.10]{%
+    \usebeamercolor[fg]{itemize subitem}%
+    \path[fill=fg,draw=none]
+      (0,1)
+      .. controls (0.38,0.38) and (0.38,0.38) .. (1,0)
+      .. controls (0.38,-0.38) and (0.38,-0.38) .. (0,-1)
+      .. controls (-0.38,-0.38) and (-0.38,-0.38) .. (-1,0)
+      .. controls (-0.38,0.38) and (-0.38,0.38) .. (0,1)
+      -- cycle;%
+  }%
+}
+
+% Bind to Beamer templates (prevents default diamonds)
+\setbeamertemplate{itemize item}{\avvpsparkbullet}
+\setbeamertemplate{itemize subitem}{\avvpsparkbulletsub}
+\setbeamertemplate{itemize subsubitem}{\avvpsparkbulletsub}
+
+% Force sparkle bullets at the start of every itemize environment
+\AtBeginEnvironment{itemize}{%
+  \setbeamertemplate{itemize item}{\avvpsparkbullet}%
+  \setbeamertemplate{itemize subitem}{\avvpsparkbulletsub}%
+  \setbeamertemplate{itemize subsubitem}{\avvpsparkbulletsub}%
+}
+
+
+% -------------------------------------------------------------------
+% AVVP NUMMERIERUNG
+% -------------------------------------------------------------------
+\setbeamerfont{enumerate item}{series=\bfseries}
+
+
+% ------------------------------------------------------------
+% AVVP Background (simple + LyX-safe)
+%   - fills page width (no distortion)
+%   - image is centered; top/bottom may be cropped by clip
+% ------------------------------------------------------------
+
+% Apply a slide background:
+%   #1 = image file
+%   #2 = white overlay opacity (0..1)
+%   #3 = black overlay opacity (0..1)
+\newcommand{\AVVPBgFillWidth}[3]{%
+  \usebackgroundtemplate{%
+    \begin{tikzpicture}[remember picture,overlay]
+      % clip to the page
+      \path[clip] (current page.south west) rectangle (current page.north east);
+
+      % fill WIDTH (no distortion)
+      \node[inner sep=0pt] at (current page.center) {%
+        \includegraphics[width=1.18\paperwidth]{#1}%
+      };
+
+      % overlays (optional)
+      \fill[white,opacity=#2] (current page.south west) rectangle (current page.north east);
+      \fill[black,opacity=#3] (current page.south west) rectangle (current page.north east);
+    \end{tikzpicture}%
+  }%
+}
+
+% Reset background to plain color
+\newcommand{\AVVPBgReset}{\usebackgroundtemplate{}}
+
+% Optional: clear background for following frames
+\newcommand{\AVVPBgClear}{\usebackgroundtemplate{}}
+
+
+
+% ============================================================
+% IMAGE CREDITS via biblatex (single command does it all)
+% Preconditions (LyX):
+%   - Document Settings -> Bibliography: Stilformat = Biblatex
+%   - Prozessor = biber
+%   - Insert -> Verzeichnis -> Bib(la)TeX-Literaturverzeichnis...:
+%       bib/images.bib als Datenbank hinzufuegen
+% ============================================================
+\DeclareRobustCommand{\AVVPCiteTitle}[1]{\citefield{#1}{title}}
+
+\makeatletter
+\newcommand{\AVVPBgFillWidthCredits}[4]{%
+  \@ifpackageloaded{biblatex}{\nocite{#4}}{}%
+  \usebackgroundtemplate{%
+    \begin{tikzpicture}[remember picture,overlay]
+
+      \path[clip]
+        (current page.south west)
+        rectangle
+        (current page.north east);
+
+      \node[inner sep=0pt]
+        at (current page.center)
+        {%
+          \includegraphics[width=1.18\paperwidth]{#1}%
+        };
+
+      \fill[white,opacity=#2]
+        (current page.south west)
+        rectangle
+        (current page.north east);
+
+      \fill[black,opacity=#3]
+        (current page.south west)
+        rectangle
+        (current page.north east);
+
+      \node[
+        anchor=south east,
+        inner sep=2pt
+      ]
+        at ([xshift=-4pt,yshift=24pt]current page.south east)
+        {%
+          \rotatebox{90}{%
+            \fontsize{5pt}{6pt}\selectfont
+            \color{AVVPBlue!70}%
+            Hintergrundbild: [#4]%
+          }%
+        };
+
+    \end{tikzpicture}%
+  }%
+}
+\makeatother
+
+
+% ------------------------------------------------------------
+% Overlay-Credit (lower right, horizontal)
+%   Usage: \AVVPCreditOverlay{key-a,key-b,key-c}
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\AVVPCreditOverlay}[1]{%
+  \@ifpackageloaded{biblatex}{\nocite{#1}}{}%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[
+      anchor=south east,
+      inner sep=2pt
+    ] at ([xshift=-4pt,yshift=14pt]current page.south east) {%
+      \fontsize{5pt}{6pt}\selectfont
+      \color{AVVPBlue!70}%
+      \begingroup
+      \def\do##1{Bildnachweis: [##1]\space}%
+      \docsvlist{#1}%
+      \endgroup
+    };
+  \end{tikzpicture}%
+}
+\makeatother
+
+
+% ------------------------------------------------------------
+% AVVP Dark/Light mode (colors + FORCE sparkle itemize templates)
+%   Reason: some Beamer theme/template paths reset itemize symbols.
+%   This guarantees sparkle bullets in both modes.
+% ------------------------------------------------------------
+
+\newcommand{\AVVPDarkMode}{%
+
+  \setbeamercolor{background canvas}{bg=AVVPBg}%
+  \setbeamercolor{normal text}{fg=white,bg=AVVPBg}%
+  \color{white}%
+
+  % Dark mode: list TEXT color (fixes "white" first bullet text)
+  \setbeamercolor{itemize/enumerate body}{fg=white}%
+  \setbeamercolor{itemize/enumerate subbody}{fg=white}%
+  \setbeamercolor{itemize/enumerate subsubbody}{fg=white}%
+
+  % TOC defaults in Dark
+  \setbeamercolor{section in toc}{fg=white}%
+  \setbeamercolor{subsection in toc}{fg=white}%
+
+  % Bullet + enumerate colors in Dark
+  \setbeamercolor{AVVPbullet}{fg=AVVPSpark}%
+  \setbeamercolor{itemize item}{fg=AVVPSpark}%
+  \setbeamercolor{itemize subitem}{fg=AVVPSpark}%
+  \setbeamercolor{itemize subsubitem}{fg=AVVPSpark}%
+
+  \setbeamercolor{enumerate item}{fg=AVVPSpark}%
+  \setbeamercolor{enumerate subitem}{fg=AVVPSpark}%
+  \setbeamercolor{enumerate subsubitem}{fg=AVVPSpark}%
+
+  % FORCE sparkle bullets (prevents default diamonds)
+  \setbeamertemplate{itemize item}{\avvpsparkbullet}%
+  \setbeamertemplate{itemize subitem}{\avvpsparkbulletsub}%
+  \setbeamertemplate{itemize subsubitem}{\avvpsparkbulletsub}%
+
+  % Active list text (current overlay item)
+  \setbeamercolor{alerted text}{fg=AVVPSpark}
+  \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+
+  \setbeamercovered{transparent=45}
+
+}
+
+\newcommand{\AVVPLightMode}{%
+
+  \setbeamercolor{background canvas}{bg=white}%
+  \setbeamercolor{normal text}{fg=AVVPBg,bg=white}%
+
+  % Covered (not-yet-shown) text should be lighter in Light Mode
+  \setbeamercolor{covered text}{fg=AVVPBg!55}%
+
+  % Light mode: list TEXT color (fixes "white" first bullet text)
+  \setbeamercolor{itemize/enumerate body}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subbody}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subsubbody}{fg=AVVPBg}%
+
+  % TOC defaults in Light
+  \setbeamercolor{section in toc}{fg=AVVPBg}%
+  \setbeamercolor{subsection in toc}{fg=AVVPBg}%
+
+  % Active bullets/numbers = AVVPSpark
+  \setbeamercolor{AVVPbullet}{fg=AVVPSpark}%
+  \setbeamercolor{itemize item}{fg=AVVPSpark}%
+  \setbeamercolor{itemize subitem}{fg=AVVPSpark}%
+  \setbeamercolor{itemize subsubitem}{fg=AVVPSpark}%
+
+  % FORCE sparkle bullets (prevents default diamonds)
+  \setbeamertemplate{itemize item}{\avvpsparkbullet}%
+  \setbeamertemplate{itemize subitem}{\avvpsparkbulletsub}%
+  \setbeamertemplate{itemize subsubitem}{\avvpsparkbulletsub}%
+
+  \setbeamercolor{enumerate item}{fg=AVVPSpark}%
+  \setbeamercolor{enumerate subitem}{fg=AVVPSpark}%
+  \setbeamercolor{enumerate subsubitem}{fg=AVVPSpark}%
+
+  % Active list text (current overlay item) — Light mode: bold via Exo2 variable weight
+  % Active list text (current overlay item) - Light Mode: FORCE real bold
+  \setbeamercolor{alerted text}{fg=AVVPSpark}%
+  \setbeamerfont{alerted text}{family=\ExoTwoBold}%
+
+  \setbeamercovered{transparent=60}
+
+}
+
+% ============================================================
+% AVVP HEADLINE + TOC (Agenda)  --- SINGLE SOURCE OF TRUTH ---
+%   - Malmoe headline colors only (layout untouched)
+%   - Arrow in subsection headline (LyX-safe)
+%   - Agenda TOC: section blue, subsections white, current orange+arrow
+%   - Auto Agenda frame at each subsection start (NO ERT needed)
+% ============================================================
+
+% ------------------------------
+% Headline colors (Malmoe)
+% ------------------------------
+\setbeamercolor{section in head/foot}{bg=black, fg=AVVPBlue}
+\setbeamercolor{section in head/foot shaded}{bg=black, fg=white!60}
+
+\setbeamercolor{subsection in head/foot}{bg=AVVPBg, fg=AVVPSpark}
+\setbeamercolor{subsection in head/foot shaded}{bg=AVVPBg, fg=white!60}
+
+% ------------------------------
+% Arrow in subsection headline (define ONCE)
+%   Uses \blacktriangleright (requires amssymb -> already loaded above)
+% ------------------------------
+\makeatletter
+\let\AVVP@orig@insertsubsectionhead\insertsubsectionhead
+\renewcommand{\insertsubsectionhead}{%
+  \ensuremath{\blacktriangleright}\,\AVVP@orig@insertsubsectionhead%
+}
+\makeatother
+
+% ------------------------------
+% Agenda / TOC highlighting (current subsection)
+%   Beamer uses:
+%     - "subsection in toc"        = CURRENT subsection
+%     - "subsection in toc shaded" = NON-current subsections
+%   So: put ORANGE style into "subsection in toc"
+% ------------------------------
+\makeatletter
+\providecommand{\AVVPtocCurrentSubsection}{}% avoid "already defined"
+\renewcommand{\AVVPtocCurrentSubsection}{%
+  \begingroup
+
+  % ----- Sections: blue -----
+  \setbeamertemplate{section in toc}{%
+    {\color{AVVPBlue}\inserttocsection}\par%
+  }%
+  \setbeamertemplate{section in toc shaded}{%
+    {\color{AVVPBlue}\inserttocsection}\par%
+  }%
+
+  % ----- Subsections -----
+  % CURRENT subsection (this one becomes orange)
+  \setbeamertemplate{subsection in toc}{%
+    {\color{AVVPSpark}\bfseries \ensuremath{\blacktriangleright}\ \inserttocsubsection}\par%
+  }%
+  % NON-current subsections (stay white)
+  \setbeamertemplate{subsection in toc shaded}{%
+    {\color{white}\inserttocsubsection}\par%
+  }%
+
+  % Activates highlighting/shading logic
+  \tableofcontents[currentsection,currentsubsection]
+
+  \endgroup
+}
+\makeatother
+
+% ============================================================
+% GLOBAL TOC STYLE (so standard \tableofcontents matches agenda)
+% ============================================================
+
+% Sections: blue
+\setbeamertemplate{section in toc}{%
+  {\color{AVVPBlue}\inserttocsection}\par%
+}
+\setbeamertemplate{section in toc shaded}{%
+  {\color{AVVPBlue}\inserttocsection}\par%
+}
+
+% Unterabschnitte im Inhaltsverzeichnis:
+% - weißer Text
+\setbeamertemplate{subsection in toc}{%
+  {\color{white}\inserttocsubsection}\par%
+}
+\setbeamertemplate{subsection in toc shaded}{%
+  {\color{white}\inserttocsubsection}\par%
+}
+
+% ------------------------------
+% Agenda frame macro
+% ------------------------------
+\newcommand{\AVVPAgendaFrame}{%
+  {%
+    % FORCE DARK BACKGROUND (Malmoe-proof)
+    \usebackgroundtemplate{%
+      \begin{tikzpicture}[remember picture,overlay]
+        \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
+      \end{tikzpicture}%
+    }%
+    % Agenda text colors
+    \setbeamercolor{normal text}{fg=white}%
+    \setbeamercolor{frametitle}{fg=AVVPBlue}%
+    \global\AVVPSubAgendaFrametrue
+    \begin{frame}<beamer>
+      \frametitle{Weiter geht's im Text ...}
+      \AVVPtocCurrentSubsection
+    \end{frame}
+  }%
+}
+
+% ------------------------------
+% AUTO: show Agenda at start of each subsection
+% (=> NO ERT needed in the document)
+% ------------------------------
+\AtBeginSubsection[]{%
+  \begingroup
+    \edef\secname{\insertsectionhead}%
+    \edef\subsecname{\insertsubsectionhead}%
+  \endgroup
+  \AVVPAgendaFrame
+}

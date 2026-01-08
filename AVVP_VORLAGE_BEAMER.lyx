@@ -6,8 +6,8 @@
 \origin unavailable
 \textclass beamer
 \begin_preamble
-% BEAMER: have a look at
-% %\setbeamertemplate{enumerate items}[ball]
+% Dieses Dokument beschreibt Aufbau, Struktur und Wirkungsweise der AVVP‑Beamer‑Präambel für unseren Verein.
+% Astonomische Vereinigung Vorderpfalz e.V. - https://avvp.de
 
 % LyX preview fix: ensure \Urlmuskip exists even if xurl is loaded early
 \providecommand\Urlmuskip{\muskip0}

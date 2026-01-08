@@ -1,19 +1,13 @@
 # AVVP Beamer Theme für Lyx – README
 
-Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Beamer‑Präambel für unseren Verein. 
-
-Astonomische Vereinigung Vorderpfalz e.V. - https://avvp.de
-
-<img width="676" height="268" alt="image" src="https://github.com/user-attachments/assets/e32a8836-446d-4c9c-a085-f6778cfb8a63" />
-
-
+Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Beamer‑Präambel.
 Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
-Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**. 
+Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
 
 https://www.lyx.org/Home
 <img width="822" height="242" alt="image" src="https://github.com/user-attachments/assets/b969f1b3-8aeb-4bda-b655-b01c69cc5b3c" />
 
-Die Vorlage kann natürlich gerne angepasst und verändert werden für diverse Zwecke. Geplant ist auch noch eine CI Anpassung des Artikel und Book Dokumentklassen. 
+
 
 ---
 
@@ -35,14 +29,42 @@ Grundprinzip:
 > Beamer‑Automatik wird nur dort verwendet, wo sie **vorhersagbar** ist.
 > Kritische Bereiche (Logo, Agenda, Overlays) werden **explizit gesteuert**.
 
-<img width="1479" height="834" alt="image" src="https://github.com/user-attachments/assets/12af362e-6773-4e8a-9feb-7df1aa42300c" />
-<img width="1478" height="834" alt="image" src="https://github.com/user-attachments/assets/9df4c369-3747-4960-aa12-ad97c4801909" />
-<img width="1484" height="837" alt="image" src="https://github.com/user-attachments/assets/bb2ce8f2-4f5d-487c-92e0-36a0cf115f45" />
-<img width="1478" height="831" alt="image" src="https://github.com/user-attachments/assets/69bb8994-7648-426c-98cc-93f2039a1161" />
-<img width="1478" height="830" alt="image" src="https://github.com/user-attachments/assets/787c11bf-7f71-4809-8046-8780e3c71651" />
-<img width="1353" height="764" alt="image" src="https://github.com/user-attachments/assets/e9c395b6-a03c-46bf-8607-126d8ed13dda" />
-<img width="1351" height="761" alt="image" src="https://github.com/user-attachments/assets/9078de16-3764-42e4-971b-153eff7fb8f0" />
 
+<img width="863" height="483" alt="image" src="https://github.com/user-attachments/assets/ba04a2c5-3a27-4f35-8151-b3bdad2b0567" />
+<img width="865" height="484" alt="image" src="https://github.com/user-attachments/assets/b6004a3a-494f-4bbb-a4cc-5857e5697590" />
+<img width="868" height="487" alt="image" src="https://github.com/user-attachments/assets/54387881-7c0f-4921-9e30-de262337fc75" />
+<img width="863" height="490" alt="image" src="https://github.com/user-attachments/assets/7fe16059-d59c-459f-8402-210f3ef67531" />
+<img width="862" height="484" alt="image" src="https://github.com/user-attachments/assets/a953be88-9941-44b1-b0d7-75b5e922aaaa" />
+<img width="862" height="487" alt="image" src="https://github.com/user-attachments/assets/967602fc-7acf-4d02-b99e-56f5cfadd2e5" />
+
+## 1a. BibLaTeX, biber und Bildnachweise
+
+Dieses Theme setzt **konsequent auf BibLaTeX mit biber** als Backend.
+
+Ziele:
+- Einheitliche Verwaltung von Literatur- **und Bildnachweisen**
+- Saubere Trennung zwischen Inhalt, Zitierlogik und Darstellung
+- Volle Kontrolle über Formatierung und Platzierung (Beamer‑geeignet)
+
+Voraussetzungen:
+- LaTeX‑Engine: **LuaLaTeX** oder **XeLaTeX**
+- Bibliographie‑Backend: **biber**
+- Paket: `biblatex`
+
+Wichtig:
+- `bibtex` wird **nicht** unterstützt
+- Die Verwendung von `biber` ist zwingend erforderlich
+
+Typische Konfiguration:
+```latex
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{bib/references.bib}
+\addbibresource{bib/images.bib}
+```
+
+Das Theme nutzt BibLaTeX auch für:
+- Bildnachweise (Overlays, Hintergrundbilder)
+- konsistente Quellenangaben über alle Folien hinweg
 
 ---
 
@@ -162,33 +184,6 @@ Kein manuelles Einfügen nötig.
   - aktuell: Orange + ▶
   - andere: Weiß
 
-### 7.1 Agenda‑Bar im Footer (zweizeilig)
-
-Zusätzlich zur Agenda‑Zwischenfolie besitzt das AVVP‑Theme eine **optionale Agenda‑Leiste oberhalb des Footers**.
-
-Eigenschaften:
-
-- Zeigt **aktuellen Abschnitt** und **aktuellen Unterabschnitt**
-- Wird **automatisch ausgeblendet** auf:
-  - der Haupt‑Agenda (vollständiges Inhaltsverzeichnis)
-- Bleibt **sichtbar** auf:
-  - normalen Inhaltsfolien
-  - Unter‑Agenda‑Folien (current subsection)
-- Keine manuelle Steuerung im Dokument notwendig
-
-Technische Umsetzung:
-
-- Zweizeilige Footline:
-  - Zeile 1: Agenda‑Bar
-  - Zeile 2: regulärer Malmoe‑Footer
-- Erkennung von ToC‑Frames erfolgt automatisch
-- LyX‑sicher (keine ERT‑Blöcke im Dokument nötig)
-
-Grundprinzip:
-
-> Die Agenda‑Leiste unterstützt die Orientierung,
-> ohne auf Agenda‑Folien redundant zu erscheinen.
-
 ---
 
 ## 8. Footer
@@ -215,9 +210,6 @@ Beamer‑Standardlogo ist deaktiviert:
 ```
 
 Logo erscheint **nur**, wo `\AVVPLogo` explizit verwendet wird.
-
-Die Agenda‑Bar ist **kein Teil des Footers**, sondern eine
-zusätzliche Zeile darüber und wird separat gesteuert.
 
 ---
 
@@ -262,30 +254,45 @@ Umsetzung (LyX‑sicher):
 
 **AVVP Beamer Theme – Stand 01-2026**
 
----
+## 11a. Verwendung ohne LyX (reines LaTeX / Beamer)
 
-## 13. Arbeiten mit Grafiken in LyX (empfohlene Praxis)
+Das AVVP‑Beamer‑Theme ist **nicht an LyX gebunden**.
 
-Für komplexe Layouts (z. B. mehrere Icons oder Workflow‑Grafiken in einer Zeile)
-wird **kein freies Positionieren** empfohlen.
+Grundprinzip:
+- Das gesamte Theme lebt in der **Präambel**
+- Es werden **keine LyX‑spezifischen Makros** vorausgesetzt
+- Jeder bestehende Beamer‑Inhalt kann unverändert weiterverwendet
 
-Stattdessen:
+Das bedeutet:
+- Vorhandene LaTeX‑Beamer‑Präsentationen können das Theme direkt übernehmen
+- Inhalte (`frame`, `itemize`, `equation`, `figure`, …) bleiben unverändert
+- Nur die Präambel wird ersetzt oder ergänzt
 
-- 1‑zeilige Tabelle mit mehreren Spalten verwenden
-- Tabellenlinien deaktivieren
-- Jede Grafik in eine eigene Zelle setzen
-- Zellausrichtung:
-  - horizontal: zentriert
-  - vertikal: mittig
+Minimalbeispiel (ohne LyX):
+```latex
+\documentclass{beamer}
 
-Vorteile:
+% AVVP‑Theme‑Präambel einbinden
+\input{avvp_beamer_preamble.tex}
 
-- Saubere vertikale Ausrichtung aller Grafiken
-- Reproduzierbares Layout
-- Vollständig LyX‑kompatibel
-- Keine ERT‑Hacks nötig
+\title{Beispiel}
+\author{Autor}
+\date{\today}
 
-Diese Methode wird im AVVP‑Theme explizit empfohlen.
+\begin{document}
+
+\begin{frame}{Ein Beispiel}
+  \begin{itemize}
+    \item Inhalt bleibt Standard‑Beamer
+    \item Darstellung kommt aus dem Theme
+  \end{itemize}
+\end{frame}
+
+\end{document}
+```
+
+LyX bietet zusätzlichen Komfort (Struktur, Schutz vor Syntaxfehlern),
+ist aber **keine technische Voraussetzung**.
 
 ---
 
