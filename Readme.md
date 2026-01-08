@@ -156,6 +156,33 @@ Kein manuelles Einfügen nötig.
   - aktuell: Orange + ▶
   - andere: Weiß
 
+### 7.1 Agenda‑Bar im Footer (zweizeilig)
+
+Zusätzlich zur Agenda‑Zwischenfolie besitzt das AVVP‑Theme eine **optionale Agenda‑Leiste oberhalb des Footers**.
+
+Eigenschaften:
+
+- Zeigt **aktuellen Abschnitt** und **aktuellen Unterabschnitt**
+- Wird **automatisch ausgeblendet** auf:
+  - der Haupt‑Agenda (vollständiges Inhaltsverzeichnis)
+- Bleibt **sichtbar** auf:
+  - normalen Inhaltsfolien
+  - Unter‑Agenda‑Folien (current subsection)
+- Keine manuelle Steuerung im Dokument notwendig
+
+Technische Umsetzung:
+
+- Zweizeilige Footline:
+  - Zeile 1: Agenda‑Bar
+  - Zeile 2: regulärer Malmoe‑Footer
+- Erkennung von ToC‑Frames erfolgt automatisch
+- LyX‑sicher (keine ERT‑Blöcke im Dokument nötig)
+
+Grundprinzip:
+
+> Die Agenda‑Leiste unterstützt die Orientierung,
+> ohne auf Agenda‑Folien redundant zu erscheinen.
+
 ---
 
 ## 8. Footer
@@ -182,6 +209,9 @@ Beamer‑Standardlogo ist deaktiviert:
 ```
 
 Logo erscheint **nur**, wo `\AVVPLogo` explizit verwendet wird.
+
+Die Agenda‑Bar ist **kein Teil des Footers**, sondern eine
+zusätzliche Zeile darüber und wird separat gesteuert.
 
 ---
 
@@ -225,6 +255,31 @@ Umsetzung (LyX‑sicher):
 ✔ Header / Footer kontrolliert  
 
 **AVVP Beamer Theme – Stand 01-2026**
+
+---
+
+## 13. Arbeiten mit Grafiken in LyX (empfohlene Praxis)
+
+Für komplexe Layouts (z. B. mehrere Icons oder Workflow‑Grafiken in einer Zeile)
+wird **kein freies Positionieren** empfohlen.
+
+Stattdessen:
+
+- 1‑zeilige Tabelle mit mehreren Spalten verwenden
+- Tabellenlinien deaktivieren
+- Jede Grafik in eine eigene Zelle setzen
+- Zellausrichtung:
+  - horizontal: zentriert
+  - vertikal: mittig
+
+Vorteile:
+
+- Saubere vertikale Ausrichtung aller Grafiken
+- Reproduzierbares Layout
+- Vollständig LyX‑kompatibel
+- Keine ERT‑Hacks nötig
+
+Diese Methode wird im AVVP‑Theme explizit empfohlen.
 
 ---
 
