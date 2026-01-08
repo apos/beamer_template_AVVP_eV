@@ -10,9 +10,7 @@ Astronomische Vereinigung Vorderpfalz e.V.  (kurz: AVVP e.V.)
 https://avvp.de
 
 Autor:
-Axel Pospischil  
-apos@blue-it.org  
-https://github.com/apos
+Axel Pospischil, apos@blue-it.org, https://github.com/apos
 
 ---
 
