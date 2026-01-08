@@ -5,6 +5,8 @@ Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Bea
 Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
 Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
 
+Für Besipiele seht euch einfach die Beispiel-PDF an: https://github.com/apos/beamer_template_AVVP_eV/blob/main/AVVP_VORLAGE_BEAMER.pdf . 
+
 Urheber:
 Astronomische Vereinigung Vorderpfalz e.V., kurz: AVVP e.V.,
 https://avvp.de
