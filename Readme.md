@@ -68,43 +68,43 @@ Grundprinzip:
 
 <table>
   <tr>
-    <td>
+    <td colspan="2">
       <a href="https://github.com/user-attachments/assets/12af362e-6773-4e8a-9feb-7df1aa42300c">
         <img src="https://github.com/user-attachments/assets/12af362e-6773-4e8a-9feb-7df1aa42300c" width="100%" />
       </a>
     </td>
+  </tr>
+  <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/9df4c369-3747-4960-aa12-ad97c4801909">
         <img src="https://github.com/user-attachments/assets/9df4c369-3747-4960-aa12-ad97c4801909" width="100%" />
       </a>
     </td>
-  </tr>
-  <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/bb2ce8f2-4f5d-487c-92e0-36a0cf115f45">
         <img src="https://github.com/user-attachments/assets/bb2ce8f2-4f5d-487c-92e0-36a0cf115f45" width="100%" />
       </a>
     </td>
+  </tr>
+  <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/69bb8994-7648-426c-98cc-93f2039a1161">
         <img src="https://github.com/user-attachments/assets/69bb8994-7648-426c-98cc-93f2039a1161" width="100%" />
       </a>
     </td>
-  </tr>
-  <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/787c11bf-7f71-4809-8046-8780e3c71651">
         <img src="https://github.com/user-attachments/assets/787c11bf-7f71-4809-8046-8780e3c71651" width="100%" />
       </a>
     </td>
+  </tr>
+  <tr>
     <td>
       <a href="https://github.com/user-attachments/assets/e9c395b6-a03c-46bf-8607-126d8ed13dda">
         <img src="https://github.com/user-attachments/assets/e9c395b6-a03c-46bf-8607-126d8ed13dda" width="100%" />
       </a>
     </td>
-  </tr>
-  <tr>
-    <td colspan="2">
+    <td>
       <a href="https://github.com/user-attachments/assets/9078de16-3764-42e4-971b-153eff7fb8f0">
         <img src="https://github.com/user-attachments/assets/9078de16-3764-42e4-971b-153eff7fb8f0" width="100%" />
       </a>
