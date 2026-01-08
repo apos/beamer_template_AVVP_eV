@@ -12,6 +12,9 @@ https://avvp.de
 Autor (2026):
 Axel Pospischil, apos@blue-it.org, https://github.com/apos
 
+<img width="601" height="308" alt="image" src="https://github.com/user-attachments/assets/64423d71-188a-4ae7-8eb2-78db50da9d4a" />
+
+
 ---
 
 ## Quick-Start
