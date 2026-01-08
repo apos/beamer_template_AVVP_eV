@@ -1,8 +1,33 @@
-# AVVP Beamer Theme für Lyx – README
+# AVVP Beamer Theme (Beamer + LyX) – README
 
 Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Beamer‑Präambel.
 Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
 Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
+
+---
+
+## Quick-Start
+
+LyX (empfohlen)
+- Dokumentklasse: Beamer
+- Präambel: `avvp_beamer_preamble.tex` einbinden (LyX: Dokument -> Einstellungen -> LaTeX-Präambel)
+- Bibliographie: BibLaTeX aktivieren, Prozessor: **biber**
+- Kompilieren (LyX): LuaLaTeX/XeLaTeX + biber (LyX übernimmt die Aufrufreihenfolge)
+
+Reines LaTeX (ohne LyX)
+- In dein Beamer-Dokument in der Präambel einbinden:
+  - `\input{avvp_beamer_preamble.tex}`
+- Kompilieren (Shell): `lualatex → biber → lualatex ×2`
+
+Build-Commands (CLI)
+```bash
+lualatex AVVP_VORLAGE_BEAMER.tex
+biber    AVVP_VORLAGE_BEAMER
+lualatex AVVP_VORLAGE_BEAMER.tex
+lualatex AVVP_VORLAGE_BEAMER.tex
+```
+
+Wichtig: Dieses Theme setzt auf **BibLaTeX + biber**. `bibtex` wird nicht unterstützt.
 
 https://www.lyx.org/Home
 <img width="822" height="242" alt="image" src="https://github.com/user-attachments/assets/b969f1b3-8aeb-4bda-b655-b01c69cc5b3c" />
@@ -30,39 +55,78 @@ Grundprinzip:
 > Kritische Bereiche (Logo, Agenda, Overlays) werden **explizit gesteuert**.
 
 
-<img width="863" height="483" alt="image" src="https://github.com/user-attachments/assets/ba04a2c5-3a27-4f35-8151-b3bdad2b0567" />
-<img width="865" height="484" alt="image" src="https://github.com/user-attachments/assets/b6004a3a-494f-4bbb-a4cc-5857e5697590" />
-<img width="868" height="487" alt="image" src="https://github.com/user-attachments/assets/54387881-7c0f-4921-9e30-de262337fc75" />
-<img width="863" height="490" alt="image" src="https://github.com/user-attachments/assets/7fe16059-d59c-459f-8402-210f3ef67531" />
-<img width="862" height="484" alt="image" src="https://github.com/user-attachments/assets/a953be88-9941-44b1-b0d7-75b5e922aaaa" />
-<img width="862" height="487" alt="image" src="https://github.com/user-attachments/assets/967602fc-7acf-4d02-b99e-56f5cfadd2e5" />
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/user-attachments/assets/12af362e-6773-4e8a-9feb-7df1aa42300c">
+        <img src="https://github.com/user-attachments/assets/12af362e-6773-4e8a-9feb-7df1aa42300c" width="100%" />
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/user-attachments/assets/9df4c369-3747-4960-aa12-ad97c4801909">
+        <img src="https://github.com/user-attachments/assets/9df4c369-3747-4960-aa12-ad97c4801909" width="100%" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/user-attachments/assets/bb2ce8f2-4f5d-487c-92e0-36a0cf115f45">
+        <img src="https://github.com/user-attachments/assets/bb2ce8f2-4f5d-487c-92e0-36a0cf115f45" width="100%" />
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/user-attachments/assets/69bb8994-7648-426c-98cc-93f2039a1161">
+        <img src="https://github.com/user-attachments/assets/69bb8994-7648-426c-98cc-93f2039a1161" width="100%" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/user-attachments/assets/787c11bf-7f71-4809-8046-8780e3c71651">
+        <img src="https://github.com/user-attachments/assets/787c11bf-7f71-4809-8046-8780e3c71651" width="100%" />
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/user-attachments/assets/e9c395b6-a03c-46bf-8607-126d8ed13dda">
+        <img src="https://github.com/user-attachments/assets/e9c395b6-a03c-46bf-8607-126d8ed13dda" width="100%" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <a href="https://github.com/user-attachments/assets/9078de16-3764-42e4-971b-153eff7fb8f0">
+        <img src="https://github.com/user-attachments/assets/9078de16-3764-42e4-971b-153eff7fb8f0" width="100%" />
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## 1a. BibLaTeX, biber und Bildnachweise
 
 Dieses Theme setzt **konsequent auf BibLaTeX mit biber** als Backend.
 
-Ziele:
+Warum?
 - Einheitliche Verwaltung von Literatur- **und Bildnachweisen**
 - Saubere Trennung zwischen Inhalt, Zitierlogik und Darstellung
-- Volle Kontrolle über Formatierung und Platzierung (Beamer‑geeignet)
+- Bessere Kontrolle über Sortierung/Formatierung als mit klassischem BibTeX
 
-Voraussetzungen:
-- LaTeX‑Engine: **LuaLaTeX** oder **XeLaTeX**
-- Bibliographie‑Backend: **biber**
+Voraussetzungen
+- LaTeX-Engine: **LuaLaTeX** (empfohlen) oder XeLaTeX
+- Bibliographie-Backend: **biber**
 - Paket: `biblatex`
 
-Wichtig:
+Wichtig
 - `bibtex` wird **nicht** unterstützt
-- Die Verwendung von `biber` ist zwingend erforderlich
+- Für korrekte Ergebnisse ist die Build-Kette nötig: `lualatex → biber → lualatex ×2`
 
-Typische Konfiguration:
+Typische Konfiguration
 ```latex
 \usepackage[backend=biber,style=authoryear]{biblatex}
 \addbibresource{bib/references.bib}
 \addbibresource{bib/images.bib}
 ```
 
-Das Theme nutzt BibLaTeX auch für:
+Das Theme nutzt BibLaTeX auch für
 - Bildnachweise (Overlays, Hintergrundbilder)
 - konsistente Quellenangaben über alle Folien hinweg
 
@@ -256,9 +320,9 @@ Umsetzung (LyX‑sicher):
 
 ## 11a. Verwendung ohne LyX (reines LaTeX / Beamer)
 
-Das AVVP‑Beamer‑Theme ist **nicht an LyX gebunden**.
+Das AVVP‑Beamer‑Theme ist **nicht an LyX gebunden** und kann in jedes Beamer‑Projekt übernommen werden.
 
-Grundprinzip:
+Grundprinzip (wichtig für die Wartbarkeit):
 - Das gesamte Theme lebt in der **Präambel**
 - Es werden **keine LyX‑spezifischen Makros** vorausgesetzt
 - Jeder bestehende Beamer‑Inhalt kann unverändert weiterverwendet
@@ -267,6 +331,8 @@ Das bedeutet:
 - Vorhandene LaTeX‑Beamer‑Präsentationen können das Theme direkt übernehmen
 - Inhalte (`frame`, `itemize`, `equation`, `figure`, …) bleiben unverändert
 - Nur die Präambel wird ersetzt oder ergänzt
+
+Hinweis: Das Theme ist so aufgebaut, dass es sich als **reiner Präambel‑Block** nutzen lässt. Du kannst Inhalte aus beliebigen bestehenden Präsentationen übernehmen, ohne sie umzuschreiben.
 
 Minimalbeispiel (ohne LyX):
 ```latex
