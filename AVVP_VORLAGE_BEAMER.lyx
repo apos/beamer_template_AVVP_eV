@@ -369,35 +369,64 @@
 % AVVP SCHRIFTARTEN UND FARBEN
 % -------------------------------------------------------------------
 
-% ---------- Fonts (LuaLaTeX) ----------
+% ---------- Fonts (LuaLaTeX / XeLaTeX) ----------
 \usepackage{fontspec}
 \usefonttheme{professionalfonts}
 
-% Base: Exo2 variable font from file (upright)
-\setsansfont{Exo 2}[
-  Ligatures=TeX
-]
-\setmainfont{Exo 2}[
-  Ligatures=TeX
-]
+% ------------------------------------------------
+% Base font: Exo 2 (aus lokalen OTF-Dateien)
+% ------------------------------------------------
+\setsansfont[
+  Path = fonts/exo-2/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont  = *-Italic,
+  BoldFont    = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures = TeX
+]{Exo2}
 
-% Bold variant as separate family (same font, heavier weight)
-\newfontfamily\ExoTwoBold{Exo 2}[
-  Ligatures=TeX,
-  RawFeature={axis={wght=700}}
-]
+\setmainfont[
+  Path = fonts/exo-2/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont  = *-Italic,
+  BoldFont    = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures = TeX
+]{Exo2}
 
-% Title/section font: Share Tech (exact family name from fc-list)
-\newfontfamily\AVVPTitleFont{Share Tech}[Ligatures=TeX]
+% ------------------------------------------------
+% Explizite Bold-Family (für alerted text etc.)
+% ------------------------------------------------
+\newfontfamily\ExoTwoBold[
+  Path = fonts/exo-2/,
+  Extension = .otf,
+  UprightFont = *-Bold,
+  ItalicFont  = *-BoldItalic,
+  Ligatures = TeX
+]{Exo2}
 
+% ------------------------------------------------
+% Title / Section font: Share Tech Mono
+% ------------------------------------------------
+\newfontfamily\AVVPTitleFont[
+  Path = fonts/share_techmono/,
+  Extension = .otf,
+  UprightFont = Share-TechMono,
+  Ligatures = TeX
+]{Share Tech Mono}
+
+% ------------------------------------------------
 % Apply Beamer font roles
+% ------------------------------------------------
 \setbeamerfont{title}{family=\AVVPTitleFont}
 \setbeamerfont{frametitle}{family=\AVVPTitleFont}
 \setbeamerfont{section title}{family=\AVVPTitleFont}
 \setbeamerfont{subsection title}{family=\AVVPTitleFont}
 \setbeamerfont{subtitle}{family=\AVVPTitleFont}
 
-% Ensure Beamer uses sans fonts everywhere (avoids legacy serif pulls)
+% Ensure Beamer uses sans fonts everywhere
 \renewcommand{\familydefault}{\sfdefault}
 
 % Global canvas/text colors (Dark default)
