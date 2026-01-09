@@ -1,0 +1,43 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.outDir": "tex/tmp",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.bcf",
+    "*.blg",
+    "*.fdb_latexmk",
+    "*.fls",
+    "*.log",
+    "*.nav",
+    "*.out",
+    "*.run.xml",
+    "*.snm",
+    "*.synctex.gz",
+    "*.toc"
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (lualatex + biber)",
+      "command": "latexmk",
+      "args": [
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-file-line-error",
+        "-lualatex",
+        "-outdir=tex/tmp",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (lualatex + biber)",
+      "tools": [
+        "latexmk (lualatex + biber)"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "latexmk (lualatex + biber)"
+}

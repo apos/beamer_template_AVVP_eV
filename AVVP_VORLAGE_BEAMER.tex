@@ -1,0 +1,286 @@
+% !TEX root = AVVP_VORLAGE_BEAMER.tex
+% !TEX program = lualatex
+
+
+% ------------------------------------------------------------
+% Metadata (matches LyX export)
+% ------------------------------------------------------------
+\title[Kurzversion des Titels für Footer]{Hauptthema bzw. Titel\\
+Titel 2. Zeile}
+\subtitle{Untertitel, wenn vorhanden}
+\author[1. Author, 2. Author]{1.~Author \and 2.~Author}
+\institute{\inst{1}Astronomische Vereinigung Vorderpfalz e.V.}
+\date{Vereinsabend, 04.02.2026}
+
+\begin{document}
+
+% ------------------------------------------------------------
+% Optional background + mode (matches LyX export)
+% ------------------------------------------------------------
+\AVVPDarkMode
+% Note: draft graphicx mode is enabled at the top of this file for speed.
+% Background example with credits:
+\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
+
+% ------------------------------------------------------------
+% Title
+% ------------------------------------------------------------
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}
+
+% ------------------------------------------------------------
+% Agenda
+% ------------------------------------------------------------
+\begin{frame}{Agenda}
+  \tableofcontents{}
+\end{frame}
+
+% ============================================================
+% Motivation
+% ============================================================
+\section{Motivation}
+
+\subsection{Struktur}
+
+\begin{frame}{Strukturierte Vorträge }
+Einen Vortrag zu strukturieren ist nicht immer einfach. Hier ein paar
+Regeln, die für diese Lösungsvorlage gelten.
+
+\medskip{}
+
+\pause{}
+\begin{itemize}
+\item Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
+Deshalb: vereinfachen!
+\item In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
+Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten
+oder Halbwahrheiten führt.
+\item Falls man Details weglässt, die eigentlich wichtig sind, so bitte
+auf der Tonspur. Alle werden damit glücklich sein.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Strukturierte Vorträge}
+Inhalte sollten in Blöcke gegliedert sein und damit zu einem klar
+umrissenen Ziel führen.
+
+\medskip{}
+
+\pause{}
+\begin{itemize}
+\item Es sollte genau zwei oder drei Abschnitte geben (neben der \% Zusammenfassung).
+\item {*}Höchstens{*} drei Unterabschnitte pro Abschnitt.
+\item Pro Rahmen sollte man zwischen 30s und 2min reden. Es sollte also
+15 bis 30 Rahmen geben.
+\end{itemize}
+\end{frame}
+
+\subsection{LaTeX und LyX}
+
+\begin{frame}{Warum LaTeX Beamer für Präsentationen?}
+\begin{itemize}
+\item Klare Trennung von Inhalt und Layout
+\item Einheitliches Erscheinungsbild über alle Folien
+\item Automatische Struktur durch Abschnitte, Unterabschnitte und Agenda
+\item Sehr gut geeignet für Formeln, Abbildungen und Referenzen
+\item Stabil und skalierbar auch bei großen Präsentationen
+\item Textbasierte Quellen ermöglichen Versionierung und langfristige Reproduzierbarkeit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Warum LyX in Kombination mit Beamer?}
+\begin{itemize}
+\item Grafische Oberfläche für LaTeX ohne manuelles Tippen von Code
+\item Strikte Strukturierung: Dokument, Abschnitte und Rahmen
+\item Saubere Trennung zwischen Inhaltserstellung und Design
+\item Ideal für kollaboratives Arbeiten und spätere Pflege
+\item Volle LaTeX-Leistung bleibt jederzeit verfügbar
+\end{itemize}
+\end{frame}
+
+% ============================================================
+% Text strukturieren
+% ============================================================
+\section{Text strukturieren}
+
+\subsection{Aufzählungen}
+
+\begin{frame}{Itemize und Statements}
+\framesubtitle{Untertitel sind optional.}
+
+Folgende Itemize-Regeln sind ganz nützlich:
+\begin{itemize}
+\item Viel Itemize benutzen.
+\item Sehr kurze Sätze oder Satzglieder verwenden.
+\item Diese Overlays werden mit dem Pause Stil erzeugt.
+\end{itemize}
+Und natürlich Aufzählungen:
+\begin{enumerate}
+\item Now lets numerate
+\item and two
+\item and three
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Konzentration auf einzelne Punkte}
+\begin{itemize}
+\item <1->Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu
+erzeugen.
+\item <2->Dies wird als zweites gezeigt.
+\item <3->Hiermit können, Punkte in beliebiger Reihenfolge präsentiert
+werden
+\end{itemize}
+\end{frame}
+
+\subsection{Spezielle Umgebungen}
+
+\begin{frame}{Satz / Folgerung}
+\begin{theorem}
+Auf dem ersten Overlay.
+\end{theorem}
+
+\begin{corollary}
+Auf dem zweiten Overlay.
+\end{corollary}
+\end{frame}
+
+\begin{frame}{Blocks}
+\begin{block}{Normaler Block}
+\begin{itemize}
+\item Wird auf allen Overlays angezeigt.
+\end{itemize}
+\end{block}
+
+\begin{exampleblock}{}
+Ein Beispielblocktitel
+
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Defintionen}
+\begin{definition}
+Hier steht eine Definition
+\end{definition}
+
+\begin{example}
+Und hier ein Beispiel
+\end{example}
+
+\begin{proof}
+Und hier der Beweis.
+\end{proof}
+\end{frame}
+
+% ============================================================
+% Tabellen
+% ============================================================
+\section{Tabellen}
+
+\subsection{Alleinstehend}
+
+\begin{frame}{Tabelle mit Überschrift}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Lorem & ipsum & dolor & amet\\
+\hline
+\hline
+orem ipsum &  &  & orem iplor s\\
+\hline
+ & orem dolor s &  & \\
+\hline
+ &  & orem dolor s & \\
+\hline
+\end{tabular}
+\end{frame}
+
+% ============================================================
+% Bilder
+% ============================================================
+\section{Bilder}
+
+\subsection{Einzelnes Bild}
+
+\begin{frame}[<{*}>]{Bild}
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{frame}
+
+\subsection{Gemischte Inhalte}
+
+\begin{frame}[<{*}>]{Bild mit Überschrift }
+\begin{columns}[t]
+\column[t]{5 cm}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+nonumy eirmod empor invidunt ut labore et dolore magna
+
+aliquyam erat, sed diam voluptua.
+
+\column{1em}
+
+\column[t]{9 cm}
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+
+\begin{frame}{}
+\begin{columns}[t]
+\column[t]{4 cm}
+\begin{itemize}
+\item Rahmen (Folie) mit Bild ohne Überschrift
+\item Einzelnes Bild mit Quellennachweis
+\item Platz für Bulletpoints
+\item ... oder Text
+\end{itemize}
+
+\column{1em}
+
+\column[t]{12.5 cm}
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+
+% ============================================================
+% Zusammenfassung
+% ============================================================
+\section*{Zusammenfassung}
+
+\begin{frame}{Zusammenfassung}
+\begin{enumerate}
+\item Die erste Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Die zweite Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Eventuell noch eine dritte Botschaft, aber nicht noch mehr.
+\end{enumerate}
+
+\vskip0pt plus.5fill
+\begin{itemize}
+\item Ausblick
+  \begin{itemize}
+  \item Etwas, was wir noch nicht lösen konnten.
+  \item Nochwas, das wir noch nicht lösen konnten.
+  \item Uns noch eins
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+% ============================================================
+% Anhang / Bibliographie
+% ============================================================
+\appendix
+
+\section*{Anhang}
+\subsection*{Weiterführende Literatur}
+
+\begin{frame}[t]{Quellenverzeichnis}
+\begingroup
+\renewcommand*{\bibfont}{\fontsize{8pt}{9pt}\selectfont}\printbibliography
+\endgroup
+\end{frame}
+
+\end{document}
