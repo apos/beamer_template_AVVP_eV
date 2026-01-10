@@ -40,6 +40,21 @@ lualatex AVVP_VORLAGE_BEAMER.tex
 
 Wichtig: Dieses Theme setzt auf **BibLaTeX + biber**. `bibtex` wird nicht unterstützt.
 
+### Hinweis: LyX / biber Cache-Probleme
+
+Wenn `biblatex` / `biber` **ohne erkennbare Codeänderung** plötzlich nicht mehr funktioniert
+(z. B. leere `.bbl`, fehlende Literatur trotz vorhandener `.bcf`, scheinbar „spontane“ Fehler),
+handelt es sich in der Praxis häufig um ein **Zustands- oder Cacheproblem** von LyX.
+
+Bewährter Fix:
+- In LyX: **Tools → Reconfigure** ausführen
+- LyX anschließend **vollständig neu starten**
+- Falls nötig: LyX-Cache und temporäre Build-Verzeichnisse löschen  
+  (u. a. unter `~/Library/Application Support/LyX-2.4/cache` sowie macOS-Temp-Verzeichnisse)
+
+Hinweis:
+Dieses Verhalten kann auch auftreten, **ohne dass sich TeX Live oder biber-Versionen geändert haben**.
+
 Für Beipiele seht euch einfach die Beispiel-PDF an: https://github.com/apos/beamer_template_AVVP_eV/blob/main/AVVP_VORLAGE_BEAMER.pdf oder öffnet das LyX Dokument in Lyx. Das sollte eigentlich (eine aktuelle TExLive Installation vorausgesetzt) funktionieren. 
 
 https://www.lyx.org/Home
