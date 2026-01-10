@@ -1720,6 +1720,14 @@ Wenn ein Frame in LyX ein **Programmlisting** (Paket `listings`,
  LyX-Inset „Program Listing“) enthält,
  muss der Frame in Beamer als **fragile** gebaut werden.
  Siehe Readme.md.
+ Auch 
+\emph on
+niemals (!)
+\emph default
+ Zeichenfolgen wie 
+\backslash
+end{frame} in das Listing einfügen.
+ Der LaTeX Compiler kann das nicht dem Listing zuordnen und das Dokument wird nicht kompilieren!
 \begin_inset Argument 2
 status open
 
