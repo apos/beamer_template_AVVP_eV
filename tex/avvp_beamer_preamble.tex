@@ -713,6 +713,7 @@
   % TOC defaults in Dark
   \setbeamercolor{section in toc}{fg=white}%
   \setbeamercolor{subsection in toc}{fg=white}%
+  \setbeamercolor{subsection in toc shaded}{fg=white}%
 
   % Bullet + enumerate colors in Dark
   \setbeamercolor{AVVPbullet}{fg=AVVPSpark}%
@@ -755,6 +756,7 @@
   % TOC defaults in Light
   \setbeamercolor{section in toc}{fg=AVVPBg}%
   \setbeamercolor{subsection in toc}{fg=AVVPBg}%
+  \setbeamercolor{subsection in toc shaded}{fg=AVVPBg}%
 
   % Active bullets/numbers = AVVPSpark
   \setbeamercolor{AVVPbullet}{fg=AVVPSpark}%
@@ -858,12 +860,12 @@
 }
 
 % Unterabschnitte im Inhaltsverzeichnis:
-% - weißer Text
+% - Farbe ueber beamercolor (Light: AVVPBg, Dark: white)
 \setbeamertemplate{subsection in toc}{%
-  {\color{white}\inserttocsubsection}\par%
+  {\usebeamercolor[fg]{subsection in toc}\color{fg}\inserttocsubsection}\par%
 }
 \setbeamertemplate{subsection in toc shaded}{%
-  {\color{white}\inserttocsubsection}\par%
+  {\usebeamercolor[fg]{subsection in toc shaded}\color{fg}\inserttocsubsection}\par%
 }
 
 % ------------------------------
