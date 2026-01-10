@@ -175,6 +175,34 @@ Das Theme nutzt BibLaTeX auch für
 
 ## 2. Farbsystem
 
+## 2a. Design-Guidelines (CI)
+
+Dieses Theme folgt bewusst einem „CI-light“-Ansatz: CI wird konsequent umgesetzt, wo sie Orientierung und Wiedererkennbarkeit schafft, aber nicht dort, wo Beamer-didaktische Elemente dadurch schlechter lesbar oder weniger intuitiv würden.
+
+Grundprinzipien
+
+- Inhalt vor Gestaltung: Inhalte bleiben Standard-Beamer (frames, itemize, blocks, math, figures). Das Theme steuert primär Farben, Typografie, Header/Footer und wiederkehrende Struktur-Elemente.
+- Dark/Light müssen gleichwertig funktionieren: Jede Farbe/Definition wird so gewählt, dass Kontrast und Lesbarkeit in beiden Modi erhalten bleiben.
+- Semantik der Farben:
+  - AVVPBlue: Struktur/Navigation (Titel, Sections, TOC-Struktur)
+  - AVVPSpark: Fokus/Aktiv (alerted text, aktive Marker)
+  - AVVPGrey: Dezent/inaktiv (gedimmte Elemente)
+- Didaktische Beamer-Elemente bleiben neutral, wenn CI-Farben den didaktischen Zweck schwächen würden (z. B. Block- und Exampleblock-Optik).
+
+## 2b. Schriftarten & Typografie
+
+Dieses Theme setzt auf LuaLaTeX/XeLaTeX (fontspec) und nutzt die mitgelieferten OTF/TTF-Schriften aus `fonts/`.
+
+Verwendete Schriften (Standardkonfiguration)
+
+- Exo 2: Hauptschrift für Präsentationstext (Sans)
+- Share Tech Mono: Monospace (Code/ERT/Technik)
+
+Wichtige Hinweise
+
+- Engine: PDFLaTeX wird nicht unterstützt (fontspec benötigt LuaLaTeX oder XeLaTeX).
+- Lesbarkeit: Hervorhebungen erfolgen primär über Farbe/Marker (AVVPSpark), nicht über Fettdruck.
+
 ```latex
 \definecolor{AVVPBg}{RGB}{5,23,41}        % Haupt-Hintergrund (Dark)
 \definecolor{AVVPBlue}{RGB}{46,108,198}   % Überschriften / Struktur
