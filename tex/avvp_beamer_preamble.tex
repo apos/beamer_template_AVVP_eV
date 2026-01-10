@@ -831,20 +831,20 @@
   }%
 
   % ----- Subsections -----
-  % CURRENT subsection (this one becomes orange)
+  % CURRENT subsection (orange + arrow)
   \setbeamertemplate{subsection in toc}{%
     {\color{AVVPSpark}\bfseries \ensuremath{\blacktriangleright}\ \inserttocsubsection}\par%
   }%
-  % NON-current subsections (stay white)
+  % NON-current subsections (mode-aware via beamercolor)
   \setbeamertemplate{subsection in toc shaded}{%
-    {\color{white}\inserttocsubsection}\par%
+    {\usebeamercolor[fg]{subsection in toc shaded}\color{fg}\inserttocsubsection}\par%
   }%
 
   % Activates highlighting/shading logic
   \tableofcontents[currentsection,currentsubsection]
 
   \endgroup
-}
+}%
 \makeatother
 
 % ============================================================
@@ -873,15 +873,26 @@
 % ------------------------------
 \newcommand{\AVVPAgendaFrame}{%
   {%
-    % FORCE DARK BACKGROUND (Malmoe-proof)
-    \usebackgroundtemplate{%
-      \begin{tikzpicture}[remember picture,overlay]
-        \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
-      \end{tikzpicture}%
-    }%
-    % Agenda text colors
-    \setbeamercolor{normal text}{fg=white}%
+    % Mode-aware background + text colors
+    \ifAVVPIsLightMode
+      % Light mode: white background, dark text
+      \usebackgroundtemplate{%
+        \begin{tikzpicture}[remember picture,overlay]
+          \fill[white] (current page.south west) rectangle (current page.north east);
+        \end{tikzpicture}%
+      }%
+      \setbeamercolor{normal text}{fg=AVVPBg}%
+    \else
+      % Dark mode: AVVPBg background, white text
+      \usebackgroundtemplate{%
+        \begin{tikzpicture}[remember picture,overlay]
+          \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
+        \end{tikzpicture}%
+      }%
+      \setbeamercolor{normal text}{fg=white}%
+    \fi
     \setbeamercolor{frametitle}{fg=AVVPBlue}%
+
     \global\AVVPSubAgendaFrametrue
     \begin{frame}<beamer>
       \frametitle{Weiter geht's im Text ...}
@@ -915,49 +926,60 @@
 
 % Section-level agenda content (shows current section overview)
 % - Highlight CURRENT section (arrow + bold, like the footer)
-% - Keep subsections readable (white)
+% - Keep subsections readable (mode-aware)
 \makeatletter
 \providecommand{\AVVPtocCurrentSection}{}% avoid "already defined"
 \renewcommand{\AVVPtocCurrentSection}{%
   \begingroup
 
     % ----- Sections -----
-    % CURRENT section (this one becomes bold + arrow)
+    % CURRENT section (bold + arrow)
     \setbeamertemplate{section in toc}{%
       {\color{AVVPBlue}\bfseries \ensuremath{\blacktriangleright}\ \inserttocsection}\par%
     }%
-    % NON-current sections (dimmed / normal)
+    % NON-current sections
     \setbeamertemplate{section in toc shaded}{%
       {\color{AVVPBlue}\inserttocsection}\par%
     }%
 
     % ----- Subsections (within the current section) -----
     \setbeamertemplate{subsection in toc}{%
-      {\color{white}\inserttocsubsection}\par%
+      {\usebeamercolor[fg]{subsection in toc}\color{fg}\inserttocsubsection}\par%
     }%
     \setbeamertemplate{subsection in toc shaded}{%
-      {\color{white}\inserttocsubsection}\par%
+      {\usebeamercolor[fg]{subsection in toc shaded}\color{fg}\inserttocsubsection}\par%
     }%
 
     % Render current section overview
     \tableofcontents[currentsection]
 
   \endgroup
-}
+}%
 \makeatother
 
 % A dedicated agenda frame for section starts
 \newcommand{\AVVPAgendaFrameSection}{%
   {%
-    % FORCE DARK BACKGROUND (Malmoe-proof)
-    \usebackgroundtemplate{%
-      \begin{tikzpicture}[remember picture,overlay]
-        \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
-      \end{tikzpicture}%
-    }%
-    % Agenda text colors
-    \setbeamercolor{normal text}{fg=white}%
+    % Mode-aware background + text colors
+    \ifAVVPIsLightMode
+      % Light mode: white background, dark text
+      \usebackgroundtemplate{%
+        \begin{tikzpicture}[remember picture,overlay]
+          \fill[white] (current page.south west) rectangle (current page.north east);
+        \end{tikzpicture}%
+      }%
+      \setbeamercolor{normal text}{fg=AVVPBg}%
+    \else
+      % Dark mode: AVVPBg background, white text
+      \usebackgroundtemplate{%
+        \begin{tikzpicture}[remember picture,overlay]
+          \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
+        \end{tikzpicture}%
+      }%
+      \setbeamercolor{normal text}{fg=white}%
+    \fi
     \setbeamercolor{frametitle}{fg=AVVPBlue}%
+
     \global\AVVPSubAgendaFrametrue
     \begin{frame}<beamer>
       \frametitle{Weiter geht's im Text ...}

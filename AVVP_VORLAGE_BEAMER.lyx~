@@ -319,7 +319,7 @@ status open
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPAgendaOnlySections % ist per Default gesetzt
 \end_layout
@@ -705,7 +705,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPDarkMode
 \end_layout
@@ -730,7 +730,7 @@ AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \end_layout
