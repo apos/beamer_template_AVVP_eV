@@ -108,6 +108,14 @@
 \newif\ifAVVPShowAgendaBar
 \AVVPShowAgendaBartrue
 
+% Public toggles (global and local)
+% - Use \AVVPAgendaBarOff / \AVVPAgendaBarOn in the document preamble to disable/enable globally.
+% - Use \AVVPWithAgendaBarOff{...} to disable only for a specific block/frame.
+\newcommand{\AVVPAgendaBarOn}{\global\AVVPShowAgendaBartrue}
+\newcommand{\AVVPAgendaBarOff}{\global\AVVPShowAgendaBarfalse}
+\newcommand{\AVVPWithAgendaBarOn}[1]{\begingroup\AVVPShowAgendaBartrue #1\endgroup}
+\newcommand{\AVVPWithAgendaBarOff}[1]{\begingroup\AVVPShowAgendaBarfalse #1\endgroup}
+
 % ------------------------------------------------------------
 % Detect ToC usage (any kind) + whether we are inside the Sub-Agenda frame
 % ------------------------------------------------------------
