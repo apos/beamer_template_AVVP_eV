@@ -705,7 +705,7 @@ status open
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPDarkMode
 \end_layout
@@ -730,7 +730,7 @@ AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \end_layout
@@ -948,6 +948,31 @@ optional,
 \begin_layout Date
 Vereinsabend,
  04.02.2026
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+=========================================
+\end_layout
+
+\begin_layout Plain Layout
+============= A G E N D A ==================
+\end_layout
+
+\begin_layout Plain Layout
+Hinweise:
+\end_layout
+
+\begin_layout Plain Layout
+- die Agenda mu
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -1296,7 +1321,7 @@ Volle LaTeX-Leistung bleibt jederzeit verfügbar
 
 \end_deeper
 \begin_layout Section
-Text strukturieren
+Text
 \end_layout
 
 \begin_layout Subsection
@@ -2123,6 +2148,66 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 
 \end_layout
 
+\begin_layout Section
+Medien (TBD)
+\end_layout
+
+\begin_layout Subsection
+Einzelnes Video
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bild
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename media/EVZL1977.JPG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Section*
 Zusammenfassung
 \end_layout

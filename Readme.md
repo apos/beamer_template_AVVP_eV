@@ -2,8 +2,8 @@
 
 
 Dieses Dokument beschreibt **Aufbau, Struktur und Wirkungsweise** der AVVP‑Beamer‑Präambel.
-Es erklärt **was wo definiert ist** und **welchen Effekt** Abschnitte, Unterabschnitte, Overlays,
-Header, Footer und Agenda‑Frames haben – insbesondere im Zusammenspiel mit **LyX**.
+Die Vorlage ist **für LyX optimiert**, funktioniert aber **uneingeschränkt auch als reines LaTeX‑Beamer‑Theme**.
+Die gesamte Gestaltung ist in der Präambel gekapselt, sodass bestehende Beamer‑Dokumente ohne inhaltliche Änderungen übernommen werden können.
 
 Urheber:
 Astronomische Vereinigung Vorderpfalz e.V., kurz: AVVP e.V.,
@@ -39,6 +39,19 @@ lualatex AVVP_VORLAGE_BEAMER.tex
 ```
 
 Wichtig: Dieses Theme setzt auf **BibLaTeX + biber**. `bibtex` wird nicht unterstützt.
+
+### Arbeiten mit VS Code (LaTeX Workshop)
+
+Neben LyX kann das AVVP‑Beamer‑Theme auch komfortabel mit **Visual Studio Code** verwendet werden.
+Eine vollständige Schritt‑für‑Schritt‑Anleitung zur Einrichtung von **LaTeX Workshop**, LuaLaTeX, `latexmk` und `biber`
+findet sich in der separaten Dokumentation:
+
+👉 `Readme_VSCode_LaTex_Workshop.md`
+
+Diese Variante eignet sich besonders für:
+- Nutzer ohne LyX
+- Git‑basierte Workflows
+- Direkte Kontrolle über Build‑Kette und Artefakte
 
 ### Hinweis: LyX / biber Cache-Probleme
 

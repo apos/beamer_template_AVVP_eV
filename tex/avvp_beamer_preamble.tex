@@ -8,6 +8,7 @@
 % USER CONFIG: external assets (paths)
 %   Keep these at the top so users can easily adapt the template.
 % ------------------------------------------------------------
+
 % Footer logo (right side in the footline)
 \def\AVVPFooterLogoFile{pics/avvp_2019_logo_wortmarke_neg.png}
 
@@ -20,6 +21,36 @@
 
 % Title slogan text (shown under the title logo on the title page)
 \def\AVVPTitleSloganText{Faszination. Astronomie. Erleben.}
+
+% ------------------------------------------------------------
+% USER CONFIG: texts / labels
+% ------------------------------------------------------------
+
+% Title of the intermediate agenda (Zwischen‑Agenda) slide
+\def\AVVPSubAgendaTitle{Weiter geht's im Text ...}
+
+% Optional: title of the main agenda frame
+\def\AVVPMainAgendaTitle{Agenda}
+
+% ------------------------------------------------------------
+% USER CONFIG: CI colors (single source of truth)
+% ------------------------------------------------------------
+
+\definecolor{AVVPBg}{RGB}{5,23,41}          % #051729
+\definecolor{AVVPBlue}{RGB}{46,108,198}     % #2E6CC6
+\definecolor{AVVPSpark}{RGB}{235,156,70}    % #EB9C46
+\definecolor{AVVPGrey}{RGB}{90,98,110}
+
+% ------------------------------------------------------------
+% USER CONFIG: default mode
+% ------------------------------------------------------------
+
+% Default presentation mode (set ONE of these)
+% NOTE: Do NOT call \AVVPLightMode/\AVVPDarkMode here, because those
+% macros are defined later in this file. We only set the default flag.
+\newif\ifAVVPDefaultLightMode
+% \AVVPDefaultLightModetrue
+\AVVPDefaultLightModefalse
 
 
 % ------------------------------------------------------------
@@ -230,10 +261,6 @@
 
 
 % ---------- Colors ----------
-\definecolor{AVVPBg}{RGB}{5,23,41}          % #051729
-\definecolor{AVVPBlue}{RGB}{46,108,198}     % #2E6CC6
-\definecolor{AVVPSpark}{RGB}{235,156,70}    % #EB9C46
-\definecolor{AVVPGrey}{RGB}{90,98,110}
 
 % ------------------------------------------------------------
 %  Literaturverzeichniseintrag
@@ -981,7 +1008,7 @@
 
     \global\AVVPSubAgendaFrametrue
     \begin{frame}<beamer>
-      \frametitle{Weiter geht's im Text ...}
+      \frametitle{\AVVPSubAgendaTitle}
       \AVVPtocCurrentSubsection
     \end{frame}
   }%
@@ -1068,7 +1095,7 @@
 
     \global\AVVPSubAgendaFrametrue
     \begin{frame}<beamer>
-      \frametitle{Weiter geht's im Text ...}
+      \frametitle{\AVVPSubAgendaTitle}
       \AVVPtocCurrentSection
     \end{frame}
   }%
@@ -1094,5 +1121,16 @@
 \AtBeginSection[]{%
   \ifAVVPAgendaAtSection
     \AVVPAgendaFrameSection
+  \fi
+}
+
+% ------------------------------------------------------------
+% Apply default mode at begin document (after all macros exist)
+% ------------------------------------------------------------
+\AtBeginDocument{%
+  \ifAVVPDefaultLightMode
+    \AVVPLightMode
+  \else
+    \AVVPDarkMode
   \fi
 }
