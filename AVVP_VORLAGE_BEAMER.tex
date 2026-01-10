@@ -35,14 +35,12 @@
 \makeatother
 
 \usepackage{babel}
+\usepackage{listings}
 \usepackage[style=authoryear]{biblatex}
+\renewcommand{\lstlistingname}{Listing}
+
 \addbibresource{bibtex.bib}
 \begin{document}
-%\AVVPAgendaBarOff
-
-%\AVVPAgendaOnlySections % ist per Default gesetzt
-%\AVVPAgendaSectionsAndSubsections % zurücksetzen
-
 %AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
 
 %\AVVPCreditOverlay{trouvelot-orion-1875}
@@ -68,6 +66,11 @@ Titel 2. Zeile\\
 \date{Vereinsabend, 04.02.2026}
 
 \makebeamertitle
+
+%\AVVPAgendaBarOff
+
+%\AVVPAgendaOnlySections %ist per Default gesetzt
+%\AVVPAgendaSectionsAndSubsections %zurücksetzen
 
 \begin{frame}{Agenda}
 
@@ -238,7 +241,7 @@ Ein Beispielblocktitel
 \end{exampleblock}
 \end{frame}
 %
-\begin{frame}{Defintionen}
+\begin{frame}{Definitionen}
 \begin{definition}
 Hier steht eine Definition
 \end{definition}
@@ -250,6 +253,23 @@ Und hier ein Beispiel
 \begin{proof}
 Und hier der Beweis. 
 \end{proof}
+
+\end{frame}
+%
+\begin{frame}[fragile]{Quellcode}
+
+Dies ist ein Programm-Listing in \TeX.
+
+\bgroup
+\begin{lstlisting}
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+\end{lstlisting}
+\leavevmode\egroup
 
 \end{frame}
 

@@ -38,6 +38,33 @@ lualatex AVVP_VORLAGE_BEAMER.tex
 lualatex AVVP_VORLAGE_BEAMER.tex
 ```
 
+---
+
+## Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`
+
+Wenn ein Frame in LyX ein **Programmlisting** (Paket `listings`, LyX-Inset „Program Listing“) enthält, muss der Frame in Beamer als **fragile** gebaut werden.
+
+Hintergrund (warum das relevant ist):
+- `listings` arbeitet intern wie „verbatim“.
+- Beamer benötigt dafür die Option `fragile`, sonst kann die Frame-Verarbeitung abbrechen.
+- Besonders kritisch: Wenn im Listing wörtlich Text wie `\end{frame}` vorkommt, kann Beamer den Frame sonst „vorzeitig“ beenden.
+
+Praktische Regel (für LyX):
+- Für jeden Frame mit Programmlisting im LyX-Frame-Inset **Frame-Eigenschaften → Fragile** aktivieren.
+
+Beispiel (LaTeX-Export aus LyX):
+```latex
+\begin{frame}[fragile]{Quellcode}
+  \begin{lstlisting}[language=TeX]
+  ...
+  \end{lstlisting}
+\end{frame}
+```
+
+Hinweis:
+- Diese Anforderung betrifft nur Frames, die `lstlisting`/Programmlistings enthalten.
+- Normale Frames (ohne Listing) bleiben unverändert.
+
 Wichtig: Dieses Theme setzt auf **BibLaTeX + biber**. `bibtex` wird nicht unterstützt.
 
 ### Arbeiten mit VS Code (LaTeX Workshop)

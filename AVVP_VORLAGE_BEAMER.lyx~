@@ -177,167 +177,6 @@ status open
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Der Footer besteht aus zwei Zeilen:
-\end_layout
-
-\begin_layout Plain Layout
-- eine Agenda-Zeile (zeigt die aktuellen Abschnitte/Unterabschnitte) an)
-\end_layout
-
-\begin_layout Plain Layout
-- einen Footer mit allgemeinen Angaben zum DokumentDie Agenda-Zeile ausschalten
-\end_layout
-
-\begin_layout Plain Layout
-1.
- Global in deinem Dokument (vor 
-\backslash
-begin{document}):
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPAgendaBarOff % Agenda-Footer komplett aus
-\end_layout
-
-\begin_layout Plain Layout
-% ...
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPAgendaBarOn % wieder an
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-2.
- Nur für eine einzelne Folie:
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPWithAgendaBarOff{%
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-begin{frame}{Titel ohne Agenda-Footer}
-\end_layout
-
-\begin_layout Plain Layout
-Inhalt ...
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-end{frame}
-\end_layout
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPAgendaBarOn
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%
-\backslash
-AVVPAgendaBarOff
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPAgendaOnlySections % ist per default gesetzt und muss explizit ausgeschaltet werden 
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-AVVPAgendaSectionsAndSubsections % switch back
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%
-\backslash
-AVVPAgendaOnlySections % ist per Default gesetzt
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-AVVPAgendaSectionsAndSubsections % zurücksetzen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
@@ -967,11 +806,180 @@ Hinweise:
 \end_layout
 
 \begin_layout Plain Layout
-- die Agenda mu
+- Zusätzlich zum Inhaltsverzeichnis (Agenda) erscheint per default vor jedem Abschnitt und jedem Unterabschnitt ein aktuelle Agenda (wie geht es weiter ...)
+\end_layout
+
+\begin_layout Plain Layout
+- Die erste Footerzeile enthält jeweils die aktuellen Kapitel und Unterverzeichnisüberschriften
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der Footer besteht aus zwei Zeilen:
+\end_layout
+
+\begin_layout Plain Layout
+- eine Agenda-Zeile (zeigt die aktuellen Abschnitte/Unterabschnitte) an)
+\end_layout
+
+\begin_layout Plain Layout
+- einen Footer mit allgemeinen Angaben zum DokumentDie Agenda-Zeile ausschalten
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Global in deinem Dokument (vor 
+\backslash
+begin{document}):
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOff % Agenda-Footer komplett aus
+\end_layout
+
+\begin_layout Plain Layout
+% ...
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOn % wieder an
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Nur für eine einzelne Folie:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPWithAgendaBarOff{%
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+begin{frame}{Titel ohne Agenda-Footer}
+\end_layout
+
+\begin_layout Plain Layout
+Inhalt ...
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaBarOff
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaOnlySections % ist per default gesetzt und muss explizit ausgeschaltet werden
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaSectionsAndSubsections % switch back
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaOnlySections %ist per Default gesetzt
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaSectionsAndSubsections %zurücksetzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -1655,6 +1663,116 @@ Und hier ein Beispiel
 \begin_layout Proof
 Und hier der Beweis.
  
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quellcode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dies ist ein Programm-Listing in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+ innerhalb von LyX.
+ 
+\end_layout
+
+\begin_layout AlertBlock
+Wenn ein Frame in LyX ein **Programmlisting** (Paket `listings`,
+ LyX-Inset „Program Listing“) enthält,
+ muss der Frame in Beamer als **fragile** gebaut werden.
+ Siehe Readme.md.
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=TeX"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $e^{i
+\backslash
+pi}=-1$.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $e^{i
+\backslash
+pi/2}=i$.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
