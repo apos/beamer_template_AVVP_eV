@@ -1,53 +1,87 @@
-% !TEX root = AVVP_VORLAGE_BEAMER.tex
-% !TEX program = lualatex
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,ngerman,aspectratio=1609]{beamer}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
 
 
-% ------------------------------------------------------------
-% Metadata (matches LyX export)
-% ------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\input{tex/avvp_beamer_preamble.tex}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{bibtex.bib}
+\begin{document}
+%\AVVPAgendaBarOff
+
+%\AVVPAgendaOnlySections % ist per Default gesetzt
+%\AVVPAgendaSectionsAndSubsections % zurücksetzen
+
+%AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+
+%\AVVPCreditOverlay{trouvelot-orion-1875}
+
+% \AVVPLightMode % Use sparely! Reset dark mode afterwards!
+
+%\AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0}
+% \AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
+% \AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+
+\AVVPDarkMode
+
+%\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
+% \AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
+\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \title[Kurzversion des Titels für Footer]{Hauptthema bzw. Titel\\
 Titel 2. Zeile}
 \subtitle{Untertitel, wenn vorhanden}
 \author[1. Author, 2. Author]{1.~Author \and 2.~Author}
-\institute{\inst{1}Astronomische Vereinigung Vorderpfalz e.V.}
+\date[AVVP e.V.]{\inst{1}Astronomische Vereinigung Vorderpfalz e.V.}
 \date{Vereinsabend, 04.02.2026}
-
-\begin{document}
-
-% ------------------------------------------------------------
-% Optional background + mode (matches LyX export)
-% ------------------------------------------------------------
-\AVVPDarkMode
-% Note: draft graphicx mode is enabled at the top of this file for speed.
-% Background example with credits:
-\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
-
-% ------------------------------------------------------------
-% Title
-% ------------------------------------------------------------
-\begin{frame}[plain,noframenumbering]
-  \titlepage
-\end{frame}
-
-% ------------------------------------------------------------
-% Agenda
-% ------------------------------------------------------------
+\titlegraphic{\includegraphics[height=0.10\paperheight,keepaspectratio]{pics/avvp_2019_logo_wortmarke_neg}}
+\makebeamertitle
 \begin{frame}{Agenda}
-  \tableofcontents{}
+
+\tableofcontents{}
 \end{frame}
 
-% ============================================================
-% Motivation
-% ============================================================
 \section{Motivation}
 
 \subsection{Struktur}
 
 \begin{frame}{Strukturierte Vorträge }
+
 Einen Vortrag zu strukturieren ist nicht immer einfach. Hier ein paar
 Regeln, die für diese Lösungsvorlage gelten.
 
 \medskip{}
+
 
 \pause{}
 \begin{itemize}
@@ -60,12 +94,14 @@ oder Halbwahrheiten führt.
 auf der Tonspur. Alle werden damit glücklich sein.
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}{Strukturierte Vorträge}
+
 Inhalte sollten in Blöcke gegliedert sein und damit zu einem klar
 umrissenen Ziel führen.
 
 \medskip{}
+
 
 \pause{}
 \begin{itemize}
@@ -75,10 +111,26 @@ umrissenen Ziel führen.
 15 bis 30 Rahmen geben.
 \end{itemize}
 \end{frame}
+%
 
 \subsection{LaTeX und LyX}
 
 \begin{frame}{Warum LaTeX Beamer für Präsentationen?}
+
+\begin{singlespace}
+\begin{center}
+\vspace{-4.5em}
+\par\end{center}
+
+\begin{center}
+\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/latex_prinzip_nur_bild_trans}
+\par\end{center}
+
+\begin{center}
+\vspace{-2.5em}
+\par\end{center}
+\end{singlespace}
+
 \begin{itemize}
 \item Klare Trennung von Inhalt und Layout
 \item Einheitliches Erscheinungsbild über alle Folien
@@ -88,8 +140,22 @@ umrissenen Ziel führen.
 \item Textbasierte Quellen ermöglichen Versionierung und langfristige Reproduzierbarkeit
 \end{itemize}
 \end{frame}
-
+%
 \begin{frame}{Warum LyX in Kombination mit Beamer?}
+\begin{singlespace}
+\begin{center}
+\vspace{-4.5em}
+\par\end{center}
+
+\begin{center}
+\includegraphics[width=0.15\columnwidth]{media/latex-logo-png_seeklogo-82426_weiss}\includegraphics[width=0.15\columnwidth]{media/org\lyxdot lyx\lyxdot LyX}\hspace*{3em}\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/lyx_prinzip_bildfüllend_breiter_trans}
+\par\end{center}
+
+\begin{center}
+\vspace{-2.5em}
+\par\end{center}
+\end{singlespace}
+
 \begin{itemize}
 \item Grafische Oberfläche für LaTeX ohne manuelles Tippen von Code
 \item Strikte Strukturierung: Dokument, Abschnitte und Rahmen
@@ -99,14 +165,18 @@ umrissenen Ziel führen.
 \end{itemize}
 \end{frame}
 
-% ============================================================
-% Text strukturieren
-% ============================================================
 \section{Text strukturieren}
 
 \subsection{Aufzählungen}
 
+%\AVVPDarkMode 
+
+%\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}% dunklen Hintergrund  verwenden(plain)
+% \AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}% {Bild}{heller 0-1}{dunkler 0-1}
+% \AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
 \begin{frame}{Itemize und Statements}
+
+
 \framesubtitle{Untertitel sind optional.}
 
 Folgende Itemize-Regeln sind ganz nützlich:
@@ -124,6 +194,7 @@ Und natürlich Aufzählungen:
 \end{frame}
 
 \begin{frame}{Konzentration auf einzelne Punkte}
+
 \begin{itemize}
 \item <1->Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu
 erzeugen.
@@ -134,24 +205,26 @@ werden
 \end{frame}
 
 \subsection{Spezielle Umgebungen}
-
 \begin{frame}{Satz / Folgerung}
+\uline{}
+
 \begin{theorem}
-Auf dem ersten Overlay.
+\uline{Auf dem ersten Overlay.}
 \end{theorem}
 
 \begin{corollary}
-Auf dem zweiten Overlay.
+\uline{Auf dem zweiten Overlay.}
 \end{corollary}
-\end{frame}
 
+\end{frame}
+%
 \begin{frame}{Blocks}
+
 \begin{block}{Normaler Block}
 \begin{itemize}
 \item Wird auf allen Overlays angezeigt.
 \end{itemize}
 \end{block}
-
 \begin{exampleblock}{}
 Ein Beispielblocktitel
 
@@ -161,7 +234,7 @@ Ein Beispielblocktitel
 \end{itemize}
 \end{exampleblock}
 \end{frame}
-
+%
 \begin{frame}{Defintionen}
 \begin{definition}
 Hier steht eine Definition
@@ -172,41 +245,37 @@ Und hier ein Beispiel
 \end{example}
 
 \begin{proof}
-Und hier der Beweis.
+Und hier der Beweis. 
 \end{proof}
+
 \end{frame}
 
-% ============================================================
-% Tabellen
-% ============================================================
 \section{Tabellen}
 
 \subsection{Alleinstehend}
-
 \begin{frame}{Tabelle mit Überschrift}
+
 \begin{tabular}{|c|c|c|c|}
-\hline
-Lorem & ipsum & dolor & amet\\
-\hline
-\hline
-orem ipsum &  &  & orem iplor s\\
-\hline
- & orem dolor s &  & \\
-\hline
- &  & orem dolor s & \\
-\hline
+\hline 
+Lorem & ipsum & dolor & amet\tabularnewline
+\hline 
+\hline 
+orem ipsum &  &  & orem iplor s\tabularnewline
+\hline 
+ & orem dolor s &  & \tabularnewline
+\hline 
+ &  & orem dolor s & \tabularnewline
+\hline 
 \end{tabular}
 \end{frame}
 
-% ============================================================
-% Bilder
-% ============================================================
 \section{Bilder}
 
 \subsection{Einzelnes Bild}
-
 \begin{frame}[<{*}>]{Bild}
+
 \includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{frame}
 
@@ -214,22 +283,27 @@ orem ipsum &  &  & orem iplor s\\
 
 \begin{frame}[<{*}>]{Bild mit Überschrift }
 \begin{columns}[t]
+
 \column[t]{5 cm}
+
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
 nonumy eirmod empor invidunt ut labore et dolore magna
 
-aliquyam erat, sed diam voluptua.
+aliquyam erat, sed diam voluptua. 
 
 \column{1em}
 
 \column[t]{9 cm}
+
 \includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{columns}
 \end{frame}
-
+%
 \begin{frame}{}
 \begin{columns}[t]
+
 \column[t]{4 cm}
 \begin{itemize}
 \item Rahmen (Folie) mit Bild ohne Überschrift
@@ -241,17 +315,17 @@ aliquyam erat, sed diam voluptua.
 \column{1em}
 
 \column[t]{12.5 cm}
+
 \includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{columns}
 \end{frame}
+%
 
-% ============================================================
-% Zusammenfassung
-% ============================================================
 \section*{Zusammenfassung}
-
 \begin{frame}{Zusammenfassung}
+
 \begin{enumerate}
 \item Die erste Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
 \item Die zweite Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
@@ -261,23 +335,22 @@ aliquyam erat, sed diam voluptua.
 \vskip0pt plus.5fill
 \begin{itemize}
 \item Ausblick
-  \begin{itemize}
-  \item Etwas, was wir noch nicht lösen konnten.
-  \item Nochwas, das wir noch nicht lösen konnten.
-  \item Uns noch eins
-  \end{itemize}
+
+\begin{itemize}
+\item Etwas, was wir noch nicht lösen konnten.
+\item Nochwas, das wir noch nicht lösen konnten.
+\item Uns noch eins
+\end{itemize}
 \end{itemize}
 \end{frame}
 
-% ============================================================
-% Anhang / Bibliographie
-% ============================================================
 \appendix
 
 \section*{Anhang}
-\subsection*{Weiterführende Literatur}
 
+\subsection*{Weiterführende Literatur}
 \begin{frame}[t]{Quellenverzeichnis}
+
 \begingroup
 \renewcommand*{\bibfont}{\fontsize{8pt}{9pt}\selectfont}\printbibliography
 \endgroup

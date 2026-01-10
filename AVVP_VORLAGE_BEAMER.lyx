@@ -299,13 +299,13 @@ status open
 \begin_layout Plain Layout
 
 \backslash
-AVVPAgendaOnlySections
+AVVPAgendaOnlySections % ist per default gesetzt und muss explizit ausgeschaltet werden 
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-AVVPAgendaSectionsAndSubsections
+AVVPAgendaSectionsAndSubsections % switch back
 \end_layout
 
 \end_inset
@@ -319,16 +319,16 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
-AVVPAgendaOnlySections
+AVVPAgendaOnlySections % ist per Default gesetzt
 \end_layout
 
 \begin_layout Plain Layout
 
 %
 \backslash
-AVVPAgendaSectionsAndSubsections
+AVVPAgendaSectionsAndSubsections % zurücksetzen
 \end_layout
 
 \end_inset

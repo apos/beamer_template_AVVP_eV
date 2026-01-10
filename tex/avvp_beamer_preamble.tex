@@ -845,11 +845,34 @@
 }
 
 % Section-level agenda content (shows current section overview)
+% - Highlight CURRENT section (arrow + bold, like the footer)
+% - Keep subsections readable (white)
 \makeatletter
 \providecommand{\AVVPtocCurrentSection}{}% avoid "already defined"
 \renewcommand{\AVVPtocCurrentSection}{%
   \begingroup
+
+    % ----- Sections -----
+    % CURRENT section (this one becomes bold + arrow)
+    \setbeamertemplate{section in toc}{%
+      {\color{AVVPBlue}\bfseries \ensuremath{\blacktriangleright}\ \inserttocsection}\par%
+    }%
+    % NON-current sections (dimmed / normal)
+    \setbeamertemplate{section in toc shaded}{%
+      {\color{AVVPBlue}\inserttocsection}\par%
+    }%
+
+    % ----- Subsections (within the current section) -----
+    \setbeamertemplate{subsection in toc}{%
+      {\color{white}\inserttocsubsection}\par%
+    }%
+    \setbeamertemplate{subsection in toc shaded}{%
+      {\color{white}\inserttocsubsection}\par%
+    }%
+
+    % Render current section overview
     \tableofcontents[currentsection]
+
   \endgroup
 }
 \makeatother
