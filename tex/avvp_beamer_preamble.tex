@@ -822,13 +822,77 @@
 }
 
 % ------------------------------
+% Switch: where to auto-insert the "Zwischen-Agenda" frame?
+% Default: subsections (current behavior)
+% Usage in document preamble:
+%   \AVVPAgendaOnlySections
+%   \AVVPAgendaSectionsAndSubsections
+% ------------------------------
+\newif\ifAVVPAgendaAtSection
+\AVVPAgendaAtSectionfalse
+
+\newif\ifAVVPAgendaAtSubsection
+\AVVPAgendaAtSubsectiontrue
+
+\newcommand{\AVVPAgendaOnlySections}{%
+  \global\AVVPAgendaAtSectiontrue
+  \global\AVVPAgendaAtSubsectionfalse
+}
+
+\newcommand{\AVVPAgendaSectionsAndSubsections}{%
+  \global\AVVPAgendaAtSectionfalse
+  \global\AVVPAgendaAtSubsectiontrue
+}
+
+% Section-level agenda content (shows current section overview)
+\makeatletter
+\providecommand{\AVVPtocCurrentSection}{}% avoid "already defined"
+\renewcommand{\AVVPtocCurrentSection}{%
+  \begingroup
+    \tableofcontents[currentsection]
+  \endgroup
+}
+\makeatother
+
+% A dedicated agenda frame for section starts
+\newcommand{\AVVPAgendaFrameSection}{%
+  {%
+    % FORCE DARK BACKGROUND (Malmoe-proof)
+    \usebackgroundtemplate{%
+      \begin{tikzpicture}[remember picture,overlay]
+        \fill[AVVPBg] (current page.south west) rectangle (current page.north east);
+      \end{tikzpicture}%
+    }%
+    % Agenda text colors
+    \setbeamercolor{normal text}{fg=white}%
+    \setbeamercolor{frametitle}{fg=AVVPBlue}%
+    \global\AVVPSubAgendaFrametrue
+    \begin{frame}<beamer>
+      \frametitle{Weiter geht's im Text ...}
+      \AVVPtocCurrentSection
+    \end{frame}
+  }%
+}
+
+% ------------------------------
 % AUTO: show Agenda at start of each subsection
 % (=> NO ERT needed in the document)
 % ------------------------------
 \AtBeginSubsection[]{%
-  \begingroup
-    \edef\secname{\insertsectionhead}%
-    \edef\subsecname{\insertsubsectionhead}%
-  \endgroup
-  \AVVPAgendaFrame
+  \ifAVVPAgendaAtSubsection
+    \begingroup
+      \edef\secname{\insertsectionhead}%
+      \edef\subsecname{\insertsubsectionhead}%
+    \endgroup
+    \AVVPAgendaFrame
+  \fi
+}
+
+% ------------------------------
+% AUTO: show Agenda at start of each section (optional)
+% ------------------------------
+\AtBeginSection[]{%
+  \ifAVVPAgendaAtSection
+    \AVVPAgendaFrameSection
+  \fi
 }

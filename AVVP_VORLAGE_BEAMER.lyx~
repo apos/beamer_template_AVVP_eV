@@ -277,7 +277,37 @@ AVVPAgendaBarOn
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 %
+\backslash
+AVVPAgendaBarOff
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaOnlySections
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -285,7 +315,14 @@ status open
 
 
 \backslash
-AVVPAgendaBarOff
+AVVPAgendaOnlySections
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaSectionsAndSubsections
 \end_layout
 
 \end_inset
