@@ -4,7 +4,27 @@
 % LyX preview fix: ensure \Urlmuskip exists even if xurl is loaded early
 \providecommand\Urlmuskip{\muskip0}
 
-% Packages (safe in Beamer + LyX)
+% ------------------------------------------------------------
+% USER CONFIG: external assets (paths)
+%   Keep these at the top so users can easily adapt the template.
+% ------------------------------------------------------------
+% Footer logo (right side in the footline)
+\def\AVVPFooterLogoFile{pics/avvp_2019_logo_wortmarke_neg.png}
+
+% Title slide logos (auto-selected by Light/Dark mode)
+\def\AVVPTitleLogoDarkFile{pics/avvp_2019_logo_wortmarke_neg.png}
+\def\AVVPTitleLogoLightFile{pics/avvp_2019_logo_wortmarke_pos_gross.png}
+
+% Creative Commons icon in the footer
+\def\AVVPCCIconFile{pics/by-nc-sa.png}
+
+% Title slogan text (shown under the title logo on the title page)
+\def\AVVPTitleSloganText{Faszination. Astronomie. Erleben.}
+
+
+% ------------------------------------------------------------
+% PACKAGES (safe in Beamer + LyX)
+% ------------------------------------------------------------
 \usepackage{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{calc}
@@ -254,20 +274,7 @@
 \makeatother
 
 
-% ------------------------------------------------------------
-%  LyX Beamer title slide: no headline/footline
-% ------------------------------------------------------------
-\makeatletter
-\@ifundefined{makebeamertitle}{}{%
-  \renewcommand{\makebeamertitle}{%
-    \begin{frame}[plain,noframenumbering]
-      \titlepage
-    \end{frame}
-  }%
-}
-\makeatother
-
-% AVVP Titelseite mit Slogan auf der Titelseite
+% AVVP Titelseite mit Slogan auf der Titelseite (Light/Dark + Auto-Logo)
 \makeatletter
 \setbeamertemplate{title page}{%
   \vbox{}
@@ -285,36 +292,61 @@
       {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
     \fi
 
-    % --- Date (blue, under authors) ---
+    % --- Date (blue, under subtitle) ---
     \vskip1em
     {\usebeamerfont{date}\color{AVVPBlue}\insertdate\par}
 
-    % --- Authors (blue, directly under subtitle) ---
+    % --- Authors (blue, under date) ---
     \vskip0.5em
     {\usebeamerfont{author}\color{AVVPBlue}\insertauthor\par}
 
     % --- Title graphic (logo) ---
-    \ifx\inserttitlegraphic\@empty\else
-      \vskip2.2em
-      \begingroup
+    % Prefer an explicitly provided \titlegraphic{...}.
+    % If none is provided, use the AVVP default depending on Light/Dark mode.
+    \vskip2.2em
+    \begingroup
       \setlength{\fboxsep}{0pt}%
       \setlength{\fboxrule}{0pt}%
-      \resizebox{0.30\paperwidth}{!}{\inserttitlegraphic}\par
-      \endgroup
-    \fi
+      \resizebox{0.30\paperwidth}{!}{%
+        \ifx\inserttitlegraphic\@empty
+          \AVVPTitleLogoAuto
+        \else
+          \inserttitlegraphic
+        \fi
+      }\par
+    \endgroup
 
-	% --- Slogan (white, under logo, scaled to same width) ---
-	\vskip0.8em
-	\resizebox{0.3\paperwidth}{!}{%
-	  {\AVVPTitleFont\color{white}Faszination. Astronomie. Erleben.}%
-	}\par
+    % --- Slogan (mode-aware, under logo, scaled to same width) ---
+    \vskip0.8em
+    \resizebox{0.30\paperwidth}{!}{%
+      {\AVVPTitleFont\AVVPTitleSloganColor \AVVPTitleSloganText}%
+    }\par
 
-    % --- Institute / Date (unchanged) ---
+    % --- Institute (unchanged) ---
     \vskip2em
     {\usebeamerfont{institute}\insertinstitute\par}
 
   \endgroup
   \vfill
+}
+\makeatother
+
+% ------------------------------------------------------------
+% Title frame WITHOUT any footer/headline
+%   LyX exports often call \makebeamertitle.
+%   We override it so the title slide never shows the two-row footline.
+% ------------------------------------------------------------
+\makeatletter
+\renewcommand\makebeamertitle{%
+  \begingroup
+    % disable any headline/footline for the title frame only
+    \setbeamertemplate{headline}{}%
+    \setbeamertemplate{footline}{}%
+    % keep background (\usebackgroundtemplate) intact
+    \begin{frame}[plain,noframenumbering]
+      \titlepage
+    \end{frame}
+  \endgroup
 }
 \makeatother
 
@@ -325,11 +357,43 @@
 \setbeamercolor{avvp foot right}{bg=AVVPBg,fg=white}
 
 % --- AVVP Logo (single source of truth) ---
-\pgfdeclareimage[height=3ex]{avvp-logo}{pics/avvp_2019_logo_wortmarke_neg.png}
+\pgfdeclareimage[height=3ex]{avvp-logo}{\AVVPFooterLogoFile}
 \newcommand{\AVVPLogo}{\pgfuseimage{avvp-logo}}
 
+% ------------------------------------------------------------
+% Title slide logo assets (Light/Dark)
+% ------------------------------------------------------------
+% NOTE: These are used on the title page. The footer uses \AVVPLogo.
+\pgfdeclareimage{avvp-title-logo-dark}{\AVVPTitleLogoDarkFile}
+\pgfdeclareimage{avvp-title-logo-light}{\AVVPTitleLogoLightFile}
+
+\newcommand{\AVVPTitleLogoDark}{\pgfuseimage{avvp-title-logo-dark}}
+\newcommand{\AVVPTitleLogoLight}{\pgfuseimage{avvp-title-logo-light}}
+
+% Mode flag (default: Dark)
+\newif\ifAVVPIsLightMode
+\AVVPIsLightModefalse
+
+% Helper: auto-select the title logo based on the current mode
+\newcommand{\AVVPTitleLogoAuto}{%
+  \ifAVVPIsLightMode
+    \AVVPTitleLogoLight
+  \else
+    \AVVPTitleLogoDark
+  \fi
+}
+
+% Helper: slogan color based on the current mode
+\newcommand{\AVVPTitleSloganColor}{%
+  \ifAVVPIsLightMode
+    \color{AVVPBg}% dark text on light background
+  \else
+    \color{white}% light text on dark background
+  \fi
+}
+
 % --- CC BY-NC-SA Icon ---
-\pgfdeclareimage[height=1.3ex]{cc-by-nc-sa}{pics/by-nc-sa.png}
+\pgfdeclareimage[height=1.3ex]{cc-by-nc-sa}{\AVVPCCIconFile}
 \newcommand{\AVVPCC}{\pgfuseimage{cc-by-nc-sa}}
 
 % set this, if you do not want to position the logo in the frame, but only in the footer!
@@ -635,6 +699,7 @@
 % ------------------------------------------------------------
 
 \newcommand{\AVVPDarkMode}{%
+  \global\AVVPIsLightModefalse
 
   \setbeamercolor{background canvas}{bg=AVVPBg}%
   \setbeamercolor{normal text}{fg=white,bg=AVVPBg}%
@@ -673,6 +738,8 @@
 }
 
 \newcommand{\AVVPLightMode}{%
+
+  \global\AVVPIsLightModetrue
 
   \setbeamercolor{background canvas}{bg=white}%
   \setbeamercolor{normal text}{fg=AVVPBg,bg=white}%

@@ -587,7 +587,7 @@ status open
 
 \begin_layout Plain Layout
 
-% 
+
 \backslash
 AVVPLightMode % Use sparely!
  Reset dark mode afterwards!
@@ -613,7 +613,7 @@ AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
 
 \begin_layout Plain Layout
 
-% 
+
 \backslash
 AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
@@ -705,7 +705,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPDarkMode
 \end_layout
@@ -730,7 +730,7 @@ AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \end_layout
@@ -748,11 +748,15 @@ Hauptthema bzw.
 
 Titel 2.
  Zeile
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Kurzversion des Titels für Footer
+hier Kurzversion des Titels für Fusszeile
 \begin_inset Note Note
 status collapsed
 
@@ -914,17 +918,6 @@ optional,
 \begin_layout Date
 Vereinsabend,
  04.02.2026
-\end_layout
-
-\begin_layout TitleGraphic
-\begin_inset Graphics
-	filename pics/avvp_2019_logo_wortmarke_neg.png
-	lyxscale 40
-	special height=0.10\paperheight,keepaspectratio
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Frame
