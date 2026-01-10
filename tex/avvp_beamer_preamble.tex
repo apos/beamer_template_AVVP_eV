@@ -489,6 +489,80 @@
 \setbeamerfont{section title}{family=\AVVPTitleFont}
 \setbeamerfont{subsection title}{family=\AVVPTitleFont}
 \setbeamerfont{subtitle}{family=\AVVPTitleFont}
+% Blocks: do NOT force bold titles (match "normal" look)
+
+\setbeamerfont{block title}{series=\mdseries}
+\setbeamerfont{block title example}{series=\mdseries}
+
+% ------------------------------------------------------------
+% Blocks: neutral (didactic), mode-independent
+%   Keep Beamer-like grey/green look for readability in BOTH modes.
+% ------------------------------------------------------------
+\setbeamercolor{block title}{fg=AVVPBg,bg=black!10}
+\setbeamercolor{block body}{fg=AVVPBg,bg=black!5}
+\setbeamercolor{block title example}{fg=white,bg=green!50!black}
+\setbeamercolor{block body example}{fg=AVVPBg,bg=green!6!white}
+
+% ------------------------------------------------------------
+% Blocks (Dark Mode fix): ensure list text inside blocks is dark.
+% Reason: In Dark Mode we set itemize/enumerate body to white globally,
+% which is correct for normal frames but wrong inside light blocks.
+% We temporarily override list text colors inside block/exampleblock.
+% Also override alerted text color while inside blocks for contrast.
+% ------------------------------------------------------------
+\AtBeginEnvironment{block}{%
+  % Inside light blocks the global (dark-mode) text colors are wrong.
+  % Force readable list text and a higher-contrast alert color.
+  \setbeamercolor{itemize/enumerate body}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subbody}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subsubbody}{fg=AVVPBg}%
+  \setbeamercolor{alerted text}{fg=AVVPSpark!80!black}%
+  \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+}
+
+\AtEndEnvironment{block}{%
+  % Restore global list + alert colors according to the active mode
+  \ifAVVPIsLightMode
+    \setbeamercolor{itemize/enumerate body}{fg=AVVPBg}%
+    \setbeamercolor{itemize/enumerate subbody}{fg=AVVPBg}%
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=AVVPBg}%
+    \setbeamercolor{alerted text}{fg=AVVPSpark!80!black}%
+    \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+  \else
+    \setbeamercolor{itemize/enumerate body}{fg=white}%
+    \setbeamercolor{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor{alerted text}{fg=AVVPSpark}%
+    \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+  \fi
+}
+
+\AtBeginEnvironment{exampleblock}{%
+  % Example blocks have a light-green background; use a darker alert color
+  % so math stays readable when highlighted.
+  \setbeamercolor{itemize/enumerate body}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subbody}{fg=AVVPBg}%
+  \setbeamercolor{itemize/enumerate subsubbody}{fg=AVVPBg}%
+  \setbeamercolor{alerted text}{fg=AVVPSpark!80!black}%
+  \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+}
+
+\AtEndEnvironment{exampleblock}{%
+  % Restore global list + alert colors according to the active mode
+  \ifAVVPIsLightMode
+    \setbeamercolor{itemize/enumerate body}{fg=AVVPBg}%
+    \setbeamercolor{itemize/enumerate subbody}{fg=AVVPBg}%
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=AVVPBg}%
+    \setbeamercolor{alerted text}{fg=AVVPSpark!80!black}%
+    \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+  \else
+    \setbeamercolor{itemize/enumerate body}{fg=white}%
+    \setbeamercolor{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor{alerted text}{fg=AVVPSpark}%
+    \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+  \fi
+}
 
 % Ensure Beamer uses sans fonts everywhere
 \renewcommand{\familydefault}{\sfdefault}
@@ -731,8 +805,14 @@
   \setbeamertemplate{itemize subsubitem}{\avvpsparkbulletsub}%
 
   % Active list text (current overlay item)
-  \setbeamercolor{alerted text}{fg=AVVPSpark}
+  \setbeamercolor{alerted text}{fg=AVVPSpark}%
   \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+
+  % Blocks: neutral (didactic), mode-independent
+  \setbeamercolor{block title}{fg=AVVPBg,bg=black!10}%
+  \setbeamercolor{block body}{fg=AVVPBg,bg=black!5}%
+  \setbeamercolor{block title example}{fg=white,bg=green!50!black}%
+  \setbeamercolor{block body example}{fg=AVVPBg,bg=green!6!white}%
 
   \setbeamercovered{transparent=45}
 
@@ -774,10 +854,15 @@
   \setbeamercolor{enumerate subitem}{fg=AVVPSpark}%
   \setbeamercolor{enumerate subsubitem}{fg=AVVPSpark}%
 
-  % Active list text (current overlay item) — Light mode: bold via Exo2 variable weight
-  % Active list text (current overlay item) - Light Mode: FORCE real bold
-  \setbeamercolor{alerted text}{fg=AVVPSpark}%
-  \setbeamerfont{alerted text}{family=\ExoTwoBold}%
+  % Active list text (current overlay item)
+  \setbeamercolor{alerted text}{fg=AVVPSpark!80!black}%
+  \setbeamerfont{alerted text}{series=\mdseries,family=\normalfont}%
+
+  % Blocks: neutral (didactic), mode-independent
+  \setbeamercolor{block title}{fg=AVVPBg,bg=black!10}%
+  \setbeamercolor{block body}{fg=AVVPBg,bg=black!5}%
+  \setbeamercolor{block title example}{fg=white,bg=green!50!black}%
+  \setbeamercolor{block body example}{fg=AVVPBg,bg=green!6!white}%
 
   \setbeamercovered{transparent=60}
 

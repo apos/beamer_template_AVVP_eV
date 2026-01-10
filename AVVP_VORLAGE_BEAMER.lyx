@@ -740,6 +740,36 @@ AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+=========================================
+\end_layout
+
+\begin_layout Plain Layout
+============= T I T E L F O L I E =============
+\end_layout
+
+\begin_layout Plain Layout
+Hinweise:
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Logo und Slogan werden jeweils für Dark und Light Mode in der Präambel gesetzt
+\end_layout
+
+\begin_layout Plain Layout
+- Die Kurzversion erscheint unten im Footer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Hauptthema bzw.
  Titel
@@ -1419,7 +1449,7 @@ Konzentration auf einzelne Punkte
 \begin_deeper
 \begin_layout Itemize
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1443,7 +1473,8 @@ status open
 
 \end_inset
 
-Dies wird als zweites gezeigt.
+Hiermit können,
+ Punkte in beliebiger Reihenfolge präsentiert werden
 \end_layout
 
 \begin_layout Itemize
@@ -1457,8 +1488,7 @@ status open
 
 \end_inset
 
-Hiermit können,
- Punkte in beliebiger Reihenfolge präsentiert werden
+Dies wird als zweites gezeigt.
 \end_layout
 
 \end_deeper
