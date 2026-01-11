@@ -2313,6 +2313,113 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 \end_deeper
 \end_deeper
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPDarkMode % only switch,
+ if light mode was on and you need text for dark picture!
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bild im Hintergrund mit speziellem Thema
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+10cm
+\end_layout
+
+\begin_layout Itemize
+Bild im Hintergrund und ohne Überschrift
+\end_layout
+
+\begin_layout Itemize
+Einzelnes Bild mit Quellennachweis
+\end_layout
+
+\begin_layout Itemize
+Platz für Bulletpoints
+\end_layout
+
+\begin_layout Itemize
+...
+ oder Text
+\end_layout
+
+\begin_layout Column
+12.5cm
+\end_layout
+
+\end_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPLightMode % Switch back
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 

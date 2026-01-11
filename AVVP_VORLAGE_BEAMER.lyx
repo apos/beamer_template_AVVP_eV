@@ -2313,28 +2313,8 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Bild im Hintergrund mit speziellem Thema
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -2349,6 +2329,23 @@ AVVPDarkMode % only switch,
 
 \backslash
 AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -2376,7 +2373,7 @@ t
 \end_layout
 
 \begin_layout Itemize
-Bild ohne Überschrift
+Bild im Hintergrund und ohne Überschrift
 \end_layout
 
 \begin_layout Itemize
@@ -2403,6 +2400,26 @@ Platz für Bulletpoints
 
 \end_deeper
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPLightMode % Switch back
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -2423,29 +2440,6 @@ Bild
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-AVVPLightMode % Switch back
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
 
 \end_inset
