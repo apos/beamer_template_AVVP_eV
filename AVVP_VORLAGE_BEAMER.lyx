@@ -2266,6 +2266,111 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 
 \end_deeper
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Gif-
+\begin_inset Quotes ard
+\end_inset
+
+Bild
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+10cm
+\end_layout
+
+\begin_layout Itemize
+Ein Gif-Bild oder viele andere Dateien,
+ können im PDF-Viewer nicht angezeigt werden.
+\end_layout
+
+\begin_layout Itemize
+Es muss daher als lokale Datei abgelegt und ein separtes Vorschaubild verwendet werden.
+\end_layout
+
+\begin_layout Itemize
+Das Öffnen funktioniert in den meisten PDF Viewern nicht,
+ aber es kann der Datei-Link kopiert werden.
+ Dazu muss aber der absolute Pfad hier angegeben werden.
+ 
+\end_layout
+
+\begin_layout Column
+1em
+\end_layout
+
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+7cm
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace -2em
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPVideoLocal{/Users/apos/Nextcloud/VORLAGEN/TeX/AVVP_Beamer/media/GIF-Bild-4B7D-B0F3-E5-0.gif}{media/GIF-Bild-4B7D-B0F3-E5-0.png}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Subsection
 Videos
 \end_layout
@@ -2484,6 +2589,20 @@ Lokale Videodatei
 \end_layout
 
 \begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+Link zum öffnen funktioniert nur mit absoluten Pfaden (hier:
+ relativ)
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2492,7 +2611,7 @@ status open
 
 
 \backslash
-AVVPVideoLocal{media/Youtube_Intro_HeyApos_longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+AVVPVideoLocal{media/Youtube Intro HeyApos longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
 \end_layout
 
 \end_inset

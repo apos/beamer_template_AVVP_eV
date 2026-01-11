@@ -781,7 +781,7 @@
         anchor=south east,
         inner sep=2pt
       ]
-        at ([xshift=-6pt,yshift=24pt]current page.south east)
+        at ([xshift=-2pt,yshift=24pt]current page.south east)
         {%
           \rotatebox{90}{%
             \fontsize{5pt}{6pt}\selectfont
@@ -1167,10 +1167,10 @@
 % VIDEO HELPERS (LyX-friendly)
 % - Use a normal image as poster inside the frame.
 % - Make the poster clickable:
-%     - local file:   run:media/<file>.mp4
+%     - local file:   file:media/<file>.mp4
 %     - URL:          https://...
 % Notes:
-% - PDF viewers may block "run:" links for security reasons.
+% - PDF viewers may block "file:" links for security reasons.
 % - Autoplay on frame open is not reliably possible across viewers.
 % ------------------------------------------------------------
 % Poster image for video (no centering here; centering outside if needed)
@@ -1183,15 +1183,50 @@
   ]{#2}%
 }
 
+% Helper: build a PDF-friendly file URI for local media files
+% Notes:
+% - Hyperref needs a fully expanded string as the target.
+% - Spaces must be percent-encoded (%20) for reliable PDF URI handling.
+% - IMPORTANT: expl3 function names contain '_' and must be tokenized with expl3 syntax ON
+%   at *definition time* (not only at runtime). Otherwise you get "\tl _set:Nn" and crashes.
+\makeatletter
+\ExplSyntaxOn
+\tl_new:N \g_avvp_file_uri_tl
+
+\cs_new_protected:Npn \avvp_build_file_uri:n #1
+  {
+    % Start with the raw path
+    \tl_set:Nn \l_tmpa_tl {#1}
+    % Replace literal spaces with %20
+    \tl_replace_all:Nnn \l_tmpa_tl {\c_space_tl} {\c_percent_str 20}
+    % Decide absolute vs relative: absolute starts with '/'
+    \str_if_eq:eeTF {\str_head:n {#1}} { / }
+      {\tl_gset:Nx \g_avvp_file_uri_tl { file:///\tl_use:N \l_tmpa_tl }}
+      {\tl_gset:Nx \g_avvp_file_uri_tl { file:\tl_use:N \l_tmpa_tl }}
+  }
+
+% Public wrapper that defines \AVVP@FileURI as an expanded string for \href
+% IMPORTANT: \AVVP@FileURI must survive the local group, because it is used
+% afterward in \href{\AVVP@FileURI}{...}.
+\newcommand{\AVVPBuildFileURI}[1]{%
+  \begingroup
+    \avvp_build_file_uri:n {#1}% sets \g_avvp_file_uri_tl
+    % Make the result available outside this group:
+    \xdef\AVVPFileURI{\tl_use:N \g_avvp_file_uri_tl}% fully expanded
+  \endgroup
+}
+\ExplSyntaxOff
+\makeatother
+
 % Clickable poster -> open LOCAL media file (external player)
 %   #1 optional includegraphics options
 %   #2 local target (e.g. media/MyVideo.mp4)
 %   #3 poster image (e.g. media/MyVideo_poster.jpg)
-% Clickable poster -> open LOCAL media file (external player)
 \newcommand{\AVVPVideoLocal}[3][]{%
   \begin{center}%
-    \href{run:#2}{\AVVPVideoPoster[#1]{#3}}\\[0.4ex]%
-    {\footnotesize\href{run:#2}{\texttt{\path{#2}}}}%
+    \AVVPBuildFileURI{#2}% defines \AVVPFileURI (expanded string)
+    \href{\AVVPFileURI}{\AVVPVideoPoster[#1]{#3}}\\[0.4ex]%
+    {\footnotesize\href{\AVVPFileURI}{\texttt{\nolinkurl{#2}}}}%
   \end{center}%
 }
 
