@@ -321,6 +321,19 @@ AVVPCreditOverlay{trouvelot-orion-1875}
 status open
 
 \begin_layout Plain Layout
+fasdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 ======== LIGHT MODE ON =========
 \end_layout
 
@@ -353,20 +366,26 @@ hinterher wieder auf Dark setzen
 \begin_layout Plain Layout
 
 \emph on
-Light Mode einschalten:
+Light Mode einschalten und Fusszeile (wenn gewünscht) auf hell setzen
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
 AVVPLightMode
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPFootlineLight
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Plain Layout
 ======== HINTERGRUNDBILD =======
 \end_layout
 
@@ -434,6 +453,13 @@ AVVPLightMode % Use sparely!
 
 \begin_layout Plain Layout
 
+
+\backslash
+AVVPFootlineLight % Sets also the FootLine to light background
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -468,18 +494,31 @@ status open
 
 \begin_layout Plain Layout
 ======== DARK MODE ON (DEFAULT) ========= 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
 \emph on
-Dark Mode einschalten:
+Dark Mode (wieder) einschalten und Fusszeile auf dunkel setzen.
+ Das dunkle Thema ist,
+ wenn es nicht geändert wird,
+ per default gesetzt!
 \end_layout
 
 \begin_layout Plain Layout
 
 \backslash
-AVVPDarkMode
+AVVPDarkMode % default
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+AVVPFootlineDark % default
 \begin_inset Newline newline
 \end_inset
 
@@ -547,6 +586,13 @@ status open
 %
 \backslash
 AVVPDarkMode
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPFootlineDark
 \end_layout
 
 \begin_layout Plain Layout
@@ -2403,7 +2449,11 @@ TeX
 
 \end_inset
 
- code.
+
+\begin_inset space \textvisiblespace{}
+\end_inset
+
+-code.
 \end_layout
 
 \begin_layout Standard
