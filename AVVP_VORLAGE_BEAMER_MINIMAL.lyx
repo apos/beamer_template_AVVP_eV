@@ -428,11 +428,11 @@ AVVPBgFillWidth{folder/picture.png}{0.9}{0}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPLightMode % Use sparely!
  Reset dark mode afterwards!
@@ -440,7 +440,7 @@ AVVPLightMode % Use sparely!
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPFootlineLight % Sets also the FootLine to light background
 \end_layout
@@ -465,7 +465,7 @@ AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
@@ -577,7 +577,7 @@ AVVPDarkMode
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPFootlineDark %Default
 \end_layout
@@ -595,7 +595,7 @@ AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
 
 \begin_layout Plain Layout
 
-% 
+%
 \backslash
 AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 \end_layout

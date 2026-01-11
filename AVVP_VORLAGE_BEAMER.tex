@@ -45,19 +45,19 @@
 
 %\AVVPCreditOverlay{trouvelot-orion-1875}
 
-\AVVPLightMode % Use sparely! Reset dark mode afterwards!
-\AVVPFootlineLight % Sets also the FootLine to light background
+%\AVVPLightMode % Use sparely! Reset dark mode afterwards!
+%\AVVPFootlineLight % Sets also the FootLine to light background
 
 %\AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0}
 % \AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
-\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+%\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 
-%\AVVPDarkMode
-%\AVVPFootlineDark
+\AVVPDarkMode
+\AVVPFootlineDark
 
 %\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
 % \AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
-%\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
+\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 
 \title[hier Kurzversion des Titels für Fusszeile]{Hauptthema bzw. Titel\\
 Titel 2. Zeile\\
@@ -70,6 +70,7 @@ Titel 2. Zeile\\
 \makebeamertitle
 
 %\AVVPAgendaBarOff
+%\AVVPAgendaBarOn
 
 %\AVVPAgendaOnlySections %ist per Default gesetzt
 %\AVVPAgendaSectionsAndSubsections %zurücksetzen
@@ -317,10 +318,8 @@ orem ipsum &  &  & orem iplor s\tabularnewline
 
 \column[t]{5 cm}
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-nonumy eirmod empor invidunt ut labore et dolore magna
-
-aliquyam erat, sed diam voluptua. 
+Die Rahmenoption >><{*}><< führt dazu, dass alles in einem >>Rutsch<<
+angezeigt wird. Keine Klicks. 
 
 \column{1em}
 
@@ -332,15 +331,14 @@ aliquyam erat, sed diam voluptua.
 \end{columns}
 \end{frame}
 %
-\begin{frame}{}
+\begin{frame}[plain]{}
 \begin{columns}[t]
 
 \column[t]{4 cm}
 \begin{itemize}
-\item Bild ohne Überschrift
+\item Bild ohne Überschrift - voller Fokus aufs Bild 
+\item daher auch Frame-Optio >>plain<<
 \item Einzelnes Bild mit Quellennachweis
-\item Platz für Bulletpoints
-\item ... oder Text
 \end{itemize}
 
 \column{1em}
@@ -362,8 +360,8 @@ aliquyam erat, sed diam voluptua.
 \begin{itemize}
 \item Bild im Hintergrund und ohne Überschrift
 \item Einzelnes Bild mit Quellennachweis
-\item Platz für Bulletpoints
-\item ... oder Text
+\item Platz für Bulletpoints - diese werden mit default <+-alert> angezeigt.
+Leider wird auch das Bild der Bildhinweis als klickbar angezeigt. 
 \end{itemize}
 
 \column{12.5cm}

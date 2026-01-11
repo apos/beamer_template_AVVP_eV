@@ -445,7 +445,7 @@ status open
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPLightMode % Use sparely!
  Reset dark mode afterwards!
@@ -453,7 +453,7 @@ AVVPLightMode % Use sparely!
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPFootlineLight % Sets also the FootLine to light background
 \end_layout
@@ -478,7 +478,7 @@ AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
@@ -583,14 +583,14 @@ status open
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPDarkMode
 \end_layout
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPFootlineDark
 \end_layout
@@ -615,7 +615,7 @@ AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
 AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
 \end_layout
