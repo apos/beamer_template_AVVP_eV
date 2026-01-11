@@ -1278,7 +1278,7 @@ Warum LyX in Kombination mit Beamer?
 
 
 \begin_inset Graphics
-	filename media/lyx_prinzip_bildfüllend_breiter_trans.png
+	filename media/lyx_prinzip_bildfuellend_breiter_trans.png
 	lyxscale 40
 	width 50page%
 	BoundingBox 100bp 250bp 1500bp 800bp
@@ -2003,6 +2003,16 @@ Bild
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+HINWEIS <*> als Rahmenoption mandatory!
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2066,20 +2076,19 @@ Bild mit Überschrift
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Merh TEXT LINKS - BILD RECHTS - OHNE TITEL
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
 \begin_layout ColumnsTopAligned
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+HINWEIS <*> als Rahmenoption mandatory!
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -2173,16 +2182,6 @@ status open
 \end_inset
 
 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TEXT LINKS - BILD RECHTS - OHNE TITEL
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2205,7 +2204,7 @@ t
 \end_layout
 
 \begin_layout Itemize
-Rahmen (Folie) mit Bild ohne Überschrift
+Bild ohne Überschrift
 \end_layout
 
 \begin_layout Itemize
@@ -2275,11 +2274,11 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 \end_layout
 
 \begin_layout Section
-Medien (TBD)
+Medien
 \end_layout
 
 \begin_layout Subsection
-Einzelnes Video
+Video
 \end_layout
 
 \begin_layout Frame
@@ -2287,7 +2286,7 @@ Einzelnes Video
 status open
 
 \begin_layout Plain Layout
-<*>
+fragile
 \end_layout
 
 \end_inset
@@ -2297,7 +2296,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Bild
+Video per Youtube-Link (ohne Macro) 
 \end_layout
 
 \end_inset
@@ -2307,10 +2306,48 @@ Bild
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset Graphics
-	filename media/EVZL1977.JPG
-	lyxscale 10
-	width 90col%
+Hier hat man volle Kontrolle über den 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+ code.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{https://www.youtube.com/watch?v=eTOM_303DC8}{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+includegraphics[width=
+\backslash
+linewidth,height=0.70
+\backslash
+textheight,keepaspectratio]{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
 
 \end_inset
 
@@ -2325,7 +2362,66 @@ status open
 
 
 \backslash
-AVVPCreditOverlay{hajnal-haslach-2025}
+AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Video per Youtube-Link (mit Macro)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Verwendet man das Makro AVVPVideoURL,
+ wird ein klickbares Vorschaubild erzeugt.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPVideoURL{https://www.youtube.com/watch?v=eTOM_303DC8}{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end_layout
 
 \end_inset
@@ -2451,92 +2547,9 @@ Anhang
 \end_layout
 
 \begin_layout Subsection*
-Weiterführende Literatur
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 3
-status open
-
-\begin_layout Plain Layout
-t
-\end_layout
-
-\end_inset
-
-
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Quellenverzeichnis
-\end_layout
-
-\end_inset
-
-
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begingroup
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand*{
-\backslash
-bibfont}{
-\backslash
-fontsize{8pt}{9pt}
-\backslash
-selectfont}
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-btprint "btPrintCited"
-bibfiles "bibtex"
-encoding "default"
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-endgroup
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
+Weiterführende Literatur 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 —
@@ -2601,5 +2614,93 @@ status collapsed
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quellenverzeichnis
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kleinere Schrift bei vielen Quellen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+bibfont}{
+\backslash
+fontsize{8pt}{9pt}
+\backslash
+selectfont}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibtex"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endgroup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

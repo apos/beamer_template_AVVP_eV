@@ -154,7 +154,7 @@ umrissenen Ziel führen.
 \par\end{center}
 
 \begin{center}
-\includegraphics[width=0.15\columnwidth]{media/latex-logo-png_seeklogo-82426_weiss}\includegraphics[width=0.15\columnwidth]{media/org\lyxdot lyx\lyxdot LyX}\hspace*{3em}\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/lyx_prinzip_bildfüllend_breiter_trans}
+\includegraphics[width=0.15\columnwidth]{media/latex-logo-png_seeklogo-82426_weiss}\includegraphics[width=0.15\columnwidth]{media/org\lyxdot lyx\lyxdot LyX}\hspace*{3em}\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/lyx_prinzip_bildfuellend_breiter_trans}
 \par\end{center}
 
 \begin{center}
@@ -258,16 +258,21 @@ Und hier der Beweis.
 %
 \begin{frame}[fragile]{Quellcode}
 
-Dies ist ein Programm-Listing in \TeX.
-
+Dies ist ein Programm-Listing in \TeX innerhalb von LyX. 
+\begin{alertblock}{Programmlisting in LyX}
+Wenn ein Frame in LyX ein {*}{*}Programmlisting{*}{*} (Paket `listings`,
+LyX-Inset „Program Listing“) enthält, muss der Frame in Beamer als
+{*}{*}fragile{*}{*} gebaut werden. Siehe Readme.md. Auch \emph{niemals
+(!)} Zeichenfolgen wie \textbackslash end\{frame\} in das Listing
+einfügen. Der LaTeX Compiler kann das nicht dem Listing zuordnen und
+das Dokument wird nicht kompilieren!
+\end{alertblock}
 \bgroup
-\begin{lstlisting}
+\begin{lstlisting}[language=TeX]
 \begin{itemize}
 \item $e^{i\pi}=-1$.
 \item $e^{i\pi/2}=i$.
 \end{itemize}
-\end{exampleblock}
-\end{frame}
 \end{lstlisting}
 \leavevmode\egroup
 
@@ -329,7 +334,7 @@ aliquyam erat, sed diam voluptua.
 
 \column[t]{4 cm}
 \begin{itemize}
-\item Rahmen (Folie) mit Bild ohne Überschrift
+\item Bild ohne Überschrift
 \item Einzelnes Bild mit Quellennachweis
 \item Platz für Bulletpoints
 \item ... oder Text
@@ -346,14 +351,30 @@ aliquyam erat, sed diam voluptua.
 \end{frame}
 %
 
-\section{Medien (TBD)}
+\section{Medien}
 
-\subsection{Einzelnes Video}
-\begin{frame}[<{*}>]{Bild}
+\subsection{Video}
+\begin{frame}[fragile]{Video per Youtube-Link }
 
-\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+\href{https://www.youtube.com/watch?v=eTOM_303DC8}{
+  \includegraphics[width=\linewidth]{media/AVVP_Universe_on_tour_2024_gdrive.png}
+}
 
-\AVVPCreditOverlay{hajnal-haslach-2025}
+\AVVPCreditOverlay{youtube-heyapos-intro-2025}
+\end{frame}
+%
+\begin{frame}[fragile]{Video - Google-Drive}
+
+\AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
+
+\AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\end{frame}
+%
+\begin{frame}[fragile]{Video - lokale MP4 Datei}
+
+\AVVPVideoLocal{media/Youtube_Intro_HeyApos_longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+
+\AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
 \end{frame}
 
 \section*{Zusammenfassung}

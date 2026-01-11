@@ -65,6 +65,9 @@
 
 \usepackage{url}
 
+% Media9 for embedding videos/animations (optional)
+\usepackage{media9}
+
 % Quotes (ok, uses hyperref indirectly)
 \usepackage[autostyle]{csquotes}
 
@@ -296,6 +299,30 @@
 \AtBeginDocument{%
   \@ifpackageloaded{biblatex}{%
     \DeclareFieldFormat{url}{\textcolor{white}{\url{#1}}}%
+  }{}%
+}
+\makeatother
+
+
+% ------------------------------------------------------------
+% HARD FAIL if a web/online entry has no title
+% Rationale: missing title can break biblatex styles/macros and must be fixed in the .bib.
+% Applies to entry types: online, webpage
+% ------------------------------------------------------------
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{biblatex}{%
+    \AtDataInput{%
+      \ifboolexpr{ test {\ifentrytype{online}} or test {\ifentrytype{webpage}} }{%
+        \iffieldundef{title}{%
+          \PackageError{AVVP-Beamer}{Bib entry '\thefield{entrykey}' has no 'title' field}{%
+            Add a title={...} field to this entry in your .bib file.\MessageBreak
+            Example: title={TMS Astro Teil 2}.\MessageBreak
+            Compilation is stopped intentionally to prevent broken bibliographies.
+          }%
+        }{}%
+      }{}%
+    }%
   }{}%
 }
 \makeatother
@@ -780,7 +807,7 @@
     \node[
       anchor=south east,
       inner sep=2pt
-    ] at ([xshift=-4pt,yshift=14pt]current page.south east) {%
+    ] at ([xshift=-10pt,yshift=24pt]current page.south east) {%
       \fontsize{5pt}{6pt}\selectfont
       \color{AVVPBlue!70}%
       \begingroup
@@ -1133,4 +1160,48 @@
   \else
     \AVVPDarkMode
   \fi
+}
+
+
+% ------------------------------------------------------------
+% VIDEO HELPERS (LyX-friendly)
+% - Use a normal image as poster inside the frame.
+% - Make the poster clickable:
+%     - local file:   run:media/<file>.mp4
+%     - URL:          https://...
+% Notes:
+% - PDF viewers may block "run:" links for security reasons.
+% - Autoplay on frame open is not reliably possible across viewers.
+% ------------------------------------------------------------
+% Poster image for video (no centering here; centering outside if needed)
+\newcommand{\AVVPVideoPoster}[2][]{%
+  \includegraphics[
+    width=\linewidth,
+    height=0.70\textheight,
+    keepaspectratio,
+    #1%
+  ]{#2}%
+}
+
+% Clickable poster -> open LOCAL media file (external player)
+%   #1 optional includegraphics options
+%   #2 local target (e.g. media/MyVideo.mp4)
+%   #3 poster image (e.g. media/MyVideo_poster.jpg)
+% Clickable poster -> open LOCAL media file (external player)
+\newcommand{\AVVPVideoLocal}[3][]{%
+  \begin{center}%
+    \href{run:#2}{\AVVPVideoPoster[#1]{#3}}\\[0.4ex]%
+    {\footnotesize\ttfamily\href{run:#2}{#2}}%
+  \end{center}%
+}
+
+% Clickable poster -> open URL (e.g. YouTube / Google Drive / website)
+%   #1 optional includegraphics options
+%   #2 URL
+%   #3 poster image
+% Clickable poster -> open URL (e.g. YouTube / Google Drive / website)
+\newcommand{\AVVPVideoURL}[3][]{%
+  \begin{center}%
+    \href{#2}{\AVVPVideoPoster[#1]{#3}}%
+  \end{center}%
 }
