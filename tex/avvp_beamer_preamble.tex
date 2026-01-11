@@ -781,7 +781,7 @@
         anchor=south east,
         inner sep=2pt
       ]
-        at ([xshift=-4pt,yshift=24pt]current page.south east)
+        at ([xshift=-2pt,yshift=24pt]current page.south east)
         {%
           \rotatebox{90}{%
             \fontsize{5pt}{6pt}\selectfont
@@ -807,7 +807,7 @@
     \node[
       anchor=south east,
       inner sep=2pt
-    ] at ([xshift=-10pt,yshift=24pt]current page.south east) {%
+    ] at ([xshift=-2pt,yshift=24pt]current page.south east) {%
       \fontsize{5pt}{6pt}\selectfont
       \color{AVVPBlue!70}%
       \begingroup
@@ -1191,7 +1191,7 @@
 \newcommand{\AVVPVideoLocal}[3][]{%
   \begin{center}%
     \href{run:#2}{\AVVPVideoPoster[#1]{#3}}\\[0.4ex]%
-    {\footnotesize\ttfamily\href{run:#2}{#2}}%
+    {\footnotesize\href{run:#2}{\texttt{\path{#2}}}}%
   \end{center}%
 }
 

@@ -2282,16 +2282,6 @@ Video
 \end_layout
 
 \begin_layout Frame
-\begin_inset Argument 3
-status open
-
-\begin_layout Plain Layout
-fragile
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument 4
 status open
 
@@ -2430,6 +2420,118 @@ AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Google Drive Link (mit Macro)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lokale Videodatei
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPVideoLocal{media/Youtube_Intro_HeyApos_longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{yt-heyapos-intro-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Section*
 Zusammenfassung
 \end_layout
