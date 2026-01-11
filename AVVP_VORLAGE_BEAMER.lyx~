@@ -976,6 +976,13 @@ status open
 AVVPAgendaBarOff
 \end_layout
 
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaBarOn
+\end_layout
+
 \end_inset
 
 
@@ -2053,7 +2060,8 @@ Bild
 status open
 
 \begin_layout Plain Layout
-HINWEIS <*> als Rahmenoption mandatory!
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
@@ -2063,10 +2071,11 @@ HINWEIS <*> als Rahmenoption mandatory!
 
 \begin_deeper
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename media/EVZL1977.JPG
 	lyxscale 10
-	width 90col%
+	height 70pheight%
 
 \end_inset
 
@@ -2122,19 +2131,21 @@ Bild mit Überschrift
 \end_inset
 
 
-\end_layout
-
-\begin_deeper
-\begin_layout ColumnsTopAligned
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-HINWEIS <*> als Rahmenoption mandatory!
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
 
 \end_layout
 
@@ -2153,14 +2164,25 @@ t
 \end_layout
 
 \begin_layout Standard
-Lorem ipsum dolor sit amet,
- consetetur sadipscing elitr,
- sed diam nonumy eirmod empor invidunt ut labore et dolore magna
-\end_layout
+Die Rahmenoption 
+\begin_inset Quotes ald
+\end_inset
 
-\begin_layout Standard
-aliquyam erat,
- sed diam voluptua.
+<*>
+\begin_inset Quotes ard
+\end_inset
+
+ führt dazu,
+ dass alles in einem 
+\begin_inset Quotes ald
+\end_inset
+
+Rutsch
+\begin_inset Quotes ard
+\end_inset
+
+ angezeigt wird.
+ Keine Klicks.
  
 \end_layout
 
@@ -2218,11 +2240,32 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+plain
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<plain> als Rahmenoption sorgt dafür,
+ dass keine Footer angezeigt werden.
 \end_layout
 
 \end_inset
@@ -2250,7 +2293,19 @@ t
 \end_layout
 
 \begin_layout Itemize
-Bild ohne Überschrift
+Bild ohne Überschrift - voller Fokus aufs Bild 
+\end_layout
+
+\begin_layout Itemize
+daher auch Frame-Optio 
+\begin_inset Quotes ald
+\end_inset
+
+plain
+\begin_inset Quotes ard
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2258,12 +2313,9 @@ Einzelnes Bild mit Quellennachweis
 \end_layout
 
 \begin_layout Itemize
-Platz für Bulletpoints
-\end_layout
 
-\begin_layout Itemize
-...
- oder Text
+\backslash
+AVVPAgendaBarOff schaltet Agendabar aus
 \end_layout
 
 \begin_layout Column
@@ -2314,7 +2366,7 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 \end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2345,7 +2397,7 @@ AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
 status open
 
 \begin_layout Plain Layout
-Bild im Hintergrund mit speziellem Thema
+
 \end_layout
 
 \end_inset
@@ -2381,12 +2433,9 @@ Einzelnes Bild mit Quellennachweis
 \end_layout
 
 \begin_layout Itemize
-Platz für Bulletpoints
-\end_layout
-
-\begin_layout Itemize
-...
- oder Text
+Platz für Bulletpoints - diese werden mit default <+-alert> angezeigt.
+ Leider wird auch das Bild der Bildhinweis als klickbar angezeigt.
+ 
 \end_layout
 
 \begin_layout Column
@@ -2401,7 +2450,7 @@ Platz für Bulletpoints
 \end_deeper
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2427,6 +2476,16 @@ AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
@@ -2440,6 +2499,17 @@ Bild
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
@@ -2529,11 +2599,32 @@ Videos
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
 Video per Youtube-Link (ohne Macro) 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
@@ -2616,11 +2707,32 @@ AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
 Video per Youtube-Link (mit Macro)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
@@ -2675,11 +2787,32 @@ AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
 Google Drive Link (mit Macro)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset
@@ -2729,11 +2862,32 @@ AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
 \end_layout
 
 \begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
 \begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
 Lokale Videodatei
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+<*> als Rahmenoption sorgt dafür,
+ dass keine Overlays erzeugt werden
 \end_layout
 
 \end_inset

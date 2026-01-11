@@ -303,8 +303,9 @@ orem ipsum &  &  & orem iplor s\tabularnewline
 
 \subsection{Einzelnes Bild}
 \begin{frame}[<{*}>]{Bild}
-
-\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+\begin{center}
+\includegraphics[totalheight=0.7\paperheight]{media/EVZL1977.JPG}
+\par\end{center}
 
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{frame}
@@ -351,8 +352,28 @@ aliquyam erat, sed diam voluptua.
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{columns}
 \end{frame}
+\AVVPDarkMode % only switch, if light mode was on and you need text for dark picture!
+\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
 %
-\begin{frame}{Gif-<<Bild<<}
+\begin{frame}{}
+\begin{columns}[t]
+
+\column[t]{10cm}
+\begin{itemize}
+\item Bild im Hintergrund und ohne Überschrift
+\item Einzelnes Bild mit Quellennachweis
+\item Platz für Bulletpoints
+\item ... oder Text
+\end{itemize}
+
+\column{12.5cm}
+
+\end{columns}
+\end{frame}
+\AVVPLightMode % Switch back
+\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+%
+\begin{frame}[<{*}>]{Gif-<<Bild<<}
 \begin{columns}[t]
 
 \column[t]{10cm}
@@ -377,7 +398,7 @@ hier angegeben werden.
 \end{frame}
 
 \subsection{Videos}
-\begin{frame}{Video per Youtube-Link (ohne Macro) }
+\begin{frame}[<{*}>]{Video per Youtube-Link (ohne Macro) }
 
 Hier hat man volle Kontrolle über den \TeX-code.
 
@@ -388,7 +409,7 @@ Hier hat man volle Kontrolle über den \TeX-code.
 \AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end{frame}
 %
-\begin{frame}{Video per Youtube-Link (mit Macro)}
+\begin{frame}[<{*}>]{Video per Youtube-Link (mit Macro)}
 
 Verwendet man das Makro AVVPVideoURL, wird ein klickbares Vorschaubild
 erzeugt.
@@ -398,14 +419,14 @@ erzeugt.
 \AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end{frame}
 %
-\begin{frame}{Google Drive Link (mit Macro)}
+\begin{frame}[<{*}>]{Google Drive Link (mit Macro)}
 
 \AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
 
 \AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
 \end{frame}
 %
-\begin{frame}{Lokale Videodatei}
+\begin{frame}[<{*}>]{Lokale Videodatei}
 \begin{alertblock}{}
 Link zum öffnen funktioniert nur mit absoluten Pfaden (hier: relativ)
 \end{alertblock}
