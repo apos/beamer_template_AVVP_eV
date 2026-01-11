@@ -12,6 +12,10 @@
 % Footer logo (right side in the footline)
 \def\AVVPFooterLogoFile{pics/avvp_2019_logo_wortmarke_neg.png}
 
+% Footer logo for LIGHT footline (right side in the footline)
+% Use the logo variant intended for a light background.
+\def\AVVPFooterLogoLightFile{\AVVPTitleLogoLightFile}
+
 % Title slide logos (auto-selected by Light/Dark mode)
 \def\AVVPTitleLogoDarkFile{pics/avvp_2019_logo_wortmarke_neg.png}
 \def\AVVPTitleLogoLightFile{pics/avvp_2019_logo_wortmarke_pos_gross.png}
@@ -189,6 +193,16 @@
 % Helper: render the agenda bar (single place, no duplication)
 % ------------------------------------------------------------
 \newcommand{\AVVPAgendaBarRender}{%
+  \begingroup
+  % If the footline is switched to LIGHT, the agenda bar row must also use a light background.
+  % Keep the current foreground/text colors unchanged.
+  \ifAVVPFootlineLightMode
+    \setbeamercolor{section in head/foot}{bg=white}%
+    \setbeamercolor{section in head/foot shaded}{bg=white}%
+    \setbeamercolor{subsection in head/foot}{bg=white}%
+    \setbeamercolor{subsection in head/foot shaded}{bg=white}%
+  \fi
+
   \AVVPComputeHeaderWidths
   \hbox{%
     \begin{beamercolorbox}[
@@ -206,6 +220,7 @@
       \hfill\insertsubsectionnavigationhorizontal{\AVVPHeaderRight}{}{}
     \end{beamercolorbox}%
   }%
+  \endgroup
 }
 
 % ------------------------------------------------------------
@@ -408,11 +423,42 @@
 % ------------------------------------------------------------
 % AVVP Footer: Logo rechts
 % ------------------------------------------------------------
+% ------------------------------------------------------------
+% Footline background mode (independent from Light/Dark mode)
+% Default: dark footline (current behavior)
+% Usage (document preamble):
+%   \AVVPLightMode
+%   \AVVPFootlineLight   % optional: make footline background white
+% ------------------------------------------------------------
+\newif\ifAVVPFootlineLightMode
+\AVVPFootlineLightModefalse
+
+\newcommand{\AVVPFootlineLight}{\global\AVVPFootlineLightModetrue}
+\newcommand{\AVVPFootlineDark}{\global\AVVPFootlineLightModefalse}
+
+% Footline colors (left + center): always AVVPBg background
+\setbeamercolor{author in head/foot}{bg=AVVPBg,fg=white}
+\setbeamercolor{title in head/foot}{bg=AVVPBg,fg=white}
+
 \setbeamercolor{avvp foot right}{bg=AVVPBg,fg=white}
 
 % --- AVVP Logo (single source of truth) ---
-\pgfdeclareimage[height=3ex]{avvp-logo}{\AVVPFooterLogoFile}
-\newcommand{\AVVPLogo}{\pgfuseimage{avvp-logo}}
+% Dark footline: current default logo
+\pgfdeclareimage[height=3ex]{avvp-logo-dark}{\AVVPFooterLogoFile}
+\newcommand{\AVVPLogoDark}{\pgfuseimage{avvp-logo-dark}}
+
+% Light footline: selectable logo (requested)
+\pgfdeclareimage[height=3ex]{avvp-logo-light}{\AVVPFooterLogoLightFile}
+\newcommand{\AVVPLogoLight}{\pgfuseimage{avvp-logo-light}}
+
+% Auto-select based on the footline background mode
+\newcommand{\AVVPLogoAuto}{%
+  \ifAVVPFootlineLightMode
+    \AVVPLogoLight
+  \else
+    \AVVPLogoDark
+  \fi
+}
 
 % ------------------------------------------------------------
 % Title slide logo assets (Light/Dark)
@@ -456,6 +502,22 @@
 \makeatletter
 \setbeamertemplate{footline}{%
   \leavevmode%
+  % Optional: force a light (white) footline background
+  \ifAVVPFootlineLightMode
+    % Left + center must be light background with dark text
+    \setbeamercolor{author in head/foot}{bg=white,fg=AVVPBg}%
+    \setbeamercolor{title in head/foot}{bg=white,fg=AVVPBg}%
+    % Right stays light background; logo switches via \AVVPLogoAuto
+    \setbeamercolor{avvp foot right}{bg=white,fg=AVVPBg}%
+    % Agenda bar row (top row): make backgrounds light as well
+    % Keep current foreground (text) colors unchanged for now.
+    \setbeamercolor{section in head/foot}{bg=white}%
+    \setbeamercolor{section in head/foot shaded}{bg=white}%
+    \setbeamercolor{subsection in head/foot}{bg=white}%
+    \setbeamercolor{subsection in head/foot shaded}{bg=white}%
+  \else
+    % Keep the theme/default colors for the dark footline
+  \fi
   \hbox{%
     % --- left: author ---
 	\begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}%
@@ -475,7 +537,7 @@
     \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,right]{avvp foot right}%
       \raisebox{-0.5ex}{\AVVPCC}%
 	  \hspace{1em}%
-      \raisebox{-0.6ex}{\AVVPLogo}%
+      \raisebox{-0.6ex}{\AVVPLogoAuto}%
       \hspace*{1em}%
     \end{beamercolorbox}%
   }%

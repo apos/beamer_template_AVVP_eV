@@ -2314,7 +2314,8 @@ t
 \end_layout
 
 \begin_layout Itemize
-Ein Gif-Bild kann im PDF nicht angezeigt werden.
+Ein Gif-Bild oder viele andere Dateien,
+ können im PDF-Viewer nicht angezeigt werden.
 \end_layout
 
 \begin_layout Itemize
@@ -2322,24 +2323,10 @@ Es muss daher als lokale Datei abgelegt und ein separtes Vorschaubild verwendet 
 \end_layout
 
 \begin_layout Itemize
-Das Öffnen funktioniert in den meisten PDF Viewern nicht.
+Das Öffnen funktioniert in den meisten PDF Viewern nicht,
+ aber es kann der Datei-Link kopiert werden.
+ Dazu muss aber der absolute Pfad hier angegeben werden.
  
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-href{https://example.com}{LINKTEST}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Column
