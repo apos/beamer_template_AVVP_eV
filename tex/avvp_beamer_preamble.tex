@@ -75,6 +75,30 @@
 % Quotes (ok, uses hyperref indirectly)
 \usepackage[autostyle]{csquotes}
 
+
+% ------------------------------------------------------------
+% PDF "Artifact" marking (no tagpdf dependency)
+% Purpose: mark purely decorative overlays (e.g. Bildnachweis) so they
+% do not become a selectable/tabbable link/annotation target.
+% Uses low-level PDF literals that work with LuaTeX.
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\AVVPArtifactBegin}{%
+  \ifdefined\pdfextension
+    \pdfextension literal direct { /Artifact BMC }%
+  \else
+    \pdfliteral direct { /Artifact BMC }%
+  \fi
+}
+\newcommand{\AVVPArtifactEnd}{%
+  \ifdefined\pdfextension
+    \pdfextension literal direct { EMC }%
+  \else
+    \pdfliteral direct { EMC }%
+  \fi
+}
+\makeatother
+
 % ------------------------------------------------------------
 % ---------- THEME (do not change) ----------
 % ------------------------------------------------------------
@@ -864,23 +888,54 @@
 % ------------------------------------------------------------
 % Overlay-Credit (lower right, horizontal)
 %   Usage: \AVVPCreditOverlay{key-a,key-b,key-c}
+% Notes:
+% - Must be visible from the FIRST overlay.
+% - Must NOT break Beamer overlay internals (no raw # tokens inside overlay arguments).
 % ------------------------------------------------------------
 \makeatletter
+\ExplSyntaxOn
+\cs_new_protected:Npn \avvp_credit_overlay_text:n #1
+  {
+    \seq_set_split:Nnn \l_tmpa_seq { , } { #1 }
+    Bildnachweis:\space
+    \seq_map_inline:Nn \l_tmpa_seq { [##1]\space }
+  }
+\ExplSyntaxOff
+
+% Wrapper without expl3-named control sequences in its body (LyX/Beamer-safe)
+\newcommand{\AVVPCreditOverlayText}[1]{%
+  \begingroup
+    \ExplSyntaxOn
+      \csname avvp_credit_overlay_text:n\endcsname {#1}%
+    \ExplSyntaxOff
+  \endgroup
+}
+
 \newcommand{\AVVPCreditOverlay}[1]{%
   \@ifpackageloaded{biblatex}{\nocite{#1}}{}%
-  \begin{tikzpicture}[remember picture,overlay]
-    \node[
-      anchor=south east,
-      inner sep=2pt
-    ] at ([xshift=-10pt,yshift=24pt]current page.south east) {%
-      \fontsize{5pt}{6pt}\selectfont
-      \AVVPCreditColor%
-      \begingroup
-      \def\do##1{Bildnachweis: [##1]\space}%
-      \docsvlist{#1}%
-      \endgroup
-    };
-  \end{tikzpicture}%
+  \begingroup
+    % Expand the key list once so the overlay argument contains no raw '#'
+    \edef\AVVP@CreditKeys{#1}%
+    % IMPORTANT:
+    % LyX can wrap whole paragraphs in overlay specs (e.g. <+->), which would
+    % add extra overlay steps even for non-interactive elements.
+    % Counteract this for the credit overlay so it never requires extra clicks.
+    \ifcsname c@beamerpauses\endcsname
+      \addtocounter{beamerpauses}{-1}%
+    \fi
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[
+        anchor=south east,
+        inner sep=2pt
+      ] at ([xshift=-10pt,yshift=24pt]current page.south east) {%
+        \AVVPArtifactBegin
+        \fontsize{5pt}{6pt}\selectfont
+        \AVVPCreditColor%
+        \AVVPCreditOverlayText{\AVVP@CreditKeys}%
+        \AVVPArtifactEnd
+      };%
+    \end{tikzpicture}%
+  \endgroup
 }
 \makeatother
 
