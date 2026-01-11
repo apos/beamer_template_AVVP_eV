@@ -1,0 +1,2647 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\input{tex/avvp_beamer_preamble.tex}
+\end_preamble
+\options aspectratio=1609
+\use_default_options false
+\maintain_unincluded_children no
+\language ngerman
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "times" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf5
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+-
+\end_layout
+
+\begin_layout Plain Layout
+============ SPEZIELLE MAKRO-FUNKTIONEN ============
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+======== REFERENZ FÜR HINTERGRUNDBILD EINBLENDEN==========
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Bildquellen sollten immer referenziert werden.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Das folgende Makro setzt ein Hintergrundbild,
+ das Bild muss in in der bibtex.bib referneziert sein!
+ Der 
+\begin_inset Quotes ald
+\end_inset
+
+cite-key
+\begin_inset Quotes ard
+\end_inset
+
+ wird als vierter Parameter angegeben.
+\begin_inset Newline newline
+\end_inset
+
+Das Bild wird gesetzt,
+ zitiert,
+ die Quelle rechts seitlich vertikal eingeblendet und im Quellenverzeichnis dann vollständig mit allen bibtex Inhalten aufgelistet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Die anderen Parameter beeinflussen die Bildhelligkeit (Anpassung zur vesseren Verträglichkeit mit Text).
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+- erster Parameter {folder/picture.png}{
+\end_layout
+
+\begin_layout Plain Layout
+- zweiter Parameter {0 bis 1}:
+ hellt das Bild auf
+\end_layout
+
+\begin_layout Plain Layout
+- dritter Parameter {0 bis 1}:
+ dunkelt das Bild ab
+\end_layout
+
+\begin_layout Plain Layout
+- vierter Parameter:
+ {cite-key - exakt wie in bibtex.bib}
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+=========== BILDREFERENZ EINBLENDEN ================
+\end_layout
+
+\begin_layout Plain Layout
+Soll im Rahmen eingegeben werden.
+ Blendet das cite in dedr 
+\end_layout
+
+\begin_layout Plain Layout
+- erster (udn einziger) Parameter:
+ {cite-key - exakt wie in bibtex.bib}
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPCreditOverlay{trouvelot-orion-1875}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPCreditOverlay{trouvelot-orion-1875}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+======== LIGHT MODE ON =========
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Anmerkung:
+
+\emph default
+ Light Mode ist in dieser Version noch nicht vollständig umgesetzt (Logo,
+ Spezielle Umgebungen,
+ ...),
+ aber für einzelne Folien ggf.
+ sinnvoll einsetzbar.
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Nicht vergessen:
+ 
+\emph default
+hinterher wieder auf Dark setzen
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Light Mode einschalten:
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPLightMode
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+======== HINTERGRUNDBILD =======
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Sinnvoll ist,
+ gleich auch das passende Hintergrund als Bild zu setzen:
+
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Setzt einen einfachen hellen Hintergrund 
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0} 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Alternativ
+\emph on
+ einen einfachen,
+ hellen Hintergrund setzen
+\emph default
+:
+ setzt ein spezielles Hintergrundbild und hellt es zusätzlich auf (erster Parameter {0.9},
+ zweiter {0} dunkelt das Bild nicht ab (Werte von 0 bis 1 möglich)
+\end_layout
+
+\begin_layout Plain Layout
+AVVPBgFillWidth{folder/picture.png}{0.9}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPLightMode % Use sparely!
+ Reset dark mode afterwards!
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+======== DARK MODE ON (DEFAULT) ========= 
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Dark Mode einschalten:
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPDarkMode
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+======== HINTERGRUNDBILD =======
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Sinnvoll ist,
+ gleich auch das passende Hintergrund als Bild zu setzen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Setzt einen einfachen dunklen Hintergrund:
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPBgFillWidth{folder/picture.png}{0.9}{0}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Alternativ
+\emph on
+ einen einfachen,
+ dunklen Hintergrund setzen
+\emph default
+:
+ setzt ein spezielles Hintergrundbild und hellt es zusätzlich auf (erster Parameter {0.9},
+ zweiter {0} dunkelt das Bild nicht ab (Werte von 0 bis 1 möglich)
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPDarkMode
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+=========================================
+\end_layout
+
+\begin_layout Plain Layout
+============= T I T E L F O L I E =============
+\end_layout
+
+\begin_layout Plain Layout
+Hinweise:
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Logo und Slogan werden jeweils für Dark und Light Mode in der Präambel gesetzt
+\end_layout
+
+\begin_layout Plain Layout
+- Die Kurzversion erscheint unten im Footer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Hauptthema bzw.
+ Titel
+\begin_inset Newline newline
+\end_inset
+
+Titel 2.
+ Zeile
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+hier Kurzversion des Titels für Fusszeile
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional,
+ bei langen Titeln für unten rechts 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Untertitel,
+ wenn vorhanden
+\end_layout
+
+\begin_layout Author
+1.
+\begin_inset space ~
+\end_inset
+
+Author 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 2.
+\begin_inset space ~
+\end_inset
+
+Author
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Namen müssen in derselben Reihenfolge wie im Papier erscheinen.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+- Der 
+\backslash
+inst{?} Befehl sollte nur verwendet werden,
+ wenn die Autoren unterschiedlichen Instituten angehören.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+1.
+ Author,
+ 2.
+ Author
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+- optional,
+ nur bei vielen Autoren
+\end_layout
+
+\begin_layout Plain Layout
+- wenn es wirklich viele Autoren gibt,
+ 
+\begin_inset Quotes ald
+\end_inset
+
+Autor et al.
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+inst{1}
+\end_layout
+
+\end_inset
+
+Astronomische Vereinigung Vorderpfalz e.V.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Der 
+\backslash
+inst{?} Befehl sollte nur verwendet werden,
+ wenn die Autoren unterschiedlichen Instituten angehören.
+\end_layout
+
+\begin_layout Plain Layout
+- Keep it simple,
+ niemand interessiert sich für die genau Adresse.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+AVVP e.V.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+optional,
+ aber oft nötig
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+Vereinsabend,
+ 04.02.2026
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+=========================================
+\end_layout
+
+\begin_layout Plain Layout
+============= A G E N D A ==================
+\end_layout
+
+\begin_layout Plain Layout
+Hinweise:
+\end_layout
+
+\begin_layout Plain Layout
+- Zusätzlich zum Inhaltsverzeichnis (Agenda) erscheint per default vor jedem Abschnitt und jedem Unterabschnitt ein aktuelle Agenda (wie geht es weiter ...)
+\end_layout
+
+\begin_layout Plain Layout
+- Die erste Footerzeile enthält jeweils die aktuellen Kapitel und Unterverzeichnisüberschriften
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der Footer besteht aus zwei Zeilen:
+\end_layout
+
+\begin_layout Plain Layout
+- eine Agenda-Zeile (zeigt die aktuellen Abschnitte/Unterabschnitte) an)
+\end_layout
+
+\begin_layout Plain Layout
+- einen Footer mit allgemeinen Angaben zum DokumentDie Agenda-Zeile ausschalten
+\end_layout
+
+\begin_layout Plain Layout
+1.
+ Global in deinem Dokument (vor 
+\backslash
+begin{document}):
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOff % Agenda-Footer komplett aus
+\end_layout
+
+\begin_layout Plain Layout
+% ...
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOn % wieder an
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+2.
+ Nur für eine einzelne Folie:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPWithAgendaBarOff{%
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+begin{frame}{Titel ohne Agenda-Footer}
+\end_layout
+
+\begin_layout Plain Layout
+Inhalt ...
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaBarOn
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaBarOff
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaOnlySections % ist per default gesetzt und muss explizit ausgeschaltet werden
+\end_layout
+
+\begin_layout Plain Layout
+
+\backslash
+AVVPAgendaSectionsAndSubsections % switch back
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaOnlySections %ist per Default gesetzt
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPAgendaSectionsAndSubsections %zurücksetzen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Agenda
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Motivation
+\end_layout
+
+\begin_layout Subsection
+Struktur
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Strukturierte Vorträge 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Einen Vortrag zu strukturieren ist nicht immer einfach.
+ Hier ein paar Regeln,
+ die für diese Lösungsvorlage gelten.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
+ Deshalb:
+ vereinfachen!
+\end_layout
+
+\begin_layout Itemize
+In 20 Minuten ist es schon schwer genug,
+ die Hauptbotschaft zu vermitteln.
+ Deshalb sollten Details ausgelassen werden,
+ selbst wenn dies zu Ungenauigkeiten oder Halbwahrheiten führt.
+\end_layout
+
+\begin_layout Itemize
+Falls man Details weglässt,
+ die eigentlich wichtig sind,
+ so bitte auf der Tonspur.
+ Alle werden damit glücklich sein.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Strukturierte Vorträge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Inhalte sollten in Blöcke gegliedert sein und damit zu einem klar umrissenen Ziel führen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Es sollte genau zwei oder drei Abschnitte geben (neben der % Zusammenfassung).
+\end_layout
+
+\begin_layout Itemize
+*Höchstens* drei Unterabschnitte pro Abschnitt.
+\end_layout
+
+\begin_layout Itemize
+Pro Rahmen sollte man zwischen 30s und 2min reden.
+ Es sollte also 15 bis 30 Rahmen geben.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+LaTeX und LyX
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Warum LaTeX Beamer für Präsentationen?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset VSpace -4.5em
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset Graphics
+	filename media/latex_prinzip_nur_bild_trans.png
+	lyxscale 40
+	width 50page%
+	BoundingBox 100bp 250bp 1500bp 800bp
+	clip
+	groupId Zentriertes Bild
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset VSpace -2.5em
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Klare Trennung von Inhalt und Layout
+\end_layout
+
+\begin_layout Itemize
+Einheitliches Erscheinungsbild über alle Folien
+\end_layout
+
+\begin_layout Itemize
+Automatische Struktur durch Abschnitte,
+ Unterabschnitte und Agenda
+\end_layout
+
+\begin_layout Itemize
+Sehr gut geeignet für Formeln,
+ Abbildungen und Referenzen
+\end_layout
+
+\begin_layout Itemize
+Stabil und skalierbar auch bei großen Präsentationen
+\end_layout
+
+\begin_layout Itemize
+Textbasierte Quellen ermöglichen Versionierung und langfristige Reproduzierbarkeit
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Warum LyX in Kombination mit Beamer?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset VSpace -4.5em
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset Graphics
+	filename media/latex-logo-png_seeklogo-82426_weiss.png
+	width 15col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename media/org.lyx.LyX.png
+	width 15col%
+
+\end_inset
+
+
+\begin_inset space \hspace*{}
+\length 3em
+\end_inset
+
+
+\begin_inset Graphics
+	filename media/lyx_prinzip_bildfuellend_breiter_trans.png
+	lyxscale 40
+	width 50page%
+	BoundingBox 100bp 250bp 1500bp 800bp
+	clip
+	groupId Zentriertes Bild
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\paragraph_spacing single
+\align center
+\begin_inset VSpace -2.5em
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Grafische Oberfläche für LaTeX ohne manuelles Tippen von Code
+\end_layout
+
+\begin_layout Itemize
+Strikte Strukturierung:
+ Dokument,
+ Abschnitte und Rahmen
+\end_layout
+
+\begin_layout Itemize
+Saubere Trennung zwischen Inhaltserstellung und Design
+\end_layout
+
+\begin_layout Itemize
+Ideal für kollaboratives Arbeiten und spätere Pflege
+\end_layout
+
+\begin_layout Itemize
+Volle LaTeX-Leistung bleibt jederzeit verfügbar
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Text
+\end_layout
+
+\begin_layout Subsection
+Aufzählungen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+======== DARK MODE ON =========
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPDarkMode 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}% dunklen Hintergrund  verwenden(plain)
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}% {Bild}{heller 0-1}{dunkler 0-1}
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Itemize und Statements
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Untertitel sind optional.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+- Eine Überschrift fasst einen Rahmen verständlich zusammen.
+ Man muss sie verstehen können,
+ selbst wenn man nicht den Rest des Rahmens versteht.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Folgende Itemize-Regeln sind ganz nützlich:
+\end_layout
+
+\begin_layout Itemize
+Viel Itemize benutzen.
+\end_layout
+
+\begin_layout Itemize
+Sehr kurze Sätze oder Satzglieder verwenden.
+\end_layout
+
+\begin_layout Itemize
+Diese Overlays werden mit dem Pause Stil erzeugt.
+\end_layout
+
+\begin_layout Standard
+Und natürlich Aufzählungen:
+\end_layout
+
+\begin_layout Enumerate
+Now lets numerate
+\end_layout
+
+\begin_layout Enumerate
+and two
+\end_layout
+
+\begin_layout Enumerate
+and three
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Konzentration auf einzelne Punkte
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+Man kann auch Overlay-Spezifikationen benutzen,
+ um Overlays zu erzeugen.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+Hiermit können,
+ Punkte in beliebiger Reihenfolge präsentiert werden
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<3->
+\end_layout
+
+\end_inset
+
+Dies wird als zweites gezeigt.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Spezielle Umgebungen
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Satz / Folgerung
+\end_layout
+
+\end_inset
+
+
+\bar under
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+
+\bar under
+Auf dem ersten Overlay.
+\end_layout
+
+\begin_layout Corollary
+
+\bar under
+Auf dem zweiten Overlay.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Blocks
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Normaler Block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Wird auf allen Overlays angezeigt.
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+Ein Beispielblocktitel
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi}=-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $e^{i\pi/2}=i$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Definitionen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+Hier steht eine Definition
+\end_layout
+
+\begin_layout Example
+Und hier ein Beispiel
+\end_layout
+
+\begin_layout Proof
+Und hier der Beweis.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quellcode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Dies ist ein Programm-Listing in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+TeX
+\end_layout
+
+\end_inset
+
+ innerhalb von LyX.
+ 
+\end_layout
+
+\begin_layout AlertBlock
+Wenn ein Frame in LyX ein **Programmlisting** (Paket `listings`,
+ LyX-Inset „Program Listing“) enthält,
+ muss der Frame in Beamer als **fragile** gebaut werden.
+ Siehe Readme.md.
+ Auch 
+\emph on
+niemals (!)
+\emph default
+ Zeichenfolgen wie 
+\backslash
+end{frame} in das Listing einfügen.
+ Der LaTeX Compiler kann das nicht dem Listing zuordnen und das Dokument wird nicht kompilieren!
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Programmlisting in LyX
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=TeX"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $e^{i
+\backslash
+pi}=-1$.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item $e^{i
+\backslash
+pi/2}=i$.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Tabellen
+\end_layout
+
+\begin_layout Subsection
+Alleinstehend
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tabelle mit Überschrift
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lorem
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ipsum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dolor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+amet
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+orem ipsum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+orem iplor s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+orem dolor s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+orem dolor s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Bilder
+\end_layout
+
+\begin_layout Subsection
+Einzelnes Bild
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bild
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+HINWEIS <*> als Rahmenoption mandatory!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename media/EVZL1977.JPG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Gemischte Inhalte
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+<*>
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bild mit Überschrift 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+HINWEIS <*> als Rahmenoption mandatory!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+5 cm
+\end_layout
+
+\begin_layout Standard
+Lorem ipsum dolor sit amet,
+ consetetur sadipscing elitr,
+ sed diam nonumy eirmod empor invidunt ut labore et dolore magna
+\end_layout
+
+\begin_layout Standard
+aliquyam erat,
+ sed diam voluptua.
+ 
+\end_layout
+
+\begin_layout Column
+1em
+\end_layout
+
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+9 cm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename media/EVZL1977.JPG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+4 cm
+\end_layout
+
+\begin_layout Itemize
+Bild ohne Überschrift
+\end_layout
+
+\begin_layout Itemize
+Einzelnes Bild mit Quellennachweis
+\end_layout
+
+\begin_layout Itemize
+Platz für Bulletpoints
+\end_layout
+
+\begin_layout Itemize
+...
+ oder Text
+\end_layout
+
+\begin_layout Column
+1em
+\end_layout
+
+\begin_layout Column
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+12.5 cm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename media/EVZL1977.JPG
+	lyxscale 10
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{hajnal-haslach-2025}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Medien
+\end_layout
+
+\begin_layout Subsection
+Video
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Video per Youtube-Link (ohne Macro) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{https://www.youtube.com/watch?v=eTOM_303DC8}{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+includegraphics[width=
+\backslash
+linewidth,height=0.70
+\backslash
+textheight,keepaspectratio]{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Video per Youtube-Link (mit Macro)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Zusammenfassung
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Zusammenfassung
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Die Zusammenfassung sollte sehr kurz sein.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Die erste Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\end_layout
+
+\begin_layout Enumerate
+Die zweite Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\end_layout
+
+\begin_layout Enumerate
+Eventuell noch eine dritte Botschaft,
+ aber nicht noch mehr.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Der folgende Ausblick ist optional.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vskip0pt plus.5fill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ausblick
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Etwas,
+ was wir noch nicht lösen konnten.
+\end_layout
+
+\begin_layout Itemize
+Nochwas,
+ das wir noch nicht lösen konnten.
+\end_layout
+
+\begin_layout Itemize
+Uns noch eins
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section*
+\start_of_appendix
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Alles nachfolgende ist optional und typischerweise nicht nötig.
+\end_layout
+
+\end_inset
+
+Anhang
+\end_layout
+
+\begin_layout Subsection*
+Weiterführende Literatur
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quellenverzeichnis
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begingroup
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kleinere Schrift bei vielen Quellen
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+bibfont}{
+\backslash
+fontsize{8pt}{9pt}
+\backslash
+selectfont}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "bibtex"
+encoding "default"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+endgroup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+-
+\end_layout
+
+\begin_layout Plain Layout
+====== LITERATURVERZEICHNIS ======
+\end_layout
+
+\begin_layout Plain Layout
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+—
+-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
