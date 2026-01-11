@@ -1975,7 +1975,7 @@ orem dolor s
 
 \end_deeper
 \begin_layout Section
-Bilder
+Medien
 \end_layout
 
 \begin_layout Subsection
@@ -2045,7 +2045,7 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 
 \end_deeper
 \begin_layout Subsection
-Gemischte Inhalte
+Bild mit Text
 \end_layout
 
 \begin_layout Standard
@@ -2266,19 +2266,8 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 
 \end_deeper
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Medien
-\end_layout
-
 \begin_layout Subsection
-Video
+Videos
 \end_layout
 
 \begin_layout Frame

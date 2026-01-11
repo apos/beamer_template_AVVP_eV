@@ -1975,7 +1975,7 @@ orem dolor s
 
 \end_deeper
 \begin_layout Section
-Bilder
+Medien
 \end_layout
 
 \begin_layout Subsection
@@ -2266,32 +2266,11 @@ AVVPCreditOverlay{hajnal-haslach-2025}
 
 \end_deeper
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Medien
-\end_layout
-
 \begin_layout Subsection
-Video
+Videos
 \end_layout
 
 \begin_layout Frame
-\begin_inset Argument 3
-status open
-
-\begin_layout Plain Layout
-fragile
-\end_layout
-
-\end_inset
-
-
 \begin_inset Argument 4
 status open
 
@@ -2476,6 +2455,60 @@ status open
 
 \backslash
 AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lokale Videodatei
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPVideoLocal{media/Youtube_Intro_HeyApos_longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AVVPCreditOverlay{yt-heyapos-intro-2025}
 \end_layout
 
 \end_inset

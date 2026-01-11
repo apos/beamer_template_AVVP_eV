@@ -297,7 +297,7 @@ orem ipsum &  &  & orem iplor s\tabularnewline
 \end{tabular}
 \end{frame}
 
-\section{Bilder}
+\section{Medien}
 
 \subsection{Einzelnes Bild}
 \begin{frame}[<{*}>]{Bild}
@@ -307,7 +307,7 @@ orem ipsum &  &  & orem iplor s\tabularnewline
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{frame}
 
-\subsection{Gemischte Inhalte}
+\subsection{Bild mit Text}
 
 \begin{frame}[<{*}>]{Bild mit Überschrift }
 \begin{columns}[t]
@@ -349,32 +349,42 @@ aliquyam erat, sed diam voluptua.
 \AVVPCreditOverlay{hajnal-haslach-2025}
 \end{columns}
 \end{frame}
-%
 
-\section{Medien}
+\subsection{Videos}
+\begin{frame}{Video per Youtube-Link (ohne Macro) }
 
-\subsection{Video}
-\begin{frame}[fragile]{Video per Youtube-Link }
+Hier hat man volle Kontrolle über den \TeX code.
 
 \href{https://www.youtube.com/watch?v=eTOM_303DC8}{
-  \includegraphics[width=\linewidth]{media/AVVP_Universe_on_tour_2024_gdrive.png}
+  \includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
 }
 
-\AVVPCreditOverlay{youtube-heyapos-intro-2025}
+\AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
 \end{frame}
 %
-\begin{frame}[fragile]{Video - Google-Drive}
+\begin{frame}{Video per Youtube-Link (mit Macro)}
+
+Verwendet man das Makro AVVPVideoURL, wird ein klickbares Vorschaubild
+erzeugt.
+
+\AVVPVideoURL{https://www.youtube.com/watch?v=eTOM_303DC8}{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+
+\AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
+\end{frame}
+%
+\begin{frame}{Google Drive Link (mit Macro)}
 
 \AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
 
 \AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
 \end{frame}
 %
-\begin{frame}[fragile]{Video - lokale MP4 Datei}
+\begin{frame}{Lokale Videodatei}
 
 \AVVPVideoLocal{media/Youtube_Intro_HeyApos_longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
 
-\AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\AVVPCreditOverlay{yt-heyapos-intro-2025}
+
 \end{frame}
 
 \section*{Zusammenfassung}
@@ -402,11 +412,13 @@ aliquyam erat, sed diam voluptua.
 
 \section*{Anhang}
 
-\subsection*{Weiterführende Literatur}
+\subsection*{Weiterführende Literatur }
 \begin{frame}[t]{Quellenverzeichnis}
 
 \begingroup
+% Kleinere Schrift bei vielen Quellen
 \renewcommand*{\bibfont}{\fontsize{8pt}{9pt}\selectfont}\printbibliography
+
 \endgroup
 \end{frame}
 
