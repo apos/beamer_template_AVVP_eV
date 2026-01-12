@@ -1,0 +1,6 @@
+# LaTeX build artifacts
+tex/tmp/
+build
+
+# Optional: editor stuff
+.vscode/.DS_Store

@@ -1,0 +1,320 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,ngerman,aspectratio=1609]{beamer}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\input{tex/avvp_beamer_preamble.tex}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\usepackage[style=authoryear]{biblatex}
+\renewcommand{\lstlistingname}{Listing}
+
+\addbibresource{bibtex.bib}
+\begin{document}
+%AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+
+%\AVVPCreditOverlay{trouvelot-orion-1875}
+
+%\AVVPLightMode % Use sparely! Reset dark mode afterwards!
+%\AVVPFootlineLight % Sets also the FootLine to light background
+
+%\AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0}
+% \AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
+%\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+
+\AVVPDarkMode
+\AVVPFootlineDark %Default
+
+\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
+%\AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
+%\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
+
+\title[hier Kurzversion des Titels für Fusszeile]{Hauptthema bzw. Titel\\
+Titel 2. Zeile\\
+}
+\subtitle{Untertitel, wenn vorhanden}
+\author[1. Author, 2. Author]{1.~Author \and 2.~Author}
+\date[AVVP e.V.]{\inst{1}Astronomische Vereinigung Vorderpfalz e.V.}
+\date{Vereinsabend, 04.02.2026}
+
+\makebeamertitle
+
+%\AVVPAgendaBarOff
+%\AVVPAgendaBarOn
+
+%\AVVPAgendaOnlySections %ist per Default gesetzt
+%\AVVPAgendaSectionsAndSubsections %zurücksetzen
+
+\begin{frame}{Agenda}
+
+\tableofcontents{}
+\end{frame}
+
+\section{Thema 1}
+
+\subsection{Unterthema 1a}
+
+\begin{frame}{Folie 1 }
+
+...
+
+\medskip{}
+
+
+\pause{}
+\begin{itemize}
+\item ...
+\item ...
+\item ...
+\end{itemize}
+\end{frame}
+%
+
+\subsection{Unterthema 1b}
+
+\begin{frame}{Folie 2}
+
+\begin{singlespace}
+\begin{center}
+\vspace{-4.5em}
+\par\end{center}
+
+\begin{center}
+\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/latex_prinzip_nur_bild_trans}
+\par\end{center}
+
+\begin{center}
+\vspace{-2.5em}
+\par\end{center}
+\end{singlespace}
+
+\begin{itemize}
+\item ..
+\item ...
+\item ...
+\item ...
+\item ...
+\item ...
+\end{itemize}
+\end{frame}
+
+\section{Thema 2}
+
+\subsection{Unterthema 2}
+\begin{frame}{Folie 3}
+
+TBD
+\begin{itemize}
+\item ...
+\item ...
+\item ...
+\end{itemize}
+TBD
+\begin{enumerate}
+\item ...
+\item ...
+\item ...
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Blocks}
+
+\begin{block}{Normaler Block}
+\begin{itemize}
+\item Wird auf allen Overlays angezeigt.
+\end{itemize}
+\end{block}
+\begin{exampleblock}{}
+Ein Beispielblocktitel
+
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+%
+\begin{frame}[fragile]{Quellcode}
+
+Programm-Listing
+
+\bgroup
+\begin{lstlisting}
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{lstlisting}
+\leavevmode\egroup
+
+\end{frame}
+
+\section{Thema 3}
+
+\subsection{Tabelle}
+\begin{frame}{Tabelle mit Überschrift}
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Lorem & ipsum & dolor & amet\tabularnewline
+\hline 
+\hline 
+orem ipsum &  &  & orem iplor s\tabularnewline
+\hline 
+ & orem dolor s &  & \tabularnewline
+\hline 
+ &  & orem dolor s & \tabularnewline
+\hline 
+\end{tabular}
+\end{frame}
+
+\subsection{Bild}
+\begin{frame}[<{*}>]{Bild}
+\begin{center}
+\includegraphics[totalheight=0.7\paperheight]{media/EVZL1977.JPG}
+\par\end{center}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{frame}
+
+\subsection{Bild mit Text}
+
+\begin{frame}[<{*}>]{Bild mit Überschrift und Text darüber }
+\begin{columns}[t]
+
+\column[t]{5 cm}
+
+...
+
+\column{1em}
+
+\column[t]{9 cm}
+
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+%
+\begin{frame}[plain]{}
+\begin{columns}[t]
+
+\column[t]{4 cm}
+\begin{itemize}
+\item ...
+\item ...
+\item ...
+\end{itemize}
+
+\column{1em}
+
+\column[t]{12.5 cm}
+
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+%\AVVPDarkMode % only switch, if light mode was on and you need text for dark picture!
+\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
+%
+\begin{frame}{}
+\begin{columns}[t]
+
+\column[t]{10cm}
+\begin{itemize}
+\item Bild im Hintergrund und ohne Überschrift
+\item Einzelnes Bild mit Quellennachweis
+\item Platz für Bulletpoints - diese werden mit default <+-alert> angezeigt.
+Leider wird auch das Bild der Bildhinweis als klickbar angezeigt. 
+\end{itemize}
+\end{columns}
+\end{frame}
+\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
+%
+\begin{frame}[<{*}>]{Video per Youtube-Link (mit Macro)}
+
+Verwendet man das Makro AVVPVideoURL, wird ein klickbares Vorschaubild
+erzeugt.
+
+\AVVPVideoURL{https://www.youtube.com/watch?v=eTOM_303DC8}{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+
+\AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
+\end{frame}
+%
+\begin{frame}[<{*}>]{Google Drive Link (mit Macro)}
+
+\AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
+
+\AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\end{frame}
+%
+\begin{frame}[<{*}>]{Lokale Videodatei}
+
+\AVVPVideoLocal{media/Youtube Intro HeyApos longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+
+\AVVPCreditOverlay{yt-heyapos-intro-2025}
+
+\end{frame}
+
+\section*{Zusammenfassung}
+\begin{frame}{Zusammenfassung}
+
+\begin{enumerate}
+\item ...
+\item ...
+\item ...
+\end{enumerate}
+
+\vskip0pt plus.5fill
+\begin{itemize}
+\item Ausblick
+
+\begin{itemize}
+\item ...
+\item ...
+\item ...
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\appendix
+
+\section*{Anhang}
+
+\subsection*{Weiterführende Literatur }
+\begin{frame}[t]{Quellenverzeichnis}
+
+\begingroup
+% Kleinere Schrift bei vielen Quellen
+\renewcommand*{\bibfont}{\fontsize{8pt}{9pt}\selectfont}\printbibliography
+
+\endgroup
+\end{frame}
+
+\end{document}

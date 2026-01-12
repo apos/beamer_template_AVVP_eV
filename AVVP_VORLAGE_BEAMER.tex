@@ -1,0 +1,472 @@
+%% LyX 2.4.4 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,ngerman,aspectratio=1609]{beamer}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+%% A simple dot to overcome graphicx limitations
+\newcommand{\lyxdot}{.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\input{tex/avvp_beamer_preamble.tex}
+
+\makeatother
+
+\usepackage{babel}
+\usepackage{listings}
+\usepackage[style=authoryear]{biblatex}
+\renewcommand{\lstlistingname}{Listing}
+
+\addbibresource{bibtex.bib}
+\begin{document}
+%AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+
+%\AVVPCreditOverlay{trouvelot-orion-1875}
+
+%\AVVPLightMode % Use sparely! Reset dark mode afterwards!
+%\AVVPFootlineLight % Sets also the FootLine to light background
+
+%\AVVPBgFillWidth{pics/AVVPBg_light.png}{0}{0}
+% \AVVPBgFillWidth{media/EVZL1977.JPG}{0.90}{0}
+%\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+
+\AVVPDarkMode
+\AVVPFootlineDark
+
+%\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}
+% \AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}
+\AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}
+
+\title[hier Kurzversion des Titels für Fusszeile]{Hauptthema bzw. Titel\\
+Titel 2. Zeile\\
+}
+\subtitle{Untertitel, wenn vorhanden}
+\author[1. Author, 2. Author]{1.~Author \and 2.~Author}
+\date[AVVP e.V.]{\inst{1}Astronomische Vereinigung Vorderpfalz e.V.}
+\date{Vereinsabend, 04.02.2026}
+
+\makebeamertitle
+
+%\AVVPAgendaBarOff
+%\AVVPAgendaBarOn
+
+%\AVVPAgendaOnlySections %ist per Default gesetzt
+%\AVVPAgendaSectionsAndSubsections %zurücksetzen
+
+\begin{frame}{Agenda}
+
+\tableofcontents{}
+\end{frame}
+
+\section{Motivation}
+
+\subsection{Struktur}
+
+\begin{frame}{Strukturierte Vorträge }
+
+Einen Vortrag zu strukturieren ist nicht immer einfach. Hier ein paar
+Regeln, die für diese Lösungsvorlage gelten.
+
+\medskip{}
+
+
+\pause{}
+\begin{itemize}
+\item Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags.
+Deshalb: vereinfachen!
+\item In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln.
+Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten
+oder Halbwahrheiten führt.
+\item Falls man Details weglässt, die eigentlich wichtig sind, so bitte
+auf der Tonspur. Alle werden damit glücklich sein.
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Strukturierte Vorträge}
+
+Inhalte sollten in Blöcke gegliedert sein und damit zu einem klar
+umrissenen Ziel führen.
+
+\medskip{}
+
+
+\pause{}
+\begin{itemize}
+\item Es sollte genau zwei oder drei Abschnitte geben (neben der \% Zusammenfassung).
+\item {*}Höchstens{*} drei Unterabschnitte pro Abschnitt.
+\item Pro Rahmen sollte man zwischen 30s und 2min reden. Es sollte also
+15 bis 30 Rahmen geben.
+\end{itemize}
+\end{frame}
+%
+
+\subsection{LaTeX und LyX}
+
+\begin{frame}{Warum LaTeX Beamer für Präsentationen?}
+
+\begin{singlespace}
+\begin{center}
+\vspace{-4.5em}
+\par\end{center}
+
+\begin{center}
+\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/latex_prinzip_nur_bild_trans}
+\par\end{center}
+
+\begin{center}
+\vspace{-2.5em}
+\par\end{center}
+\end{singlespace}
+
+\begin{itemize}
+\item Klare Trennung von Inhalt und Layout
+\item Einheitliches Erscheinungsbild über alle Folien
+\item Automatische Struktur durch Abschnitte, Unterabschnitte und Agenda
+\item Sehr gut geeignet für Formeln, Abbildungen und Referenzen
+\item Stabil und skalierbar auch bei großen Präsentationen
+\item Textbasierte Quellen ermöglichen Versionierung und langfristige Reproduzierbarkeit
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Warum LyX in Kombination mit Beamer?}
+\begin{singlespace}
+\begin{center}
+\vspace{-4.5em}
+\par\end{center}
+
+\begin{center}
+\includegraphics[width=0.15\columnwidth]{media/latex-logo-png_seeklogo-82426_weiss}\includegraphics[width=0.15\columnwidth]{media/org\lyxdot lyx\lyxdot LyX}\hspace*{3em}\includegraphics[viewport=100bp 250bp 1500bp 800bp,clip,width=0.5\paperwidth]{media/lyx_prinzip_bildfuellend_breiter_trans}
+\par\end{center}
+
+\begin{center}
+\vspace{-2.5em}
+\par\end{center}
+\end{singlespace}
+
+\begin{itemize}
+\item Grafische Oberfläche für LaTeX ohne manuelles Tippen von Code
+\item Strikte Strukturierung: Dokument, Abschnitte und Rahmen
+\item Saubere Trennung zwischen Inhaltserstellung und Design
+\item Ideal für kollaboratives Arbeiten und spätere Pflege
+\item Volle LaTeX-Leistung bleibt jederzeit verfügbar
+\end{itemize}
+\end{frame}
+
+\section{Text}
+
+\subsection{Aufzählungen}
+
+%\AVVPDarkMode 
+
+%\AVVPBgFillWidth{pics/AVVPBg_dark.png}{0}{0}% dunklen Hintergrund  verwenden(plain)
+% \AVVPBgFillWidth{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.50}% {Bild}{heller 0-1}{dunkler 0-1}
+% \AVVPBgFillWidthCredits{media/Trouvelot-_The_great_nebula_in_Orion_-_1875.png}{0}{0.20}{trouvelot-orion-1875}% {Bild}{heller 0-1}{dunkler 0-1}{cite-key from bibtex}
+\begin{frame}{Itemize und Statements}
+
+
+\framesubtitle{Untertitel sind optional.}
+
+Folgende Itemize-Regeln sind ganz nützlich:
+\begin{itemize}
+\item Viel Itemize benutzen.
+\item Sehr kurze Sätze oder Satzglieder verwenden.
+\item Diese Overlays werden mit dem Pause Stil erzeugt.
+\end{itemize}
+Und natürlich Aufzählungen:
+\begin{enumerate}
+\item Now lets numerate
+\item and two
+\item and three
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Konzentration auf einzelne Punkte}
+
+\begin{itemize}
+\item <1->Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu
+erzeugen.
+\item <2->Hiermit können, Punkte in beliebiger Reihenfolge präsentiert
+werden
+\item <3->Dies wird als zweites gezeigt.
+\end{itemize}
+\end{frame}
+
+\subsection{Spezielle Umgebungen}
+\begin{frame}{Satz / Folgerung}
+\uline{}
+
+\begin{theorem}
+\uline{Auf dem ersten Overlay.}
+\end{theorem}
+
+\begin{corollary}
+\uline{Auf dem zweiten Overlay.}
+\end{corollary}
+
+\end{frame}
+%
+\begin{frame}{Blocks}
+
+\begin{block}{Normaler Block}
+\begin{itemize}
+\item Wird auf allen Overlays angezeigt.
+\end{itemize}
+\end{block}
+\begin{exampleblock}{}
+Ein Beispielblocktitel
+
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{exampleblock}
+\end{frame}
+%
+\begin{frame}{Definitionen}
+\begin{definition}
+Hier steht eine Definition
+\end{definition}
+
+\begin{example}
+Und hier ein Beispiel
+\end{example}
+
+\begin{proof}
+Und hier der Beweis. 
+\end{proof}
+
+\end{frame}
+%
+\begin{frame}[fragile]{Quellcode}
+
+Dies ist ein Programm-Listing in \TeX innerhalb von LyX. 
+\begin{alertblock}{Programmlisting in LyX}
+Wenn ein Frame in LyX ein {*}{*}Programmlisting{*}{*} (Paket `listings`,
+LyX-Inset „Program Listing“) enthält, muss der Frame in Beamer als
+{*}{*}fragile{*}{*} gebaut werden. Siehe Readme.md. Auch \emph{niemals
+(!)} Zeichenfolgen wie \textbackslash end\{frame\} in das Listing
+einfügen. Der LaTeX Compiler kann das nicht dem Listing zuordnen und
+das Dokument wird nicht kompilieren!
+\end{alertblock}
+\bgroup
+\begin{lstlisting}[language=TeX]
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{lstlisting}
+\leavevmode\egroup
+
+\end{frame}
+
+\section{Tabellen}
+
+\subsection{Alleinstehend}
+\begin{frame}{Tabelle mit Überschrift}
+
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Lorem & ipsum & dolor & amet\tabularnewline
+\hline 
+\hline 
+orem ipsum &  &  & orem iplor s\tabularnewline
+\hline 
+ & orem dolor s &  & \tabularnewline
+\hline 
+ &  & orem dolor s & \tabularnewline
+\hline 
+\end{tabular}
+\end{frame}
+
+\section{Medien}
+
+\subsection{Einzelnes Bild}
+\begin{frame}[<{*}>]{Bild}
+\begin{center}
+\includegraphics[totalheight=0.7\paperheight]{media/EVZL1977.JPG}
+\par\end{center}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{frame}
+
+\subsection{Bild mit Text}
+
+\begin{frame}[<{*}>]{Bild mit Überschrift }
+\begin{columns}[t]
+
+\column[t]{5 cm}
+
+Die Rahmenoption >><{*}><< führt dazu, dass alles in einem >>Rutsch<<
+angezeigt wird. Keine Klicks. 
+
+\column{1em}
+
+\column[t]{9 cm}
+
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+%
+\begin{frame}[plain]{}
+\begin{columns}[t]
+
+\column[t]{4 cm}
+\begin{itemize}
+\item Bild ohne Überschrift - voller Fokus aufs Bild 
+\item daher auch Frame-Optio >>plain<<
+\item Einzelnes Bild mit Quellennachweis
+\end{itemize}
+
+\column{1em}
+
+\column[t]{12.5 cm}
+
+\includegraphics[width=0.9\columnwidth]{media/EVZL1977.JPG}
+
+\AVVPCreditOverlay{hajnal-haslach-2025}
+\end{columns}
+\end{frame}
+\AVVPDarkMode % only switch, if light mode was on and you need text for dark picture!
+\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0}{0}{hajnal-haslach-2025}
+%
+\begin{frame}{}
+\begin{columns}[t]
+
+\column[t]{10cm}
+\begin{itemize}
+\item Bild im Hintergrund und ohne Überschrift
+\item Einzelnes Bild mit Quellennachweis
+\item Platz für Bulletpoints - diese werden mit default <+-alert> angezeigt.
+Leider wird auch das Bild der Bildhinweis als klickbar angezeigt. 
+\end{itemize}
+
+\column{12.5cm}
+
+\end{columns}
+\end{frame}
+\AVVPLightMode % Switch back
+\AVVPBgFillWidthCredits{media/EVZL1977.JPG}{0.90}{0}{hajnal-haslach-2025}
+%
+\begin{frame}[<{*}>]{Gif-<<Bild<<}
+\begin{columns}[t]
+
+\column[t]{10cm}
+\begin{itemize}
+\item Ein Gif-Bild oder viele andere Dateien, können im PDF-Viewer nicht
+angezeigt werden.
+\item Es muss daher als lokale Datei abgelegt und ein separtes Vorschaubild
+verwendet werden.
+\item Das Öffnen funktioniert in den meisten PDF Viewern nicht, aber es
+kann der Datei-Link kopiert werden. Dazu muss aber der absolute Pfad
+hier angegeben werden. 
+\end{itemize}
+
+\column{1em}
+
+\column[t]{7cm}
+
+\vspace{-2em}
+
+\AVVPVideoLocal{/Users/apos/Nextcloud/VORLAGEN/TeX/AVVP_Beamer/media/GIF-Bild-4B7D-B0F3-E5-0.gif}{media/GIF-Bild-4B7D-B0F3-E5-0.png}
+\end{columns}
+\end{frame}
+
+\subsection{Videos}
+\begin{frame}[<{*}>]{Video per Youtube-Link (ohne Macro) }
+
+Hier hat man volle Kontrolle über den \TeX-code.
+
+\href{https://www.youtube.com/watch?v=eTOM_303DC8}{
+  \includegraphics[width=\linewidth,height=0.70\textheight,keepaspectratio]{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+}
+
+\AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
+\end{frame}
+%
+\begin{frame}[<{*}>]{Video per Youtube-Link (mit Macro)}
+
+Verwendet man das Makro AVVPVideoURL, wird ein klickbares Vorschaubild
+erzeugt.
+
+\AVVPVideoURL{https://www.youtube.com/watch?v=eTOM_303DC8}{media/YT-TMS-Astro-2-unboxing-deep-inspection.png}
+
+\AVVPCreditOverlay{yt-heyapos-tms-astro-2-2025}
+\end{frame}
+%
+\begin{frame}[<{*}>]{Google Drive Link (mit Macro)}
+
+\AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{media/AVVP_Universe_on_tour_2024_gdrive.png}
+
+\AVVPCreditOverlay{avvp-eV-club-universe-on-tour-2024}
+\end{frame}
+%
+\begin{frame}[<{*}>]{Lokale Videodatei}
+\begin{alertblock}{}
+Link zum öffnen funktioniert nur mit absoluten Pfaden (hier: relativ)
+\end{alertblock}
+\AVVPVideoLocal{media/Youtube Intro HeyApos longer.mp4}{media/Youtube_hey_apos_video_jingle_longer.png}
+
+\AVVPCreditOverlay{yt-heyapos-intro-2025}
+
+\end{frame}
+
+\section*{Zusammenfassung}
+\begin{frame}{Zusammenfassung}
+
+\begin{enumerate}
+\item Die erste Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Die zweite Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Eventuell noch eine dritte Botschaft, aber nicht noch mehr.
+\end{enumerate}
+
+\vskip0pt plus.5fill
+\begin{itemize}
+\item Ausblick
+
+\begin{itemize}
+\item Etwas, was wir noch nicht lösen konnten.
+\item Nochwas, das wir noch nicht lösen konnten.
+\item Uns noch eins
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\appendix
+
+\section*{Anhang}
+
+\subsection*{Weiterführende Literatur }
+\begin{frame}[t]{Quellenverzeichnis}
+
+\begingroup
+% Kleinere Schrift bei vielen Quellen
+\renewcommand*{\bibfont}{\fontsize{8pt}{9pt}\selectfont}\printbibliography
+
+\endgroup
+\end{frame}
+
+\end{document}
