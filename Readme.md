@@ -12,8 +12,23 @@ https://avvp.de
 Autor (2026):
 Axel Pospischil, apos@blue-it.org, https://github.com/apos
 
+Hilfsmittel: ChatGPG 5.x
+
 <img width="601" height="308" alt="image" src="https://github.com/user-attachments/assets/64423d71-188a-4ae7-8eb2-78db50da9d4a" />
 
+
+## Motivation
+
+Ein bisschen Nostalgie ist heutzutage schon dabei, eine Präsentation mit LaTeX zu machen. Natürlich haben wir im Verein auch Vorlagen für Powerpoint und insbesondere Google-Präsentation. Ich persönlich mag LaTeX, man fokussiert sich auf die Inhalte und nicht aufs Herumformatieren. Allerdings ist es für Nicht-Technikaffine Menschen gewöhnungsbedürtig und man kommt auch schnell in eine Fehlerhölle, aus der man nicht ohne weiteres wieder herauskommt. TeX ist eben letzten eine Programmiersprache und der Text wird "kompiliert". Da kann es Fehler geben. 
+
+Hinzu kommt die Einschränkung bei der Darstellung von Multimedia-Inhalten. Ich habe entsprechende Makros eingefügt, die dabei helfen sollen. Wenn man seinen eigenen Rechner verwendet und volle Datei-Pfade angibt, dann wird ein Link im PDF erzeugt. Präsentiert man im Browser, ist das ganze dann auch problemlos für lokale Medien (Gif, MP4, ...) möglich. Nichtsdestotrotz sorgt man dafür, dass man in der ordentlichen Dateiablage die Sachen auch wiederfindet. Das gilt für jede Präsentation.
+
+Besondern Wert habe ich auf die Refernezierung von Medien gelegt. Alle verwendeten Bilder, Quellen, Tabelle usw. erzeugen mit einem einfachen Macro eine aus dem Bibtex "cite-key" sowohl einen vernünftigen Hinweis auf der Folie, als auch gleichzeitig einen Eintrag im Inhaltsverzeichnis. Das ist sehr wertvoll und erspart eine Menge Arbeit. Alle Quellen werden ordentlich im Bibtex verwaltet. 
+
+Dann viel Freude damit und beim Präsentieren interessanter astronomischer Themen. 
+
+LG Axel
+[https://avvp.de/](https://avvp.de/portfolio-view/axel-pospischil/)
 
 ---
 
