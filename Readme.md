@@ -280,6 +280,9 @@ Wichtige Hinweise
 
 - Engine: PDFLaTeX wird nicht unterstützt (fontspec benötigt LuaLaTeX oder XeLaTeX).
 - Lesbarkeit: Hervorhebungen erfolgen primär über Farbe/Marker (AVVPSpark), nicht über Fettdruck.
+- Warnung (wichtig fuer LyX): Das Verzeichnis mit den Schriften muss im Projekt-Root exakt `fonts/` heissen (neben `AVVP_VORLAGE_BEAMER.lyx`). Den Verzeichnisnamen nicht aendern und das Verzeichnis nicht verschieben.
+
+Hintergrund: LyX exportiert/kompiliert die `.tex` im Projekt-Root. Das Theme bindet die OTF/TTF-Dateien per `fontspec` mit relativen Pfaden wie `Path = fonts/...` ein. Umbenennen/verschieben fuehrt in LuaLaTeX/luaotfload typischerweise zu Font-Load-Fehlern (z.B. fehlende OTF-Dateien, `cannot find file ''`, \"metric data not found\").
 
 ```latex
 \definecolor{AVVPBg}{RGB}{5,23,41}        % Haupt-Hintergrund (Dark)
