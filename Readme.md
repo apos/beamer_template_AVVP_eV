@@ -16,6 +16,45 @@ Hilfsmittel: ChatGPG 5.x
 
 <img width="601" height="308" alt="image" src="https://github.com/user-attachments/assets/64423d71-188a-4ae7-8eb2-78db50da9d4a" />
 
+---
+
+## Inhaltsverzeichnis
+
+- [AVVP Beamer Theme (Beamer + LyX) – README](#avvp-beamer-theme-beamer--lyx--readme)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Motivation](#motivation)
+  - [Quick-Start](#quick-start)
+  - [Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`](#wichtiger-hinweis-programmlistings-lyx-und-beamer-fragile)
+    - [Arbeiten mit VS Code (LaTeX Workshop)](#arbeiten-mit-vs-code-latex-workshop)
+    - [Hinweis: LyX / biber Cache-Probleme](#hinweis-lyx--biber-cache-probleme)
+  - [Grundidee des AVVP‑Themes](#grundidee-des-avvpthemes)
+  - [BibLaTeX, biber und Bildnachweise](#biblatex-biber-und-bildnachweise)
+  - [Farbsystem](#farbsystem)
+  - [Design-Guidelines (CI)](#design-guidelines-ci)
+  - [Schriftarten \& Typografie](#schriftarten--typografie)
+  - [Dark‑ und Light‑Mode](#dark-und-lightmode)
+    - [Aktivierung](#aktivierung)
+    - [Overlay‑Dimmung](#overlaydimmung)
+  - [Bulletpoints \& Nummerierungen](#bulletpoints--nummerierungen)
+    - [Sparkle‑Bullets](#sparklebullets)
+    - [Nummerierungen](#nummerierungen)
+  - [Overlays](#overlays)
+  - [Header (angepasst)](#header-angepasst)
+    - [Agenda‑Zeile im Footer (oben) gezielt abschalten](#agendazeile-im-footer-oben-gezielt-abschalten)
+  - [Zwischenagenda (automatisch)](#zwischenagenda-automatisch)
+    - [Automatik](#automatik)
+    - [Titel der Zwischenagenda](#titel-der-zwischenagenda)
+    - [Robustheit / Overlays](#robustheit--overlays)
+  - [Footer (CI‑gebunden)](#footer-cigebunden)
+  - [Neue Makros (Kurzreferenz)](#neue-makros-kurzreferenz)
+  - [Titelfolie (LyX)](#titelfolie-lyx)
+  - [Status](#status)
+  - [Verwendung ohne LyX (reines LaTeX / Beamer)](#verwendung-ohne-lyx-reines-latex--beamer)
+  - [Lizenz](#lizenz)
+    - [Erlaubt](#erlaubt)
+    - [Bedingungen](#bedingungen)
+    - [Rechtstext](#rechtstext)
+
 
 ## Motivation
 
@@ -116,10 +155,7 @@ https://www.lyx.org/Home
 <img width="822" height="242" alt="image" src="https://github.com/user-attachments/assets/b969f1b3-8aeb-4bda-b655-b01c69cc5b3c" />
 
 
-
----
-
-## 1. Grundidee des AVVP‑Themes
+## Grundidee des AVVP‑Themes
 
 Ziele des Themes:
 
@@ -184,7 +220,7 @@ Grundprinzip:
   </tr>
 </table>
 
-## 1a. BibLaTeX, biber und Bildnachweise
+## BibLaTeX, biber und Bildnachweise
 
 Dieses Theme setzt **konsequent auf BibLaTeX mit biber** als Backend.
 
@@ -215,9 +251,9 @@ Das Theme nutzt BibLaTeX auch für
 
 ---
 
-## 2. Farbsystem
+## Farbsystem
 
-## 2a. Design-Guidelines (CI)
+## Design-Guidelines (CI)
 
 Dieses Theme folgt bewusst einem „CI-light“-Ansatz: CI wird konsequent umgesetzt, wo sie Orientierung und Wiedererkennbarkeit schafft, aber nicht dort, wo Beamer-didaktische Elemente dadurch schlechter lesbar oder weniger intuitiv würden.
 
@@ -231,7 +267,7 @@ Grundprinzipien
   - AVVPGrey: Dezent/inaktiv (gedimmte Elemente)
 - Didaktische Beamer-Elemente bleiben neutral, wenn CI-Farben den didaktischen Zweck schwächen würden (z. B. Block- und Exampleblock-Optik).
 
-## 2b. Schriftarten & Typografie
+## Schriftarten & Typografie
 
 Dieses Theme setzt auf LuaLaTeX/XeLaTeX (fontspec) und nutzt die mitgelieferten OTF/TTF-Schriften aus `fonts/`.
 
@@ -261,34 +297,40 @@ Wichtige Hinweise
 
 ---
 
-## 3. Dark‑ und Light‑Mode
+## Dark‑ und Light‑Mode
 
 ### Aktivierung
 
+Das Theme kennt zwei Modi, die **global** gesetzt werden. In LyX ist das typischerweise in der Dokument‑Präambel (oder in `avvp_beamer_preamble.tex`) zu platzieren.
+
 ```latex
 \AVVPDarkMode
+% oder
 \AVVPLightMode
 ```
 
-Diese Makros setzen **global**:
-
-- Hintergrund
-- Textfarbe
-- Listenfarben
-- Overlay‑Transparenz
-- TOC‑Farben
+Diese Makros setzen **global** u. a.:
+- Hintergrund‑ und Textfarben
+- Farben für Struktur‑Elemente (Titel/Section/Subsection/TOC)
+- Farben für Listen (Bullets/Enumerate)
+- Overlay‑Dimmung (Beamer `covered`‑Verhalten)
+- Footer/CI‑Farben (abhängig vom Modus)
 
 ### Overlay‑Dimmung
 
-```latex
-\setbeamercovered{transparent=45}
-```
+Die Dimmung nicht‑aktiver Inhalte wird zentral gesteuert (Beamer `\setbeamercovered`). Typischerweise nutzt das Theme einen festen Transparenzwert, der im Dark‑ und Light‑Mode passend gewählt ist.
 
-Je höher der Wert, desto stärker die Dimmung.
+Wichtig: Wenn du Frames hast, die **keine** Overlays erzeugen sollen (z. B. reine Bildfolien), setze im Frame eine Overlay‑Spezifikation wie `<*>`:
+
+```latex
+\begin{frame}<*>{Titel}
+  ...
+\end{frame}
+```
 
 ---
 
-## 4. Bulletpoints & Nummerierungen
+## Bulletpoints & Nummerierungen
 
 ### Sparkle‑Bullets
 
@@ -309,7 +351,7 @@ Je höher der Wert, desto stärker die Dimmung.
 
 ---
 
-## 5. Overlays
+## Overlays
 
 Globale Overlay‑Logik:
 
@@ -326,69 +368,109 @@ Globale Overlay‑Logik:
 
 ---
 
-## 6. Header (Malmoe)
+## Header (angepasst)
 
-- Layout unverändert (Malmoe)
-- Nur Farben überschrieben
+Der Header ist **nicht mehr** der Beamer‑Standard von *Malmoe*, sondern wurde für das AVVP‑Layout angepasst.
 
-| Ebene | Farbe |
-|-----|------|
-| Abschnitt | Blau |
-| Unterabschnitt (aktiv) | Orange |
-| Unterabschnitt (inaktiv) | Grau |
-| Aktiver Unterabschnitt | zusätzlich ▶‑Marker |
+Charakteristik:
+- klare Trennung von Abschnitt / Unterabschnitt
+- konsistente CI‑Farben (AVVPBlue / AVVPSpark / AVVPGrey)
+- aktive Navigationselemente werden visuell hervorgehoben
+
+Wichtig:
+- Der Header wird im Theme vollständig kontrolliert (keine Dokument‑Hacks nötig).
+
+### Agenda‑Zeile im Footer (oben) gezielt abschalten
+
+Das Theme rendert oberhalb der eigentlichen Fußzeile optional eine **Agenda‑Zeile** (Section/Subsection‑Navigation). Diese lässt sich global oder lokal deaktivieren.
+
+Global (z. B. in der Dokument‑Präambel):
+
+```latex
+\AVVPAgendaBarOff
+% ... später wieder aktivieren:
+% \AVVPAgendaBarOn
+```
+
+Lokal (nur für einen Block / Frame):
+
+```latex
+\AVVPWithAgendaBarOff{%
+  \begin{frame}{Bildfolie ohne Agenda}
+    ...
+  \end{frame}
+}
+```
+
+Hinweis:
+- Die lokalen Wrapper wirken nur innerhalb des Blocks und verändern keine globalen Einstellungen.
 
 ---
 
-## 7. Agenda / Zwischenagenda
+## Zwischenagenda (automatisch)
 
-### Automatisch bei jedem Unterabschnitt
+Das Theme erzeugt automatisch Zwischenfolien (Agenda‑Frames) an definierten Struktur‑Punkten.
+
+### Automatik
+
+Die Zwischenagenda wird über Beamer‑Hooks erzeugt (keine manuellen Agenda‑Frames im Dokument nötig). Das Theme stellt dafür zwei Modi bereit:
+
+1) Fokus nur auf **Sections**
 
 ```latex
-\AtBeginSubsection[]{ \AVVPAgendaFrame }
+\AVVPAgendaOnlySections
 ```
 
-Kein manuelles Einfügen nötig.
+2) Fokus auf **Sections & Subsections** (Default)
 
-### Darstellung
+```latex
+\AVVPAgendaSectionsAndSubsections
+```
 
-- Titel: „Weiter geht’s im Text …“
-- Hintergrund: AVVPBg
-- Abschnitte: Blau
-- Unterabschnitte:
-  - aktuell: Orange + ▶
-  - andere: Weiß
+Wirkung:
+- **Sections & Subsections (Default):** Zwischenagenda bei jedem Subsection‑Start.
+- **Only Sections:** Zwischenagenda nur bei Section‑Starts.
+
+### Titel der Zwischenagenda
+
+Der Titel der Zwischenagenda‑Folie ist als Macro konfigurierbar:
+
+```latex
+\def\AVVPSubAgendaTitle{Weiter geht's im Text ...}
+```
+
+### Robustheit / Overlays
+
+Wenn du global Overlays (z. B. `<+->`) nutzt und eine Zwischenagenda‑Folie **immer** in einem Schritt erscheinen soll, kannst du in solchen Frames eine Overlay‑Spezifikation wie `<*>` setzen.
 
 ---
 
-## 8. Footer
+## Footer (CI‑gebunden)
 
-### Aufbau
+Der Footer ist **neu** und eng an das CI gekoppelt. Er ist kein Beamer‑Standard‑Footer.
 
-| Position | Inhalt |
-|-------|-------|
-| Links | Autoren (`\insertshortauthor`) |
-| Mitte | Kurztitel (`\insertshorttitle`) |
-| Rechts | **nur Logo**, Hintergrund AVVPBg |
+Charakteristik:
+- CI‑konforme Farbflächen (abhängig von Dark/Light)
+- definierte Zonen für Autor/Kurztitel/ggf. Datum bzw. Projekthinweise (je nach Konfiguration)
+- Logo wird kontrolliert gesetzt (keine automatische Beamer‑Logo‑Mechanik)
 
-### Logo – zentrale Definition
+Wichtig:
+- Das Beamer‑Standard‑Logo (`\logo{...}`) ist deaktiviert bzw. wird im Theme nicht benutzt.
+- Das Logo erscheint nur dort, wo das Theme es explizit im Footer platziert.
 
-```latex
-\pgfdeclareimage[height=2.2ex]{avvp-logo}{pics/avvp_2019_logo_wortmarke_neg.png}
-\newcommand{\AVVPLogo}{\pgfuseimage{avvp-logo}}
-```
+## Neue Makros (Kurzreferenz)
 
-Beamer‑Standardlogo ist deaktiviert:
+Die wichtigsten Makros, die im Theme verwendet werden (Auszug):
 
-```latex
-\setbeamertemplate{logo}{}
-```
+- `\AVVPDarkMode` / `\AVVPLightMode` – setzt global den Modus inkl. Farben/Overlays.
+- `\AVVPAgendaFrame` – erzeugt die Zwischenagenda‑Folie (wird typischerweise automatisch via `\AtBeginSubsection` aufgerufen).
+- `\AVVPLogo` – liefert das CI‑Logo für kontrollierte Platzierung durch das Theme.
 
-Logo erscheint **nur**, wo `\AVVPLogo` explizit verwendet wird.
+Hinweis: Die vollständige Liste ergibt sich aus `avvp_beamer_preamble.tex`. Diese README dokumentiert bewusst nur die stabilen, für Anwender relevanten Einstiegspunkte.
 
 ---
 
-## 9. Titelfolie (LyX)
+## Titelfolie (LyX)
 
 Ziel:
 
@@ -412,16 +494,7 @@ Umsetzung (LyX‑sicher):
 
 ---
 
-## 10. Wichtige Regeln
-
-- Logo **nie** über `\logo{}` anzeigen
-- Agenda **nur automatisch**
-- Overlays **global**, nicht pro Liste
-- Dark / Light Mode **nur über Makros**
-
----
-
-## 11. Status
+## Status
 
 ✔ LyX‑stabil  
 ✔ Dark / Light sauber getrennt  
@@ -429,7 +502,7 @@ Umsetzung (LyX‑sicher):
 
 **AVVP Beamer Theme – Stand 01-2026**
 
-## 11a. Verwendung ohne LyX (reines LaTeX / Beamer)
+## Verwendung ohne LyX (reines LaTeX / Beamer)
 
 Das AVVP‑Beamer‑Theme ist **nicht an LyX gebunden** und kann in jedes Beamer‑Projekt übernommen werden.
 
@@ -473,7 +546,7 @@ ist aber **keine technische Voraussetzung**.
 
 ---
 
-## 12. Lizenz
+## Lizenz
 
 Dieses Beamer‑Template sowie alle zugehörigen Inhalte (LaTeX‑Präambel, Makros, Dokumentstruktur, Beispielgrafiken, sofern nicht anders gekennzeichnet) stehen unter der Lizenz:
 
