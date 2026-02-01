@@ -155,8 +155,9 @@ LyX schreibt die Präambel/`\input{tex/avvp_beamer_preamble.tex}` **nicht** ganz
 % !TEX program = lualatex
 ```
 
-Praktische Regel:
+Los geht':
 - Nach dem Export aus LyX diese Zeile als **erste Zeile** in die `.tex` einfügen (oder per kleinem Post‑Processing automatisieren).
+- Öffne dein Tex in Prism und dann wird die Datei auch schon kompiliert
 
 ---
 
