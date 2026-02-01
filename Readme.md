@@ -26,7 +26,7 @@ Hilfsmittel: ChatGPG 5.x
   - [Quick-Start](#quick-start)
   - [Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`](#wichtiger-hinweis-programmlistings-lyx-und-beamer-fragile)
     - [Arbeiten mit VS Code (LaTeX Workshop)](#arbeiten-mit-vs-code-latex-workshop)
-    - [Prism (Online-Editor)](#prism-online-editor)
+    - [Arbeiten mit Prism (Online-Editor)](#prism-online-editor)
     - [Hinweis: LyX / biber Cache-Probleme](#hinweis-lyx--biber-cache-probleme)
   - [Grundidee des AVVP‑Themes](#grundidee-des-avvpthemes)
   - [BibLaTeX, biber und Bildnachweise](#biblatex-biber-und-bildnachweise)
