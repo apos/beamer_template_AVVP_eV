@@ -136,7 +136,7 @@ Diese Variante eignet sich besonders für:
 
 <a id="prism-online-editor"></a>
 
-### Prism (Online-Editor)
+### Arbeiten mit Prism (KI Online-Editor)
 
 Prism ist ein Online‑LaTeX‑Editor; diese Vorlage ist so aufgebaut, dass sie dort direkt kompiliert (LuaLaTeX + `biber`, lokale Schriften aus `fonts/`).
 
