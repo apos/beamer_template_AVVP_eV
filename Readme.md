@@ -26,7 +26,7 @@ Hilfsmittel: ChatGPG 5.x
   - [Quick-Start](#quick-start)
   - [Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`](#wichtiger-hinweis-programmlistings-lyx-und-beamer-fragile)
     - [Arbeiten mit VS Code (LaTeX Workshop)](#arbeiten-mit-vs-code-latex-workshop)
-    - [Arbeiten mit Prism (Online-Editor)](#prism-online-editor)
+    - [Prism (Online-Editor)](#prism-online-editor)
     - [Hinweis: LyX / biber Cache-Probleme](#hinweis-lyx--biber-cache-probleme)
   - [Grundidee des AVVP‑Themes](#grundidee-des-avvpthemes)
   - [BibLaTeX, biber und Bildnachweise](#biblatex-biber-und-bildnachweise)
@@ -134,7 +134,16 @@ Diese Variante eignet sich besonders für:
 - Git‑basierte Workflows
 - Direkte Kontrolle über Build‑Kette und Artefakte
 
-### Arbeiten mit Prism (Online-Editor)
+<a id="prism-online-editor"></a>
+
+### Prism (Online-Editor)
+
+Prism ist ein Online‑LaTeX‑Editor; diese Vorlage ist so aufgebaut, dass sie dort direkt kompiliert (LuaLaTeX + `biber`, lokale Schriften aus `fonts/`).
+
+Prism:
+```text
+https://crixet.com/
+```
 
 - Öffne in Prism die gewünschte Hauptdatei (z. B. `AVVP_VORLAGE_BEAMER_MINIMAL.tex`) und starte die Kompilierung aus dem PDF‑Viewer.
 - Das Theme benötigt **LuaLaTeX** (oder XeLaTeX) wegen `fontspec` und lokaler OTF/TTF‑Schriften.
