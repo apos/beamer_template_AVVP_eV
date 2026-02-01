@@ -24,9 +24,9 @@ Hilfsmittel: ChatGPG 5.x
   - [Inhaltsverzeichnis](#inhaltsverzeichnis)
   - [Motivation](#motivation)
   - [Quick-Start](#quick-start)
-    - [Prism (Online-Editor)](#prism-online-editor)
   - [Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`](#wichtiger-hinweis-programmlistings-lyx-und-beamer-fragile)
     - [Arbeiten mit VS Code (LaTeX Workshop)](#arbeiten-mit-vs-code-latex-workshop)
+    - [Prism (Online-Editor)](#prism-online-editor)
     - [Hinweis: LyX / biber Cache-Probleme](#hinweis-lyx--biber-cache-probleme)
   - [Grundidee des AVVP‑Themes](#grundidee-des-avvpthemes)
   - [BibLaTeX, biber und Bildnachweise](#biblatex-biber-und-bildnachweise)
@@ -93,22 +93,6 @@ lualatex AVVP_VORLAGE_BEAMER.tex
 lualatex AVVP_VORLAGE_BEAMER.tex
 ```
 
-### Prism (Online-Editor)
-
-- Öffne in Prism die gewünschte Hauptdatei (z. B. `AVVP_VORLAGE_BEAMER_MINIMAL.tex`) und starte die Kompilierung aus dem PDF‑Viewer.
-- Das Theme benötigt **LuaLaTeX** (oder XeLaTeX) wegen `fontspec` und lokaler OTF/TTF‑Schriften.
-
-**Wichtig (LyX‑Export → Prism):**
-LyX schreibt die Präambel/`\input{tex/avvp_beamer_preamble.tex}` **nicht** ganz an den Dateianfang. Daher muss der LuaLaTeX‑Hinweis für Prism in der exportierten `.tex` **ganz oben** stehen:
-
-```tex
-% !TEX program = lualatex
-```
-
-Praktische Regel:
-- Nach dem Export aus LyX diese Zeile als **erste Zeile** in die `.tex` einfügen (oder per kleinem Post‑Processing automatisieren).
-
----
 
 ## Wichtiger Hinweis: Programmlistings (LyX) und Beamer `fragile`
 
@@ -149,6 +133,23 @@ Diese Variante eignet sich besonders für:
 - Nutzer ohne LyX
 - Git‑basierte Workflows
 - Direkte Kontrolle über Build‑Kette und Artefakte
+
+### Arbeiten mit Prism (Online-Editor)
+
+- Öffne in Prism die gewünschte Hauptdatei (z. B. `AVVP_VORLAGE_BEAMER_MINIMAL.tex`) und starte die Kompilierung aus dem PDF‑Viewer.
+- Das Theme benötigt **LuaLaTeX** (oder XeLaTeX) wegen `fontspec` und lokaler OTF/TTF‑Schriften.
+
+**Wichtig (LyX‑Export → Prism):**
+LyX schreibt die Präambel/`\input{tex/avvp_beamer_preamble.tex}` **nicht** ganz an den Dateianfang. Daher muss der LuaLaTeX‑Hinweis für Prism in der exportierten `.tex` **ganz oben** stehen:
+
+```tex
+% !TEX program = lualatex
+```
+
+Praktische Regel:
+- Nach dem Export aus LyX diese Zeile als **erste Zeile** in die `.tex` einfügen (oder per kleinem Post‑Processing automatisieren).
+
+---
 
 ### Hinweis: LyX / biber Cache-Probleme
 
