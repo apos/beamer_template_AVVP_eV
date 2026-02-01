@@ -1,0 +1,286 @@
+% !TEX program = lualatex
+\documentclass[12pt,ngerman]{scrartcl}
+
+\input{tex/avvp_koma_preamble.tex}
+
+\title{Hauptthema bzw. Titel\\Titel 2. Zeile}
+\subtitle{Untertitel, wenn vorhanden}
+\author{1.~Author \and 2.~Author}
+\date{Vereinsabend, 04.02.2026}
+
+\begin{document}
+
+\AVVPMakeTitlePage
+\clearpage
+\bigskip
+
+\noindent\textbf{Hinweis (Workflow):} Die Beamer-Präsentation ist die inhaltliche Referenz. Dieser Artikel ist eine abgeleitete Darstellung derselben Inhalte und muss bei Änderungen in der Präsentation entsprechend aktualisiert werden.
+
+\tableofcontents
+
+\section{Motivation}
+
+\subsection{Struktur}
+
+\subsubsection*{Strukturierte Vorträge}
+
+Einen Vortrag zu strukturieren ist nicht immer einfach. Hier ein paar Regeln, die für diese Lösungsvorlage gelten.
+
+\begin{itemize}
+\item Konferenzteilnehmer wissen oft wenig von der Materie des Vortrags. Deshalb: vereinfachen!
+\item In 20 Minuten ist es schon schwer genug, die Hauptbotschaft zu vermitteln. Deshalb sollten Details ausgelassen werden, selbst wenn dies zu Ungenauigkeiten oder Halbwahrheiten führt.
+\item Falls man Details weglässt, die eigentlich wichtig sind, so bitte auf der Tonspur. Alle werden damit glücklich sein.
+\end{itemize}
+
+\subsubsection*{Strukturierte Vorträge (2)}
+
+Inhalte sollten in Blöcke gegliedert sein und damit zu einem klar umrissenen Ziel führen.
+
+\begin{itemize}
+\item Es sollte genau zwei oder drei Abschnitte geben (neben der \% Zusammenfassung).
+\item {*}Höchstens{*} drei Unterabschnitte pro Abschnitt.
+\item Pro Rahmen sollte man zwischen 30s und 2min reden. Es sollte also 15 bis 30 Rahmen geben.
+\end{itemize}
+
+\subsection{LaTeX und LyX}
+
+\subsubsection*{Warum LaTeX Beamer für Präsentationen?}
+
+\begin{figure}
+  \includegraphics{latex_prinzip_nur_bild_trans}
+  \caption{Prinzipdarstellung}
+\end{figure}
+
+\begin{itemize}
+\item Klare Trennung von Inhalt und Layout
+\item Einheitliches Erscheinungsbild über alle Folien
+\item Automatische Struktur durch Abschnitte, Unterabschnitte und Agenda
+\item Sehr gut geeignet für Formeln, Abbildungen und Referenzen
+\item Stabil und skalierbar auch bei großen Präsentationen
+\item Textbasierte Quellen ermöglichen Versionierung und langfristige Reproduzierbarkeit
+\end{itemize}
+
+\subsubsection*{Warum LyX in Kombination mit Beamer?}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.15\linewidth]{latex-logo-png_seeklogo-82426_weiss.png}
+  \hspace{2em}
+  \includegraphics[width=0.15\linewidth]{org.lyx.LyX.png}
+  \caption{LaTeX + LyX}
+\end{figure}
+
+\begin{figure}
+  \includegraphics{lyx_prinzip_bildfuellend_breiter_trans}
+  \caption{LyX-Prinzip}
+\end{figure}
+
+\begin{itemize}
+\item Grafische Oberfläche für LaTeX ohne manuelles Tippen von Code
+\item Strikte Strukturierung: Dokument, Abschnitte und Rahmen
+\item Saubere Trennung zwischen Inhaltserstellung und Design
+\item Ideal für kollaboratives Arbeiten und spätere Pflege
+\item Volle LaTeX-Leistung bleibt jederzeit verfügbar
+\end{itemize}
+
+\section{Text}
+
+\subsection{Aufzählungen}
+
+\subsubsection*{Itemize und Statements}
+
+\textit{Untertitel sind optional.}
+
+Folgende Itemize-Regeln sind ganz nützlich:
+\begin{itemize}
+\item Viel Itemize benutzen.
+\item Sehr kurze Sätze oder Satzglieder verwenden.
+\item Diese Overlays werden mit dem Pause Stil erzeugt.
+\end{itemize}
+
+Und natürlich Aufzählungen:
+\begin{enumerate}
+\item Now lets numerate
+\item and two
+\item and three
+\end{enumerate}
+
+\subsubsection*{Konzentration auf einzelne Punkte}
+
+\begin{itemize}
+\item Man kann auch Overlay-Spezifikationen benutzen, um Overlays zu erzeugen.
+\item Hiermit können, Punkte in beliebiger Reihenfolge präsentiert werden
+\item Dies wird als zweites gezeigt.
+\end{itemize}
+
+\subsection{Spezielle Umgebungen}
+
+\subsubsection*{Satz / Folgerung}
+
+\paragraph{Theorem.} Auf dem ersten Overlay.
+
+\paragraph{Corollary.} Auf dem zweiten Overlay.
+
+\subsubsection*{Blocks}
+
+\paragraph{Normaler Block.}
+\begin{itemize}
+\item Wird auf allen Overlays angezeigt.
+\end{itemize}
+
+\paragraph{Beispielblock.}
+Ein Beispielblocktitel
+
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+
+\subsubsection*{Definitionen}
+
+\paragraph{Definition.} Hier steht eine Definition.
+
+\paragraph{Beispiel.} Und hier ein Beispiel.
+
+\paragraph{Beweis.} Und hier der Beweis.
+
+\subsubsection*{Quellcode}
+
+Dies ist ein Programm-Listing in \TeX innerhalb von LyX.
+
+\begin{verbatim}
+\begin{itemize}
+\item $e^{i\pi}=-1$.
+\item $e^{i\pi/2}=i$.
+\end{itemize}
+\end{verbatim}
+
+\section{Tabellen}
+
+\subsection{Alleinstehend}
+
+\subsubsection*{Tabelle mit Überschrift}
+
+\begin{table}[h]
+\centering
+\caption{Tabelle mit Überschrift}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Lorem & ipsum & dolor & amet \\
+\hline
+\hline
+orem ipsum &  &  & orem iplor s \\
+\hline
+ & orem dolor s &  \\
+\hline
+ &  & orem dolor s &  \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Medien}
+
+\subsection{Einzelnes Bild}
+
+\begin{figure}
+  \includegraphics{EVZL1977.JPG}
+  \caption{Bild\AVVPCreditInline{hajnal-haslach-2025}}
+\end{figure}
+
+\subsection{Bild mit Text}
+
+\subsubsection*{Bild mit Überschrift}
+
+Die Rahmenoption \texttt{<{*}>} führt dazu, dass alles in einem \glqq Rutsch\grqq{} angezeigt wird. Keine Klicks.
+
+\begin{figure}
+  \includegraphics{EVZL1977.JPG}
+  \caption{Bild\AVVPCreditInline{hajnal-haslach-2025}}
+\end{figure}
+
+\subsubsection*{Bild ohne Überschrift (plain)}
+
+\begin{itemize}
+\item Bild ohne Überschrift - voller Fokus aufs Bild
+\item daher auch Frame-Option \texttt{plain}
+\item Einzelnes Bild mit Quellennachweis
+\end{itemize}
+
+\begin{figure}
+  \includegraphics{EVZL1977.JPG}
+  \caption{Bild\AVVPCreditInline{hajnal-haslach-2025}}
+\end{figure}
+
+\subsubsection*{Bild im Hintergrund}
+
+\begin{itemize}
+\item Bild im Hintergrund und ohne Überschrift
+\item Einzelnes Bild mit Quellennachweis
+\item Platz für Bulletpoints
+\end{itemize}
+
+\subsubsection*{Gif}
+
+\begin{itemize}
+\item Ein Gif-Bild oder viele andere Dateien können im PDF-Viewer nicht angezeigt werden.
+\item Es muss daher als lokale Datei abgelegt und ein separates Vorschaubild verwendet werden.
+\item Öffnen funktioniert in vielen PDF-Viewern nicht; ggf. Link kopieren.
+\end{itemize}
+
+\begin{figure}
+  \AVVPVideoLocal{media/GIF-Bild-4B7D-B0F3-E5-0.gif}{GIF-Bild-4B7D-B0F3-E5-0.png}
+  \caption{Gif-Vorschau}
+\end{figure}
+
+\subsection{Videos}
+
+\subsubsection*{Video per Youtube-Link}
+
+\noindent\url{https://www.youtube.com/watch?v=eTOM_303DC8}
+
+\begin{figure}
+  \AVVPVideoURL{https://www.youtube.com/watch?v=eTOM_303DC8}{YT-TMS-Astro-2-unboxing-deep-inspection.png}
+  \caption{YouTube-Video\AVVPCreditInline{yt-heyapos-tms-astro-2-2025}}
+\end{figure}
+
+\subsubsection*{Google Drive Link}
+
+\noindent\url{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}
+
+\begin{figure}
+  \AVVPVideoURL{https://drive.google.com/file/d/1erqrKUuNd9FtK19vyPEFOcITf_D7LrFN/view?usp=sharing}{AVVP_Universe_on_tour_2024_gdrive.png}
+  \caption{Google Drive\AVVPCreditInline{avvp-eV-club-universe-on-tour-2024}}
+\end{figure}
+
+\subsubsection*{Lokale Videodatei}
+
+\begin{figure}
+  \AVVPVideoLocal{media/Youtube Intro HeyApos longer.mp4}{Youtube_hey_apos_video_jingle_longer.png}
+  \caption{Video-Poster\AVVPCreditInline{yt-heyapos-intro-2025}}
+\end{figure}
+
+\section*{Zusammenfassung}
+
+\begin{enumerate}
+\item Die erste Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Die zweite Hauptbotschaft des Vortrags in ein bis zwei Zeilen.
+\item Eventuell noch eine dritte Botschaft, aber nicht noch mehr.
+\end{enumerate}
+
+\begin{itemize}
+\item Ausblick
+  \begin{itemize}
+  \item Etwas, was wir noch nicht lösen konnten.
+  \item Nochwas, das wir noch nicht lösen konnten.
+  \item Uns noch eins
+  \end{itemize}
+\end{itemize}
+
+\appendix
+\section*{Anhang}
+
+\subsection*{Weiterführende Literatur}
+
+\printbibliography[title={Quellenverzeichnis}]
+
+\end{document}

@@ -1,0 +1,275 @@
+% KOMA-Script Artikel-Praeambel passend zur AVVP-Beamer-Vorlage (Magazin-Look)
+% Engine: LuaLaTeX (wegen fontspec und lokaler OTF/TTF)
+
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+% Bibliographie wie im Beamer-Projekt
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{bibtex.bib}
+
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{float}
+
+% Optional: Seitenlayout
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% Kopf-/Fußzeile (Magazin)
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage{lastpage}
+
+% Kopf-/Fußzeilen-Inhalt
+\clearpairofpagestyles
+\automark{section}
+\ihead{\headmark}
+
+% Rechts oben: Titel (Kurztitel, falls via \title[Kurztitel]{...} gesetzt)
+\makeatletter
+\newcommand{\AVVPHeaderTitle}{%
+  \ifcsname shorttitle\endcsname
+    \ifx\shorttitle\@empty
+      \@title
+    \else
+      \shorttitle
+    \fi
+  \else
+    \@title
+  \fi
+}
+\makeatother
+\ohead{\AVVPHeaderTitle}
+
+\cfoot{Seite\ \pagemark\ von\ \pageref{LastPage}}
+\pagestyle{scrheadings}
+
+% Farben (aus dem Beamer-Theme uebernommen)
+\definecolor{AVVPBg}{RGB}{5,23,41}
+\definecolor{AVVPBlue}{RGB}{46,108,198}
+\definecolor{AVVPSpark}{RGB}{235,156,70}
+\definecolor{AVVPGrey}{RGB}{90,98,110}
+
+% Schriften (lokal aus dem Projekt)
+\setmainfont[
+  Path = fonts/exo-2/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont  = *-Italic,
+  BoldFont    = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures = TeX
+]{Exo2}
+
+\setsansfont[
+  Path = fonts/exo-2/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont  = *-Italic,
+  BoldFont    = *-Bold,
+  BoldItalicFont = *-BoldItalic,
+  Ligatures = TeX
+]{Exo2}
+
+\newfontfamily\AVVPTitleFont[
+  Path = fonts/share_techmono/,
+  Extension = .otf,
+  UprightFont = Share-TechMono,
+  Ligatures = {TeX,NoCommon}
+]{Share Tech Mono}
+
+% Ueberschriften in CI-Farbe
+\addtokomafont{disposition}{\color{AVVPBlue}\AVVPTitleFont}
+
+% AVVP Link-Farbe
+\hypersetup{colorlinks=true,linkcolor=AVVPBlue,urlcolor=AVVPBlue,citecolor=AVVPBlue}
+
+% Default fuer \includegraphics: volle Textbreite, Seitenverhaeltnis behalten
+\setkeys{Gin}{width=\linewidth,keepaspectratio}
+
+
+
+% --- Magazin-Look: weniger Weißraum + ruhigere Captions ---
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{0pt}
+
+% Abbildungen/Tabellen im Artikel möglichst "hier" setzen
+\floatplacement{figure}{H}
+\floatplacement{table}{H}
+
+% Linksbuendig in figure/table, auch wenn im Dokument \centering steht
+\AtBeginEnvironment{figure}{\let\centering\raggedright}
+\AtBeginEnvironment{table}{\let\centering\raggedright}
+
+% Captions kleiner, grauer und linksbuendig
+\makeatletter
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  {\footnotesize\color{AVVPGrey}#1: #2\par}%
+  \vskip\belowcaptionskip
+}
+\makeatother
+
+% ------------------------------------------------------------
+% Bildnachweis (Artikel): kompatible Kurzform wie im Beamer (cite-key)
+%   Nutzung: \AVVPCreditInline{cite-key}
+% ------------------------------------------------------------
+\makeatletter
+\newcommand{\AVVPCreditInline}[1]{%
+  \begingroup
+    \@ifpackageloaded{biblatex}{\nocite{#1}}{}%
+    \;\textnormal{([#1])}%
+  \endgroup
+}
+\makeatother
+
+% ------------------------------------------------------------
+% VIDEO HELPERS (wie in der Beamer-Präambel; Artikel-Implementierung)
+%   Ziel: gleiche Makro-Namen/Signaturen, aber Magazin-taugliche Ausgabe.
+% ------------------------------------------------------------
+
+% Poster-Image (skalieren ohne Verzerrung, Hoehe begrenzen)
+\newcommand{\AVVPVideoPoster}[2][]{%
+  \includegraphics[
+    width=0.5\linewidth,
+    height=0.35\textheight,
+    keepaspectratio,
+    #1%
+  ]{#2}%
+}
+
+% Minimaler File-URI Builder (ersetzt Leerzeichen durch %20)
+\makeatletter
+\ExplSyntaxOn
+\tl_new:N \g_avvp_file_uri_tl
+\cs_new_protected:Npn \avvp_build_file_uri:n #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \tl_replace_all:Nnn \l_tmpa_tl {\c_space_tl} {\c_percent_str 20}
+    \tl_gset:Nx \g_avvp_file_uri_tl { run:\tl_use:N \l_tmpa_tl }
+  }
+\newcommand{\AVVPBuildFileURI}[1]{%
+  \begingroup
+    \avvp_build_file_uri:n {#1}%
+    \xdef\AVVPFileURI{\tl_use:N \g_avvp_file_uri_tl}%
+  \endgroup
+}
+\ExplSyntaxOff
+\makeatother
+
+% Label wie in Beamer: nur "ordner/datei" (fallback: kompletter String)
+\makeatletter
+\ExplSyntaxOn
+\cs_new_protected:Npn \avvp_video_local_label:n #1
+  {
+    \seq_set_split:Nnn \l_tmpa_seq {/} {#1}
+    \int_compare:nNnTF {\seq_count:N \l_tmpa_seq} > {1}
+      {
+        \tl_set:Nx \l_tmpb_tl {\seq_item:Nn \l_tmpa_seq {-2}}
+        \tl_set:Nx \l_tmpc_tl {\seq_item:Nn \l_tmpa_seq {-1}}
+        \texttt{\nolinkurl{\tl_use:N \l_tmpb_tl/\tl_use:N \l_tmpc_tl}}
+      }
+      {\texttt{\nolinkurl{#1}}}
+  }
+\newcommand{\AVVPVideoLocalLabel}[1]{\avvp_video_local_label:n {#1}}
+\ExplSyntaxOff
+\makeatother
+
+% Clickable poster -> URL
+\newcommand{\AVVPVideoURL}[3][]{%
+  \begin{center}%
+    \href{#2}{\AVVPVideoPoster[#1]{#3}}%
+  \end{center}%
+}
+
+% Clickable poster -> lokale Datei
+\newcommand{\AVVPVideoLocal}[3][]{%
+  \begin{center}%
+    \AVVPBuildFileURI{#2}% setzt \AVVPFileURI
+    \href{\AVVPFileURI}{\AVVPVideoPoster[#1]{#3}}\\[0.4ex]%
+    {\scriptsize\href{\AVVPFileURI}{\AVVPVideoLocalLabel{#2}}}%
+  \end{center}%
+}
+
+% ------------------------------------------------------------
+% Quellenverzeichnis wie im Beamer: cite-key [..] am Anfang jeder Zeile
+% ------------------------------------------------------------
+\makeatletter
+\AtBeginDocument{%
+  \@ifpackageloaded{biblatex}{%
+    \DeclareFieldFormat{entrykey}{[#1]}%
+    \renewbibmacro*{begentry}{\printfield{entrykey}\addspace}%
+  }{}%
+}
+\makeatother
+
+% Bildpfade wie in der Beamer-Vorlage (Aufruf aus AVVP_Beamer/)
+\graphicspath{{./}{pics/}{media/}}
+
+% ------------------------------------------------------------
+% AVVP Titel-Assets (Benennung analog zur Beamer-Praeambel)
+% ------------------------------------------------------------
+\def\AVVPTitleLogoDarkFile{pics/avvp_2019_logo_wortmarke_neg.png}
+\def\AVVPTitleLogoLightFile{pics/avvp_2019_logo_wortmarke_pos_gross.png}
+\def\AVVPTitleSloganText{Faszination. Astronomie. Erleben.}
+
+% Modus-Flag analog zum Beamer-Theme
+\newif\ifAVVPIsLightMode
+% Artikel hat weissen Hintergrund -> default Light
+\AVVPIsLightModetrue
+
+\newcommand{\AVVPDarkMode}{\global\AVVPIsLightModefalse}
+\newcommand{\AVVPLightMode}{\global\AVVPIsLightModetrue}
+
+\newcommand{\AVVPTitleLogoAuto}{%
+  \ifAVVPIsLightMode
+    \includegraphics[width=0.30\textwidth]{\AVVPTitleLogoLightFile}%
+  \else
+    \includegraphics[width=0.30\textwidth]{\AVVPTitleLogoDarkFile}%
+  \fi
+}
+
+\newcommand{\AVVPTitleSloganColor}{%
+  \ifAVVPIsLightMode
+    \color{AVVPBg}% dark text on light background
+  \else
+    \color{white}% light text on dark background
+  \fi
+}
+
+% Titelseite fuer KOMA-Artikel (Logo + Drei-Zeiler)
+\makeatletter
+\newcommand{\AVVPMakeTitlePage}{%
+  \begin{titlepage}
+    \centering
+
+    {\AVVPTitleFont\color{AVVPBlue}\LARGE\@title\par}
+
+    \ifx\@subtitle\@empty\else
+      \vspace{0.8em}
+      {\AVVPTitleFont\color{AVVPSpark}\large\@subtitle\par}
+    \fi
+
+    \vspace{1.2em}
+    {\color{AVVPBlue}\begingroup\let\and\\\@author\par\endgroup}
+
+    \vspace{0.6em}
+    {\color{AVVPBlue}\@date\par}
+
+    \vfill
+
+    \AVVPTitleLogoAuto\par
+
+    \vspace{0.8em}
+    {\AVVPTitleFont\AVVPTitleSloganColor\normalsize\AVVPTitleSloganText\par}
+
+  \end{titlepage}
+}
+\makeatother
